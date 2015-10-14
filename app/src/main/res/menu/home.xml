@@ -1,0 +1,5 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" tools:context="hassle_d.episteak.HomeActivity">
+    <item android:id="@+id/action_logout" android:title="@string/action_logout" />
+    <item android:id="@+id/action_exit" android:title="@string/action_exit" />
+</menu>
