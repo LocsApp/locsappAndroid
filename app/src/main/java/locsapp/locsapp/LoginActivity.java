@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,27 +18,30 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class LoginActivity extends Activity {
+import org.json.JSONObject;
+
+public class LoginActivity extends Activity implements Connection.RequestCallback {
 
     private EditText mIdView;
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
-    private ImageView mSplashImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
         setContentView(R.layout.activity_login);
-
         mIdView = (EditText) findViewById(R.id.id_login);
+        String login = intent.getStringExtra("login");
+        if (login != null) {
+            mIdView.setText(login);
+        }
         mPasswordView = (EditText) findViewById(R.id.password);
-        mSplashImage = (ImageView) findViewById(R.id.splash_image);
-        mSplashImage.setImageResource(R.drawable.splash);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
+                if (id == EditorInfo.IME_NULL && keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
                     attemptLogin();
                     return true;
                 }
@@ -45,16 +49,25 @@ public class LoginActivity extends Activity {
             }
         });
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.sign_in_button);
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
+        Button signInButton = (Button) findViewById(R.id.sign_in_button);
+        signInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 attemptLogin();
             }
         });
 
-        mLoginFormView = findViewById(R.id.login_form);
+        mLoginFormView = findViewById(R.id.id_login_form);
         mProgressView = findViewById(R.id.login_progress);
+
+        TextView registerScreen = (TextView) findViewById(R.id.link_to_register);
+        registerScreen.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     public void attemptLogin() {
@@ -83,28 +96,26 @@ public class LoginActivity extends Activity {
         }
         else {
             showProgress(true);
-            sendMessage("Debug");
-//            Connection co = new Connection(this);
-//            co.getLogin(id_login, password);
+            Connection co = new Connection(this);
+            co.connectUser(id_login, password);
         }
     }
 
     private boolean isPasswordValid(String password) {
-        return password.length() > 4;
+        return password.length() > 8;
     }
 
-    public void sendMessage(String token) {
+    @Override
+    public void successCallback(Object result) {
         Intent intent = new Intent(this, HomeActivity.class);
-        intent.putExtra("token", token);
+        intent.putExtra("token", "qlsjsqc");
         startActivity(intent);
-        finish();
-        return;
+        this.finish();
     }
 
-    public void setLoginError() {
-        mPasswordView.setError(getString(R.string.error_incorrect_password));
-        mPasswordView.requestFocus();
-        showProgress(false);
+    @Override
+    public void errorCallback(String error) {
+
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)

@@ -18,13 +18,7 @@ import android.widget.TextView;
 
 public class HomeFragment extends android.support.v4.app.Fragment {
     private HomeActivity mActivity;
-    private TextView mErrorView;
-    private TextView mLoadingView;
-    private TextView mFullName;
-    private TextView mLogin;
-    private TextView mLog;
-    private ImageView mImageLogin;
-    private ListView mMessageList;
+
 
     private static final String ARG_SECTION_NUMBER = "section_number";
     private int layout;
@@ -55,7 +49,7 @@ public class HomeFragment extends android.support.v4.app.Fragment {
 
     public void setImage(Bitmap image){
         try {
-            mImageLogin.setImageBitmap(image);
+            //setImageBitmap(image);
         }
         catch (Exception e){
             Log.e(getTag(), e.getMessage());
