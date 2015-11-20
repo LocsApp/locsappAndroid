@@ -1,4 +1,5 @@
 <resources>
+    <string name="server">http://phpmyadmin.dlama.eu/api/v1</string>
     <string name="app_name">LocsApp</string>
     <string name="action_logout">Logout</string>
     <string name="action_exit">Exit</string>
@@ -10,9 +11,12 @@
     <string name="callback_err">Activity must implement NavigationDrawerCallbacks.</string>
 
     <string name="splash_description">LocsApp Logo</string>
+
     <string name="title_section1">Home</string>
+    <string name="title_section2">My Account</string>
+
     <string name="title_home_activity">Home</string>
 
-    <string name="registration">http://10.0.2.2:3000/api/v1/rest-auth/registration/</string>
-    <string name="login">http://10.0.2.2:3000/api/v1/rest-auth/login/</string>
+    <string name="registration">/rest-auth/registration/</string>
+    <string name="login">/rest-auth/login/</string>
 </resources>

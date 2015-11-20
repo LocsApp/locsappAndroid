@@ -43,6 +43,11 @@ public class HomeActivity extends ActionBarActivity
                         .replace(R.id.container, HomeFragment.newInstance(position + 1))
                         .commit();
                 break;
+            case 1:
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, AccountOverviewFragment.newInstance(position + 1))
+                        .commit();
+                break;
         }
 
     }
@@ -51,6 +56,9 @@ public class HomeActivity extends ActionBarActivity
         switch (number) {
             case 1:
                 mTitle = getString(R.string.title_section1);
+                break;
+            case 2:
+                mTitle = getString(R.string.title_section2);
                 break;
         }
     }

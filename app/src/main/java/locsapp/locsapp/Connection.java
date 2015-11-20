@@ -28,6 +28,7 @@ public class Connection {
     private Context context;
     private RequestQueue queue;
     private RequestCallback requestCallback;
+    private String serverAddr;
 
     interface RequestCallback {
         void successCallback(Object result);
@@ -37,6 +38,7 @@ public class Connection {
     public Connection(Context context){
         this.context = context;
         this.queue = Volley.newRequestQueue(context);
+        this.serverAddr = context.getString(R.string.server);
         this.requestCallback = (RequestCallback)context;
     }
 
@@ -91,7 +93,7 @@ public class Connection {
         }
 
         JsonObjectRequest jsonRequest = new JsonObjectRequest(
-                Request.Method.POST, context.getString(R.string.registration), params,
+                Request.Method.POST, serverAddr + context.getString(R.string.registration), params,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -102,6 +104,7 @@ public class Connection {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error){
+                        Log.d("ERREUR", error.getMessage());
                     }
                 });
         jsonRequest.setRetryPolicy(new DefaultRetryPolicy(2000, 3, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
@@ -112,14 +115,14 @@ public class Connection {
         JSONObject params = new JSONObject();
         try {
             params.put("username", login);
-            params.put("password1", password);
+            params.put("password", password);
         }
         catch (JSONException e) {
             e.printStackTrace();
         }
 
         JsonObjectRequest jsonRequest = new JsonObjectRequest(
-                Request.Method.POST, context.getString(R.string.login), params,
+                Request.Method.POST, serverAddr + context.getString(R.string.login), params,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {

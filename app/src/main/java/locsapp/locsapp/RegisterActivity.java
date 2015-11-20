@@ -143,7 +143,7 @@ public class RegisterActivity extends FragmentActivity
         else {
             Log.d("Connect", "OK");
             Connection co = new Connection(this);
-            co.registerUser(email, firstname, lastname, username, password, password2, birthdate, phone, livingAddr, billAddr, "", true);
+            co.registerUser(email, firstname, lastname, username, password, password2, birthdate, phone, livingAddr, billAddr, "blabla", true);
         }
     }
 
