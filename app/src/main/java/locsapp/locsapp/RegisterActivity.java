@@ -13,67 +13,39 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by Damien on 10/17/2015.
  */
 
 public class RegisterActivity extends FragmentActivity
-        implements DatePickerFragment.DateListener, Connection.RequestCallback {
+        implements Connection.RequestCallback {
 
-    EditText mFirstname;
-    EditText mLastname;
-    EditText mBirthDate;
     EditText mEmail;
-    EditText mPhone;
-    EditText mLivingAddr;
-    EditText mBillAddr;
     EditText mUsername;
     EditText mPassword;
     EditText mPasswordConfirm;
-    TextView mSameAddr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
 
-        mFirstname = (EditText) findViewById(R.id.reg_firstname);
-        mLastname = (EditText) findViewById(R.id.reg_lastname);
-        mBirthDate = (EditText) findViewById(R.id.reg_birthdate);
         mEmail = (EditText) findViewById(R.id.reg_email);
-        mPhone = (EditText) findViewById(R.id.reg_phone);
-        mLivingAddr = (EditText) findViewById(R.id.reg_livingAdr);
-        mBillAddr = (EditText) findViewById(R.id.reg_BillingAdr);
         mUsername = (EditText) findViewById(R.id.reg_login);
         mPassword = (EditText) findViewById(R.id.reg_password);
         mPasswordConfirm = (EditText) findViewById(R.id.reg_password2);
-        mSameAddr = (TextView) findViewById(R.id.reg_sameAddr);
 
-        mSameAddr.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mBillAddr.setText(mLivingAddr.getText().toString());
-            }
-        });
 
-        mLastname.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == EditorInfo.IME_NULL && keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
-                    DialogFragment datePicker = new DatePickerFragment();
-                    datePicker.show(getSupportFragmentManager(), "Birthdate");
-                    return true;
-                }
-                return false;
-            }
-        });
-        mBirthDate.setOnClickListener(new View.OnClickListener() {
+/*        mBirthDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DialogFragment datePicker = new DatePickerFragment();
                 datePicker.show(getSupportFragmentManager(), "Birthdate");
             }
-        });
+        }); */
         mPasswordConfirm.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -102,24 +74,12 @@ public class RegisterActivity extends FragmentActivity
     }
 
     public void attemptRegister() {
-        mFirstname.setError(null);
-        mLastname.setError(null);
-        mBirthDate.setError(null);
         mEmail.setError(null);
-        mPhone.setError(null);
-        mLivingAddr.setError(null);
-        mBillAddr.setError(null);
         mUsername.setError(null);
         mPassword.setError(null);
         mPasswordConfirm.setError(null);
 
-        String firstname = mFirstname.getText().toString();
-        String lastname = mLastname.getText().toString();
-        String birthdate = mBirthDate.getText().toString();
         String email = mEmail.getText().toString();
-        String phone = mPhone.getText().toString();
-        String livingAddr = mLivingAddr.getText().toString();
-        String billAddr = mBillAddr.getText().toString();
         String username = mUsername.getText().toString();
         String password = mPassword.getText().toString();
         String password2 = mPasswordConfirm.getText().toString();
@@ -127,6 +87,11 @@ public class RegisterActivity extends FragmentActivity
         Boolean cancel = false;
         View focusView = null;
 
+        if (!(password2.equals(password))) {
+            mPasswordConfirm.setError(getString(R.string.error_match_password));
+            focusView = mPasswordConfirm;
+            cancel = true;
+        }
         if (TextUtils.isEmpty(password) && !isPasswordValid(password)) {
             mPassword.setError(getString(R.string.error_invalid_password));
             focusView = mPassword;
@@ -137,13 +102,17 @@ public class RegisterActivity extends FragmentActivity
             focusView = mUsername;
             cancel = true;
         }
+        if (TextUtils.isEmpty(email)) {
+            mEmail.setError(getString(R.string.error_field_required));
+            focusView = mEmail;
+            cancel = true;
+        }
         if (cancel) {
             focusView.requestFocus();
         }
         else {
-            Log.d("Connect", "OK");
             Connection co = new Connection(this);
-            co.registerUser(email, firstname, lastname, username, password, password2, birthdate, phone, livingAddr, billAddr, "blabla", true);
+            co.registerUser(email, username, password, password2, true);
         }
     }
 
@@ -151,11 +120,11 @@ public class RegisterActivity extends FragmentActivity
         return password.length() > 8;
     }
 
-    @Override
+/*    @Override
     public void returnDate(String date) {
         mBirthDate.setText(date);
         mEmail.requestFocus();
-    }
+    }*/
 
     @Override
     public void successCallback(Object result) {
@@ -166,7 +135,22 @@ public class RegisterActivity extends FragmentActivity
     }
 
     @Override
-    public void errorCallback(String error) {
-
+    public void errorCallback(JSONObject error) {
+        if (error.has("email")) {
+            try {
+                mEmail.setError(error.getString("email"));
+                mEmail.requestFocus();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        if (error.has("username")) {
+            try {
+                mUsername.setError(error.getString("username"));
+                mUsername.requestFocus();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

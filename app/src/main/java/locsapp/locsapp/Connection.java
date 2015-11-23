@@ -2,6 +2,7 @@ package locsapp.locsapp;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.provider.SyncStateContract;
 import android.util.Log;
 
 import com.android.volley.AuthFailureError;
@@ -32,7 +33,7 @@ public class Connection {
 
     interface RequestCallback {
         void successCallback(Object result);
-        void errorCallback(String error);
+        void errorCallback(JSONObject error);
     }
 
     public Connection(Context context){
@@ -41,6 +42,7 @@ public class Connection {
         this.serverAddr = context.getString(R.string.server);
         this.requestCallback = (RequestCallback)context;
     }
+
 
     public void getImage (final String url, final HomeFragment fragment){
 
@@ -61,31 +63,17 @@ public class Connection {
     }
 
     public void registerUser (final String eMail,
-                              final String firstName,
-                              final String lastName,
                               final String login,
                               final String password1,
                               final String password2,
-                              final String birthDate,
-                              final String phone,
-                              final String livingAddress,
-                              final String billingAddress,
-                              final String logoURL,
                               final Boolean isActive) {
 
         JSONObject params = new JSONObject();
         try {
             params.put("email", eMail);
-            params.put("first_name", firstName);
-            params.put("last_name", lastName);
             params.put("username", login);
             params.put("password1", password1);
             params.put("password2", password2);
-            params.put("birthdate", birthDate);
-            params.put("phone", phone);
-            params.put("living_address", livingAddress);
-            params.put("billing_address", billingAddress);
-            params.put("logo_url", logoURL);
             params.put("is_active", isActive);
         }
         catch (JSONException e) {
@@ -104,10 +92,21 @@ public class Connection {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error){
-                        Log.d("ERREUR", error.getMessage());
+                        String str = null;
+                        try {
+                            str = new String(error.networkResponse.data, "UTF8");
+                            Log.d("ERREUR", str);
+                            JSONObject errorJson = new JSONObject(str);
+                            requestCallback.errorCallback(errorJson);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
                 });
-        jsonRequest.setRetryPolicy(new DefaultRetryPolicy(2000, 3, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        jsonRequest.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(jsonRequest);
     }
 

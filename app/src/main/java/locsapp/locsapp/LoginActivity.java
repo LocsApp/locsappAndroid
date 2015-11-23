@@ -114,7 +114,7 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
     }
 
     @Override
-    public void errorCallback(String error) {
+    public void errorCallback(JSONObject error) {
 
     }
 
