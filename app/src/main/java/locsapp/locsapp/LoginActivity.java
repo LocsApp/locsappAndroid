@@ -18,7 +18,16 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.gcm.Task;
+
 import org.json.JSONObject;
+
+import java.util.List;
+
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
 
 public class LoginActivity extends Activity implements Connection.RequestCallback {
 
@@ -66,6 +75,35 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
                 startActivity(i);
+            }
+        });
+
+        TaskService taskService = ServiceGenerator.createService(TaskService.class);
+        Call<StackOverflowQuestions> call = taskService.loadQuestions("android");
+        call.enqueue(new Callback<StackOverflowQuestions>() {
+            @Override
+            public void onResponse(Response<StackOverflowQuestions> response, Retrofit retrofit) {
+                if (response.isSuccess()) {
+                    // tasks available
+                  Log.d("Response42 = ", "succes " +  response.toString());
+                    //Log.d("Response42 = ", "succes " +  response.enqueu);
+
+
+                } else {
+                    // error response, no access to resource?
+                    Log.d("Response42 = ", "error " + response.toString());
+                    Log.d("Response42 = ", "error " + retrofit.toString());
+
+                    System.out.println(response);
+                    System.out.println(retrofit);
+
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                // something went completely south (like no internet connection)
+                Log.d("Error", t.getMessage());
             }
         });
     }
