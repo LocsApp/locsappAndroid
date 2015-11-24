@@ -2,32 +2,32 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
+        jar="/home/sylflo/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.0/support-annotations-23.1.0.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-44e33e2c2958d7947da6d0f50845e90059388580.jar" />
+        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
+        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.0-8b04921eda411aa6c508fa821a76a25a738471ca.jar" />
     </item>
     <item
-        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
+        jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars/libs/internal_impl-23.1.0.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-2058963a0b61f464e365dd597f81f5339914e0b0.jar" />
+        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
+        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.0-3f17a0487b9d88c43a567296a40997ad83bef8c7.jar" />
     </item>
     <item
-        jar="C:\Users\Damien\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
+        jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-591fe72242e3bc7e53d393347f885ab401db5a99.jar" />
+        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
+        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-f2e05ae4f123d9061953bac991f2152db23e39ea.jar" />
     </item>
     <item
-        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
+        jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/jars/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-08e089dd7f9a2793c29dd77b887468b086c0d265.jar" />
+        sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
+        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-70529c25f3f0b0c50fbab046ba4ba84d4e699acb.jar" />
     </item>
 
 </items>
