@@ -22,6 +22,7 @@ import com.google.android.gms.gcm.Task;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.List;
 
 import retrofit.Call;
@@ -58,6 +59,7 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
             }
         });
 
+
         Button signInButton = (Button) findViewById(R.id.sign_in_button);
         signInButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -78,35 +80,41 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
             }
         });
 
-        TaskService taskService = ServiceGenerator.createService(TaskService.class);
-        Call<StackOverflowQuestions> call = taskService.loadQuestions("android");
-        call.enqueue(new Callback<StackOverflowQuestions>() {
+
+        ApiEndpointInterface apiService = ServiceGenerator.createService(ApiEndpointInterface.class);
+        User user = new User("dev.chateau@gmail.com", "sylflo", "toto42", "toto42");
+        Call<User> call = apiService.createUser(user);
+        call.enqueue(new Callback<User>() {
             @Override
-            public void onResponse(Response<StackOverflowQuestions> response, Retrofit retrofit) {
-                if (response.isSuccess()) {
-                    // tasks available
-                  Log.d("Response42 = ", "succes " +  response.toString());
-                    //Log.d("Response42 = ", "succes " +  response.enqueu);
+            public void onResponse(Response<User> response,
+                                   Retrofit retrofit) {
 
-
+                Log.d("Response42Succes", response.toString() + " " + retrofit.toString());
+                User user = response.body();
+               if (user != null) {
+                    Log.d("Respose42", "user succes");
                 } else {
-                    // error response, no access to resource?
-                    Log.d("Response42 = ", "error " + response.toString());
-                    Log.d("Response42 = ", "error " + retrofit.toString());
 
-                    System.out.println(response);
-                    System.out.println(retrofit);
+                   Log.d("Respose42", "user failure");
+
 
                 }
+
+
+                //Log.d("Response", response.body().toString());
+
             }
 
             @Override
             public void onFailure(Throwable t) {
-                // something went completely south (like no internet connection)
-                Log.d("Error", t.getMessage());
+
+                //Log.d("Response42 Error", t.getMessage());
+
             }
         });
     }
+
+
 
     public void attemptLogin() {
 
