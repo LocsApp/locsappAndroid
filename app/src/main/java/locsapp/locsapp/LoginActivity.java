@@ -27,8 +27,14 @@ import java.util.List;
 
 import retrofit.Call;
 import retrofit.Callback;
+import retrofit.HttpException;
 import retrofit.Response;
 import retrofit.Retrofit;
+import rx.Observable;
+import rx.Subscriber;
+import rx.Subscription;
+
+
 
 public class LoginActivity extends Activity implements Connection.RequestCallback {
 
@@ -36,6 +42,7 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    //private Subscription subscription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,8 +121,32 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
 
             }
         });*/
-    }
 
+       // this.subscription = observable.subscribe(this);
+        ApiEndpointInterface apiService = ServiceGenerator.createService(ApiEndpointInterface.class);
+        User user = new User("dev.chateau@gmail.com", "sylflo", "toto42", "toto42");
+        Observable<User> call = apiService.createUser(user);
+        Subscription subscription = call.observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<User>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                // cast to retrofit.HttpException to get the response code
+                if (e instanceof HttpException) {
+                    HttpException response = null;
+                    int code = response.code();
+                }
+            }
+
+            @Override
+            public void onNext(User user) {
+            }
+        });
+
+    }
 
 
     public void attemptLogin() {
@@ -141,8 +172,7 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
         }
         if (cancel) {
             focusView.requestFocus();
-        }
-        else {
+        } else {
             showProgress(true);
             Connection co = new Connection(this);
             co.connectUser(id_login, password);
@@ -192,6 +222,12 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
             mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
             mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+      /*  this.subscription.unsubscribe();*/
+        super.onDestroy();
     }
 }
 
