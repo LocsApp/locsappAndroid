@@ -1,6 +1,7 @@
 package locsapp.locsapp;
 
-import retrofit.Call;
+
+import rx.Observable;
 import retrofit.http.Body;
 import retrofit.http.POST;
 
@@ -9,7 +10,13 @@ import retrofit.http.POST;
  */
 public interface ApiEndpointInterface {
 
+   /* @POST("/api/v1/rest-auth/registration/")
+    Call<User> createUser(@Body User user);*/
+
+
     @POST("/api/v1/rest-auth/registration/")
-    Call<User> createUser(@Body User user);
+    Observable<User> createUser(@Body User user);
+
+
 
 }

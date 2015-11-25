@@ -81,7 +81,7 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
         });
 
 
-        ApiEndpointInterface apiService = ServiceGenerator.createService(ApiEndpointInterface.class);
+      /*  ApiEndpointInterface apiService = ServiceGenerator.createService(ApiEndpointInterface.class);
         User user = new User("dev.chateau@gmail.com", "sylflo", "toto42", "toto42");
         Call<User> call = apiService.createUser(user);
         call.enqueue(new Callback<User>() {
@@ -92,11 +92,13 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
                 Log.d("Response42Succes", response.toString() + " " + retrofit.toString());
                 User user = response.body();
                if (user != null) {
-                    Log.d("Respose42", "user succes");
+                    Log.d("Response42", "user succes");
                 } else {
 
-                   Log.d("Respose42", "user failure");
-
+                   Log.d("Response42Null", "user failure");
+                    Log.d("REsponse42Null", response.message());
+                   Log.d("REsponse42Null", response.errorBody().toString());
+                   Log.d("REsponse42Null", response.body().toString());
 
                 }
 
@@ -108,10 +110,10 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
             @Override
             public void onFailure(Throwable t) {
 
-                //Log.d("Response42 Error", t.getMessage());
+                Log.d("Response42 Error", t.getMessage());
 
             }
-        });
+        });*/
     }
 
 
