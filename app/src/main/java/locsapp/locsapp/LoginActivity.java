@@ -27,12 +27,16 @@ import java.util.List;
 
 import retrofit.Call;
 import retrofit.Callback;
+import retrofit.GsonConverterFactory;
 import retrofit.HttpException;
 import retrofit.Response;
 import retrofit.Retrofit;
+
+import retrofit.RxJavaCallAdapterFactory;
 import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
+import rx.schedulers.Schedulers;
 import rx.android.schedulers.AndroidSchedulers;
 
 
@@ -122,34 +126,44 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
             }
         });*/
 
-       // this.subscription = observable.subscribe(this);
-        ApiEndpointInterface apiService = ServiceGenerator.createService(ApiEndpointInterface.class);
+        Retrofit retrofit =
+                new Retrofit.Builder()
+                        .baseUrl("http://10.0.2.2:8000")
+                        .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+
+
+        ApiEndpointInterface service = retrofit.create(ApiEndpointInterface.class);
         User user = new User("dev.chateau@gmail.com", "sylflo", "toto42", "toto42");
-        Observable<User> observable = apiService.createUser(user);
-/*
-        Subscription subscription = call.observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<User>() {
-            @Override
-            public void onCompleted() {
 
-            }
+        Observable<User> observable = service.createUser(user);
+        observable
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<User>() {
+                    @Override
+                    public void onCompleted() {
+                        // handle completed
+                        Log.d("MyResult", "onCompleted");
+                    }
 
-            @Override
-            public void onError(Throwable e) {
-                // cast to retrofit.HttpException to get the response code
-                if (e instanceof HttpException) {
-                  */
-/*  HttpException response = null;
-                    int code = response.code();*//*
+                    @Override
+                    public void onError(Throwable e) {
+                        // handle error
 
-                }
-            }
 
-            @Override
-            public void onNext(User user) {
-            }
-        });
-*/
+                        Log.d("MyResult", "onError " + e.getMessage() + " cause = " + e.getCause() + " stack teace = " + e.getStackTrace());
 
+                    }
+
+                    @Override
+                    public void onNext(User user) {
+                        // handle response
+                        Log.d("MyResult", "onNext");
+
+                    }
+                });
     }
 
 
