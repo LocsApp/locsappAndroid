@@ -33,7 +33,7 @@ import retrofit.Retrofit;
 import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
-
+import rx.android.schedulers.AndroidSchedulers;
 
 
 public class LoginActivity extends Activity implements Connection.RequestCallback {
@@ -136,8 +136,8 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
             public void onError(Throwable e) {
                 // cast to retrofit.HttpException to get the response code
                 if (e instanceof HttpException) {
-                    HttpException response = null;
-                    int code = response.code();
+                  /*  HttpException response = null;
+                    int code = response.code();*/
                 }
             }
 
