@@ -4,6 +4,7 @@ import com.squareup.okhttp.OkHttpClient;
 
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
+import retrofit.RxJavaCallAdapterFactory;
 
 /**
  * Created by sylflo on 11/24/15.
@@ -17,7 +18,8 @@ public class ServiceGenerator {
     private static Retrofit.Builder builder =
             new Retrofit.Builder()
                     .baseUrl(API_BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create());
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create());
 
     public static <S> S createService(Class<S> serviceClass) {
         Retrofit retrofit = builder.client(httpClient).build();

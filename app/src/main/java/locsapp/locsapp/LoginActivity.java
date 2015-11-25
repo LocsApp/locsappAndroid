@@ -125,7 +125,8 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
        // this.subscription = observable.subscribe(this);
         ApiEndpointInterface apiService = ServiceGenerator.createService(ApiEndpointInterface.class);
         User user = new User("dev.chateau@gmail.com", "sylflo", "toto42", "toto42");
-        Observable<User> call = apiService.createUser(user);
+        Observable<User> observable = apiService.createUser(user);
+/*
         Subscription subscription = call.observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<User>() {
             @Override
             public void onCompleted() {
@@ -136,8 +137,10 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
             public void onError(Throwable e) {
                 // cast to retrofit.HttpException to get the response code
                 if (e instanceof HttpException) {
-                  /*  HttpException response = null;
-                    int code = response.code();*/
+                  */
+/*  HttpException response = null;
+                    int code = response.code();*//*
+
                 }
             }
 
@@ -145,6 +148,7 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
             public void onNext(User user) {
             }
         });
+*/
 
     }
 
