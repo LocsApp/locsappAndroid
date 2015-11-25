@@ -92,49 +92,8 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
         });
 
 
-      /*  ApiEndpointInterface apiService = ServiceGenerator.createService(ApiEndpointInterface.class);
-        User user = new User("dev.chateau@gmail.com", "sylflo", "toto42", "toto42");
-        Call<User> call = apiService.createUser(user);
-        call.enqueue(new Callback<User>() {
-            @Override
-            public void onResponse(Response<User> response,
-                                   Retrofit retrofit) {
-
-                Log.d("Response42Succes", response.toString() + " " + retrofit.toString());
-                User user = response.body();
-               if (user != null) {
-                    Log.d("Response42", "user succes");
-                } else {
-
-                   Log.d("Response42Null", "user failure");
-                    Log.d("REsponse42Null", response.message());
-                   Log.d("REsponse42Null", response.errorBody().toString());
-                   Log.d("REsponse42Null", response.body().toString());
-
-                }
-
-
-                //Log.d("Response", response.body().toString());
-
-            }
-
-            @Override
-            public void onFailure(Throwable t) {
-
-                Log.d("Response42 Error", t.getMessage());
-
-            }
-        });*/
-
-        Retrofit retrofit =
-                new Retrofit.Builder()
-                        .baseUrl("http://10.0.2.2:8000")
-                        .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
-
-
-        ApiEndpointInterface service = retrofit.create(ApiEndpointInterface.class);
+        //ApiEndpointInterface service = retrofit.create(ApiEndpointInterface.class);
+        ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         User user = new User("dev.chateau@gmail.com", "sylflo", "toto42", "toto42");
 
         Observable<User> observable = service.createUser(user);
