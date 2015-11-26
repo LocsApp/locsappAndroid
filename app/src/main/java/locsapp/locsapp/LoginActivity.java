@@ -17,16 +17,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.gcm.Task;
+import com.squareup.okhttp.ResponseBody;
 
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.lang.annotation.Annotation;
 import java.util.List;
 
 import retrofit.Call;
 import retrofit.Callback;
+import retrofit.Converter;
 import retrofit.GsonConverterFactory;
 import retrofit.HttpException;
 import retrofit.Response;
@@ -93,7 +97,7 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
 
 
         //ApiEndpointInterface service = retrofit.create(ApiEndpointInterface.class);
-        ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         User user = new User("dev.chatea@gmail.com", "sylflo42", "toto", "toto");
 
         Observable<User> observable = service.createUser(user);
@@ -112,10 +116,6 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
                         // handle error
 
 
-                        Log.d("MyResult", "onError " + e.getMessage() + " cause = " + e.getCause() + " stack teace = " + e.getStackTrace());
-                        if (e instanceof HttpException) {
-
-                        }
 
                     }
 
