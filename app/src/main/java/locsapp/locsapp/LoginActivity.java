@@ -95,9 +95,10 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
             }
         });
 
+        final ServiceGenerator service_test = new ServiceGenerator();
 
         //ApiEndpointInterface service = retrofit.create(ApiEndpointInterface.class);
-        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
+        final ApiEndpointInterface service = service_test.createService(ApiEndpointInterface.class);
         User user = new User("dev.chatea@gmail.com", "sylflo42", "toto", "toto");
 
         Observable<User> observable = service.createUser(user);
@@ -118,11 +119,13 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
                         if (e instanceof HttpException) {
 
                             Converter<ResponseBody, Error> errorConverter =
-                                    ServiceGenerator.retrofit.responseConverter(APIError.class, new Annotation[0]);
+                                    service_test.retrofit.responseConverter(APIError.class, new Annotation[0]);
+
 
                             ResponseBody body = ((HttpException) e).response().errorBody();
 
                             try {
+                                Log.d("Myresult", body.string());
                                 Error error = errorConverter.convert(body);
 
                             } catch (IOException f) {

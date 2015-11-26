@@ -25,13 +25,17 @@ public class ServiceGenerator {
     private static Retrofit.Builder builder =
             new Retrofit.Builder()
                     .baseUrl(API_BASE_URL)
-                    .setLogLevel(RestAdapter.LogLevel.FULL)
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create());
+
+    public ServiceGenerator() {
+
+    }
 
     public static <S> S createService(Class<S> serviceClass) {
         retrofit = builder.client(httpClient).build();
         return retrofit.create(serviceClass);
     }
+
 }
 
