@@ -115,6 +115,21 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
                     public void onError(Throwable e) {
                         // handle error
 
+                        if (e instanceof HttpException) {
+
+                            Converter<ResponseBody, Error> errorConverter =
+                                    ServiceGenerator.retrofit.responseConverter(APIError.class, new Annotation[0]);
+
+                            ResponseBody body = ((HttpException) e).response().errorBody();
+
+                            try {
+                                Error error = errorConverter.convert(body);
+
+                            } catch (IOException f) {
+                                Log.d("Myresult", "Catch");
+                            }
+
+                        }
 
 
                     }

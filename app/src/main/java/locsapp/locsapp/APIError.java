@@ -3,11 +3,11 @@ package locsapp.locsapp;
 /**
  * Created by sylflo on 11/26/15.
  */
-public class ApiError {
+public class APIError {
 
     private String password1;
 
-    public ApiError() {
+    public APIError() {
 
     }
 
