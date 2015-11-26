@@ -26,6 +26,7 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private Button mSignin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +50,8 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
             }
         });
 
-        Button signInButton = (Button) findViewById(R.id.sign_in_button);
-        signInButton.setOnClickListener(new OnClickListener() {
+        mSignin = (Button) findViewById(R.id.sign_in_button);
+        mSignin.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 attemptLogin();
@@ -115,7 +116,10 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
 
     @Override
     public void errorCallback(JSONObject error) {
-
+        showProgress(false);
+        mPasswordView.setError("Username or Password Incorrect");
+        mIdView.setError("Username or Password Incorrect");
+        mPasswordView.requestFocus();
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
@@ -123,15 +127,7 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
             int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
 
-            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-            mLoginFormView.animate().setDuration(shortAnimTime).alpha(
-                    show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-                }
-            });
-
+            mSignin.setEnabled(show ? false : true);
             mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
             mProgressView.animate().setDuration(shortAnimTime).alpha(
                     show ? 1 : 0).setListener(new AnimatorListenerAdapter() {

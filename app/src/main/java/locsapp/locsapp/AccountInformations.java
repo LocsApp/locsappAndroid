@@ -22,9 +22,9 @@ import android.widget.TextView;
  * Created by Damien on 2/3/2015.
  */
 
-public class AccountOverviewFragment extends android.support.v4.app.Fragment {
+public class AccountInformations extends android.support.v4.app.Fragment {
     private HomeActivity mActivity;
-    private FragmentManager fragmentManager;
+
 
     private static final String ARG_SECTION_NUMBER = "section_number";
     private int layout;
@@ -39,7 +39,7 @@ public class AccountOverviewFragment extends android.support.v4.app.Fragment {
         return fragment;
     }
 
-    public AccountOverviewFragment() {
+    public AccountInformations() {
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,14 +52,12 @@ public class AccountOverviewFragment extends android.support.v4.app.Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mActivity = (HomeActivity) getActivity();
-        fragmentManager = mActivity.getSupportFragmentManager();
         list = (ListView) view.findViewById(R.id.list);
         String[] values = new String[] { "My Informations", "My Articles", "My Orders",
                 "My Messages" };
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1, values);
         list.setAdapter(adapter);
-        AccountInformations infos = new AccountInformations();
     }
 
     public void setImage(Bitmap image){

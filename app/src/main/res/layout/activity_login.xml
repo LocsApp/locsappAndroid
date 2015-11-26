@@ -52,7 +52,10 @@
                 android:layout_marginBottom="8dp"
                 android:layout_gravity="center_horizontal"
                 android:visibility="gone"
-                android:layout_below="@id/header"/>
+                android:indeterminate="true"
+                android:indeterminateTintMode="src_in"
+                android:indeterminateTint="#c51a1c"
+                />
 
             <EditText
                 android:id="@+id/id_login"

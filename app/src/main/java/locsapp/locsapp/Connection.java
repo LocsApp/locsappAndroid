@@ -131,7 +131,15 @@ public class Connection {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error){
-                        Log.e("Error", error.toString());
+                        String str = null;
+                        try {
+                            str = new String(error.networkResponse.data, "UTF8");
+                            Log.d("ERREUR", str);
+                            JSONObject errorJson = new JSONObject(str);
+                            requestCallback.errorCallback(errorJson);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
                 });
         jsonRequest.setRetryPolicy(new DefaultRetryPolicy(80000, 7, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));

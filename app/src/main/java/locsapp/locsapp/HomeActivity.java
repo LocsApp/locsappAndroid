@@ -2,6 +2,7 @@ package locsapp.locsapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -50,6 +51,19 @@ public class HomeActivity extends ActionBarActivity
                 break;
         }
 
+    }
+
+    public void replaceFragment(Class fragmentClass){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        try {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, (Fragment) fragmentClass.newInstance())
+                    .commit();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 
     public void onSectionAttached(int number) {
