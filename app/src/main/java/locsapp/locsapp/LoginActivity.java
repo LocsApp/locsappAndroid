@@ -94,7 +94,7 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
 
         //ApiEndpointInterface service = retrofit.create(ApiEndpointInterface.class);
         ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
-        User user = new User("dev.chateau@gmail.com", "sylflo", "toto42", "toto42");
+        User user = new User("dev.chatea@gmail.com", "sylflo42", "toto", "toto");
 
         Observable<User> observable = service.createUser(user);
         observable
@@ -113,13 +113,16 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
 
 
                         Log.d("MyResult", "onError " + e.getMessage() + " cause = " + e.getCause() + " stack teace = " + e.getStackTrace());
+                        if (e instanceof HttpException) {
+
+                        }
 
                     }
 
                     @Override
                     public void onNext(User user) {
                         // handle response
-                        Log.d("MyResult", "onNext");
+                        Log.d("MyResult", "onNext " + user.mUsername);
 
                     }
                 });
