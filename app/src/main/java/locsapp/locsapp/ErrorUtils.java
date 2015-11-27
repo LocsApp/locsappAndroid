@@ -16,11 +16,11 @@ import retrofit.Retrofit;
  */
 public class ErrorUtils {
 
-    public static APIError parseError(ResponseBody response, Retrofit retrofit) {
-        Converter<ResponseBody, APIError> converter =
-                retrofit.responseConverter(APIError.class, new Annotation[0]);
+    public static ErrorLogin parseError(ResponseBody response, Retrofit retrofit) {
+        Converter<ResponseBody, ErrorLogin> converter =
+                retrofit.responseConverter(ErrorLogin.class, new Annotation[0]);
 
-        APIError error;
+        ErrorLogin error;
 
 
         try {
@@ -34,7 +34,7 @@ public class ErrorUtils {
             }
 
         } catch (IOException e) {
-            return new APIError();
+            return new ErrorLogin();
         }
 
         return error;

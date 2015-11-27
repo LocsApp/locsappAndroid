@@ -52,7 +52,7 @@ public class ConnectionUser {
 
 
                         if (e instanceof HttpException) {
-                            APIError error = ErrorUtils.parseError(((HttpException) e).response().errorBody(), ServiceGenerator.getRetrofit());
+                            ErrorLogin error = ErrorUtils.parseError(((HttpException) e).response().errorBody(), ServiceGenerator.getRetrofit());
                         }
                     }
 
@@ -90,7 +90,7 @@ public class ConnectionUser {
 
 
                         if (e instanceof HttpException) {
-                            APIError error = ErrorUtils.parseError(((HttpException) e).response().errorBody(), ServiceGenerator.getRetrofit());
+                            ErrorLogin error = ErrorUtils.parseError(((HttpException) e).response().errorBody(), ServiceGenerator.getRetrofit());
                         }
                     }
 
