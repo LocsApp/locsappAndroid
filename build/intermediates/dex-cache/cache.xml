@@ -2,11 +2,11 @@
 <items version="2" >
 
     <item
-        jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/7.8.0/jars/classes.jar"
+        jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/7.8.0/jars/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="adebe28e0c0c05d34a3bfd76f3275bf4d8ff87b6">
-        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-8bb74fcbe903b3f9ebffc2b1f4f992944919e856.jar" />
+        sha1="1ff30fa49c07a08c3035d7218a3efebf5680d522">
+        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-ed32487fa1102d708d8a0db46ef967c5feb1df34.jar" />
     </item>
     <item
         jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/7.8.0/jars/classes.jar"
@@ -16,18 +16,18 @@
         <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-a96c050d34519bb0d0fb2d3bf41a0032653114ac.jar" />
     </item>
     <item
+        jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/7.8.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="adebe28e0c0c05d34a3bfd76f3275bf4d8ff87b6">
+        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-8bb74fcbe903b3f9ebffc2b1f4f992944919e856.jar" />
+    </item>
+    <item
         jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/7.8.0/jars/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="42a1ee578b62fd1bd28b3307a679dc9ba0791587">
         <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-b14cc8d3dea136b46e87a0530bea93e987e02272.jar" />
-    </item>
-    <item
-        jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/7.8.0/jars/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="2e24e5f1b11170163028277de63f709e42525db4">
-        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-fb90bff5d47579e75c379ed6f1dc16a1521b6731.jar" />
     </item>
     <item
         jar="/home/sylflo/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit/adapter-rxjava/2.0.0-beta2/3a233746381a03dbb0f5f3ed10b11c3e72dba499/adapter-rxjava-2.0.0-beta2.jar"
@@ -37,11 +37,39 @@
         <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/adapter-rxjava-2.0.0-beta2-a857bacf23a3ca0c5bb963351f0e04397323b07a.jar" />
     </item>
     <item
+        jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/7.8.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2e24e5f1b11170163028277de63f709e42525db4">
+        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-fb90bff5d47579e75c379ed6f1dc16a1521b6731.jar" />
+    </item>
+    <item
+        jar="/home/sylflo/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/logging-interceptor/2.6.0/77dc6e1eedd47953b41ef936f20b9b693fe73f6f/logging-interceptor-2.6.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="77dc6e1eedd47953b41ef936f20b9b693fe73f6f">
+        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/logging-interceptor-2.6.0-ae24dbb5a62f33c112d3ab2d53523ef131b88c8d.jar" />
+    </item>
+    <item
         jar="/home/sylflo/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit/retrofit/2.0.0-beta2/880d9e0997b2d1bfc98e0d121ced33ee5d04aac4/retrofit-2.0.0-beta2.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="880d9e0997b2d1bfc98e0d121ced33ee5d04aac4">
         <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/retrofit-2.0.0-beta2-287e75bfea4b7a7b335dbb67eb3f8a01640e19d6.jar" />
+    </item>
+    <item
+        jar="/home/sylflo/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/gson-2.3.1-bd28a966fb8f6e431dcd0f1136ee56e49b6e9e63.jar" />
+    </item>
+    <item
+        jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
+        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-f2e05ae4f123d9061953bac991f2152db23e39ea.jar" />
     </item>
     <item
         jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/jars/libs/internal_impl-22.2.0.jar"
@@ -56,6 +84,13 @@
         revision="21.1.2"
         sha1="0124ce31248c0e8acfa2b28283c6d1a4d76e73d2">
         <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-8f8e865939f71cf289c536463146c53f8c8a6653.jar" />
+    </item>
+    <item
+        jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/7.8.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2491ae1b2a848af1f4f0c795f3117c1bd6a1989f">
+        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-e49d564462648d62117f420b1bbe156cf72019d9.jar" />
     </item>
     <item
         jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/7.8.0/jars/classes.jar"
@@ -79,6 +114,13 @@
         <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.0-8b04921eda411aa6c508fa821a76a25a738471ca.jar" />
     </item>
     <item
+        jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/7.8.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="166e458ee3b5fb5fcff0f936df3f3a788e6c54f3">
+        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-c4af1d825c594a34376f3b21b9268c2fba08c775.jar" />
+    </item>
+    <item
         jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/jars/classes.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -93,11 +135,11 @@
         <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-70529c25f3f0b0c50fbab046ba4ba84d4e699acb.jar" />
     </item>
     <item
-        jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appstate/7.8.0/jars/classes.jar"
+        jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars/libs/internal_impl-23.1.0.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="edea92852b40eee716e910af8dad9eeaa58fb0e1">
-        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-09facd0f2c8e5e3e4607d3dbc1f86ae11e9ac415.jar" />
+        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
+        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.0-3f17a0487b9d88c43a567296a40997ad83bef8c7.jar" />
     </item>
     <item
         jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/7.8.0/jars/classes.jar"
@@ -105,6 +147,13 @@
         revision="21.1.2"
         sha1="cb6fab7a71fa9ec1f483d44c5fca65ab469d8aca">
         <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-6b7a53259218e870c7ad6bee5bb3fc29fc81fd65.jar" />
+    </item>
+    <item
+        jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appstate/7.8.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="edea92852b40eee716e910af8dad9eeaa58fb0e1">
+        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-09facd0f2c8e5e3e4607d3dbc1f86ae11e9ac415.jar" />
     </item>
     <item
         jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/7.8.0/jars/classes.jar"
@@ -121,95 +170,18 @@
         <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-3ca68f04d4216d8b73b08bebcec9ebf1b9f36c43.jar" />
     </item>
     <item
-        jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/7.8.0/jars/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="6e85edfc9b5346d216e50ccef1f8e825504144a3">
-        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-ddd0fa10e2fa588a83059b5851b825fff5d3bbdf.jar" />
-    </item>
-    <item
-        jar="/home/sylflo/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.6.0/98476622f10715998eacf9240d6b479f12c66143/okio-1.6.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="98476622f10715998eacf9240d6b479f12c66143">
-        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/okio-1.6.0-c7f9255e7669c63a155c5c79843f50ee18f50918.jar" />
-    </item>
-    <item
-        jar="/home/sylflo/.gradle/caches/modules-2/files-2.1/io.reactivex/rxjava/1.0.14/898f9ab61e2a23afd615f0b0389478bec86f49f9/rxjava-1.0.14.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="898f9ab61e2a23afd615f0b0389478bec86f49f9">
-        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/rxjava-1.0.14-260bef179c803cc8518aa2e343a713d72b386cb7.jar" />
-    </item>
-    <item
-        jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/7.8.0/jars/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="c756d14e99d39471e99013a1e8fd2f3813ed42bf">
-        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-a1bef1c8007413171d1b4410748a39633333bd06.jar" />
-    </item>
-    <item
-        jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/7.8.0/jars/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="130b32ed466fa0f63efd4c7d6250ccd2ed506790">
-        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-7402f3436c3ebcb5afcf4b9af42f8465b357d7fd.jar" />
-    </item>
-    <item
-        jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/7.8.0/jars/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="1ff30fa49c07a08c3035d7218a3efebf5680d522">
-        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-ed32487fa1102d708d8a0db46ef967c5feb1df34.jar" />
-    </item>
-    <item
-        jar="/home/sylflo/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/logging-interceptor/2.6.0/77dc6e1eedd47953b41ef936f20b9b693fe73f6f/logging-interceptor-2.6.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="77dc6e1eedd47953b41ef936f20b9b693fe73f6f">
-        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/logging-interceptor-2.6.0-ae24dbb5a62f33c112d3ab2d53523ef131b88c8d.jar" />
-    </item>
-    <item
-        jar="/home/sylflo/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
-        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/gson-2.3.1-bd28a966fb8f6e431dcd0f1136ee56e49b6e9e63.jar" />
-    </item>
-    <item
-        jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
-        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-f2e05ae4f123d9061953bac991f2152db23e39ea.jar" />
-    </item>
-    <item
-        jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/7.8.0/jars/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="2491ae1b2a848af1f4f0c795f3117c1bd6a1989f">
-        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-e49d564462648d62117f420b1bbe156cf72019d9.jar" />
-    </item>
-    <item
-        jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/7.8.0/jars/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="166e458ee3b5fb5fcff0f936df3f3a788e6c54f3">
-        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-c4af1d825c594a34376f3b21b9268c2fba08c775.jar" />
-    </item>
-    <item
-        jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars/libs/internal_impl-23.1.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
-        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.0-3f17a0487b9d88c43a567296a40997ad83bef8c7.jar" />
-    </item>
-    <item
         jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/7.8.0/jars/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="e23ea11124bb700eeddd4ab7aa848c615f493850">
         <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-13c248d73885bacb03061229ae8e8d6dd8a184ef.jar" />
+    </item>
+    <item
+        jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/7.8.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="6e85edfc9b5346d216e50ccef1f8e825504144a3">
+        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-ddd0fa10e2fa588a83059b5851b825fff5d3bbdf.jar" />
     </item>
     <item
         jar="/home/sylflo/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.6.0/212387a39088ecd3daff8e3bfc3bdc4123e33c67/okhttp-2.6.0.jar"
@@ -233,11 +205,32 @@
         <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-802b2a99a933347e977c8002abbf6a982527d510.jar" />
     </item>
     <item
+        jar="/home/sylflo/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.6.0/98476622f10715998eacf9240d6b479f12c66143/okio-1.6.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="98476622f10715998eacf9240d6b479f12c66143">
+        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/okio-1.6.0-c7f9255e7669c63a155c5c79843f50ee18f50918.jar" />
+    </item>
+    <item
+        jar="/home/sylflo/.gradle/caches/modules-2/files-2.1/io.reactivex/rxjava/1.0.14/898f9ab61e2a23afd615f0b0389478bec86f49f9/rxjava-1.0.14.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="898f9ab61e2a23afd615f0b0389478bec86f49f9">
+        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/rxjava-1.0.14-260bef179c803cc8518aa2e343a713d72b386cb7.jar" />
+    </item>
+    <item
         jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-vision/7.8.0/jars/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="b99f0b78bbcb76b915bc6529a83b65d4d46990dd">
         <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-f20be45f98cc4d12dc2938721544864bf2676122.jar" />
+    </item>
+    <item
+        jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/7.8.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c756d14e99d39471e99013a1e8fd2f3813ed42bf">
+        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-a1bef1c8007413171d1b4410748a39633333bd06.jar" />
     </item>
     <item
         jar="/home/sylflo/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit/converter-gson/2.0.0-beta2/392c3d09e0f5e7087544093cc0cb23bb9c7af5fa/converter-gson-2.0.0-beta2.jar"
@@ -252,6 +245,13 @@
         revision="21.1.2"
         sha1="d11330ea68c0d964d30d5caed1f27e6b1488b189">
         <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-290b9a501967988e3d4d7e6e7a88de41d6847ba6.jar" />
+    </item>
+    <item
+        jar="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/7.8.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="130b32ed466fa0f63efd4c7d6250ccd2ed506790">
+        <dex dex="/home/sylflo/project/epitech/locsapp/locsappandroid/app/build/intermediates/pre-dexed/debug/classes-7402f3436c3ebcb5afcf4b9af42f8465b357d7fd.jar" />
     </item>
 
 </items>

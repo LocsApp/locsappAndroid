@@ -11,9 +11,11 @@
   <component name="ChangeListManager">
     <list default="true" id="f84db8ff-5557-4d40-8c31-dbde8bbc7cd6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/APIError.java" afterPath="$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/APIError.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/ConnectionUser.java" afterPath="$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/ConnectionUser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/ErrorUtils.java" afterPath="$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/ErrorUtils.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/ServiceGenerator.java" afterPath="$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/ServiceGenerator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
     </list>
     <ignored path="locsappandroid.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,23 +40,11 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/ServiceGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="36" column="17" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
+              <caret line="22" column="18" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1068#1069#0" expanded="true" />
-                <element signature="e#1100#1101#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="APIError.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/APIError.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1075#1076#0" expanded="true" />
+                <element signature="e#1107#1108#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -63,8 +53,8 @@
       <file leaf-file-name="ErrorUtils.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/ErrorUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="50" selection-start-line="18" selection-start-column="50" selection-end-line="18" selection-end-column="50" />
+            <state vertical-scroll-proportion="-9.642858">
+              <caret line="30" column="30" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -75,10 +65,27 @@
       <file leaf-file-name="ConnectionUser.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/ConnectionUser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.64652014">
-              <caret line="108" column="26" selection-start-line="108" selection-start-column="26" selection-end-line="108" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.44401544">
+              <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="APIError.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/APIError.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#434#442#0" expanded="true" />
+                <element signature="e#531#532#0" expanded="true" />
+                <element signature="e#563#564#0" expanded="true" />
+                <element signature="e#673#674#0" expanded="true" />
+                <element signature="e#715#716#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1807,8 +1814,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/TaskService.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/ErrorMessage.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/ApiError.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/ErrorUtils.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/APIError.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/Connection.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/User.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/ApiEndpointInterface.java" />
@@ -1818,7 +1823,9 @@
         <option value="$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/LoginActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/Token.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/APIError.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/ServiceGenerator.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/ErrorUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/ConnectionUser.java" />
       </list>
     </option>
@@ -2682,42 +2689,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/APIError.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/ServiceGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+          <caret line="22" column="18" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1075#1076#0" expanded="true" />
+            <element signature="e#1107#1108#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/ErrorUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="50" selection-start-line="18" selection-start-column="50" selection-end-line="18" selection-end-column="50" />
+        <state vertical-scroll-proportion="-9.642858">
+          <caret line="30" column="30" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/ServiceGenerator.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/APIError.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="17" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
+          <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1068#1069#0" expanded="true" />
-            <element signature="e#1100#1101#0" expanded="true" />
+            <element signature="e#434#442#0" expanded="true" />
+            <element signature="e#531#532#0" expanded="true" />
+            <element signature="e#563#564#0" expanded="true" />
+            <element signature="e#673#674#0" expanded="true" />
+            <element signature="e#715#716#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/locsapp/locsapp/ConnectionUser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64652014">
-          <caret line="108" column="26" selection-start-line="108" selection-start-column="26" selection-end-line="108" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.44401544">
+          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

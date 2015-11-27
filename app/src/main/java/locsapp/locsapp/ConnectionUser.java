@@ -52,20 +52,7 @@ public class ConnectionUser {
 
 
                         if (e instanceof HttpException) {
-
-                            Converter<ResponseBody, Error> errorConverter =
-                                    ServiceGenerator.getRetrofit().responseConverter(APIError.class, new Annotation[0]);
-                            ResponseBody body = ((HttpException) e).response().errorBody();
-
-                            try {
-                                //Log.d("Myresult", body.string());
-                                Error error = errorConverter.convert(body);
-                                Log.d("Myresult final", error.getMessage());
-                                Toast.makeText(mContext, "Login error",
-                                        Toast.LENGTH_LONG).show();
-                            } catch (IOException f) {
-                                Log.d("Myresult", "Catch");
-                            }
+                            APIError error = ErrorUtils.parseError(((HttpException) e).response().errorBody(), ServiceGenerator.getRetrofit());
                         }
                     }
 
@@ -103,21 +90,7 @@ public class ConnectionUser {
 
 
                         if (e instanceof HttpException) {
-
-                            Converter<ResponseBody, Error> errorConverter =
-                                    ServiceGenerator.getRetrofit().responseConverter(APIError.class, new Annotation[0]);
-                            ResponseBody body = ((HttpException) e).response().errorBody();
-
-                            try {
-
-                                //Log.d("Myresult", body.string());
-                                    Error error = errorConverter.convert(body);
-                                    Log.d("Myresult final", error.getMessage());
-                                    Toast.makeText(mContext, "Register error",
-                                            Toast.LENGTH_LONG).show();
-                            } catch (IOException f) {
-                                Log.d("Myresult", "Catch");
-                            }
+                            APIError error = ErrorUtils.parseError(((HttpException) e).response().errorBody(), ServiceGenerator.getRetrofit());
                         }
                     }
 

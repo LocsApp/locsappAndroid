@@ -20,7 +20,7 @@ public class ServiceGenerator {
 
 
     public static final String API_BASE_URL = "http://10.0.2.2:8000";
-    private static Retrofit mRetrofit;
+    private static Retrofit mRetrofit = null;
 
     private static OkHttpClient httpClient = new OkHttpClient();
     private static Retrofit.Builder builder =
