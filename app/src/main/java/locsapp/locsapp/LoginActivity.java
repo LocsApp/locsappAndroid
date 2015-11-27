@@ -44,7 +44,7 @@ import rx.schedulers.Schedulers;
 import rx.android.schedulers.AndroidSchedulers;
 
 
-public class LoginActivity extends Activity implements Connection.RequestCallback {
+public class LoginActivity extends Activity {
 
     private EditText mIdView;
     private EditText mPasswordView;
@@ -136,18 +136,7 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
         return password.length() > 8;
     }
 
-    @Override
-    public void successCallback(Object result) {
-        Intent intent = new Intent(this, HomeActivity.class);
-        intent.putExtra("token", "qlsjsqc");
-        startActivity(intent);
-        this.finish();
-    }
 
-    @Override
-    public void errorCallback(JSONObject error) {
-
-    }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     public void showProgress(final boolean show) {

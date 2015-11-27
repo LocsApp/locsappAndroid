@@ -20,8 +20,7 @@ import org.json.JSONObject;
  * Created by Damien on 10/17/2015.
  */
 
-public class RegisterActivity extends FragmentActivity
-        implements Connection.RequestCallback {
+public class RegisterActivity extends FragmentActivity {
 
     EditText mEmail;
     EditText mUsername;
@@ -127,31 +126,5 @@ public class RegisterActivity extends FragmentActivity
         mEmail.requestFocus();
     }*/
 
-    @Override
-    public void successCallback(Object result) {
-        Intent i = new Intent(getApplicationContext(), LoginActivity.class);
-        i.putExtra("login", mUsername.getText().toString());
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(i);
-    }
 
-    @Override
-    public void errorCallback(JSONObject error) {
-        if (error.has("email")) {
-            try {
-                mEmail.setError(error.getString("email"));
-                mEmail.requestFocus();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        if (error.has("username")) {
-            try {
-                mUsername.setError(error.getString("username"));
-                mUsername.requestFocus();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 }
