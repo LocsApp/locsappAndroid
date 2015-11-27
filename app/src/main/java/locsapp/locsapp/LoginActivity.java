@@ -95,55 +95,7 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
             }
         });
 
-        final ServiceGenerator service_test = new ServiceGenerator();
 
-        //ApiEndpointInterface service = retrofit.create(ApiEndpointInterface.class);
-        final ApiEndpointInterface service = service_test.createService(ApiEndpointInterface.class);
-        User user = new User("dev.chatea@gmail.com", "sylflo42", "toto", "toto");
-
-        Observable<User> observable = service.createUser(user);
-        observable
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<User>() {
-                    @Override
-                    public void onCompleted() {
-                        // handle completed
-                        Log.d("MyResult", "onCompleted");
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        // handle error
-
-                        if (e instanceof HttpException) {
-
-                            Converter<ResponseBody, Error> errorConverter =
-                                    service_test.retrofit.responseConverter(APIError.class, new Annotation[0]);
-
-
-                            ResponseBody body = ((HttpException) e).response().errorBody();
-
-                            try {
-                                Log.d("Myresult", body.string());
-                                Error error = errorConverter.convert(body);
-
-                            } catch (IOException f) {
-                                Log.d("Myresult", "Catch");
-                            }
-
-                        }
-
-
-                    }
-
-                    @Override
-                    public void onNext(User user) {
-                        // handle response
-                        Log.d("MyResult", "onNext " + user.mUsername);
-
-                    }
-                });
     }
 
 
