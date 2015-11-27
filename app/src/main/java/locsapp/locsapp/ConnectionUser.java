@@ -28,10 +28,10 @@ public class ConnectionUser {
     }
 
     public void login(String username, String password) {
-        final ServiceGenerator service_test = new ServiceGenerator();
+       // final ServiceGenerator serviceGenerator = new ServiceGenerator();
 
         //ApiEndpointInterface service = retrofit.create(ApiEndpointInterface.class);
-        final ApiEndpointInterface service = service_test.createService(ApiEndpointInterface.class);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         Login login = new Login(username, password);
 
         Observable<Token> observable = service.loginUser(login);
@@ -42,8 +42,7 @@ public class ConnectionUser {
                     @Override
                     public void onCompleted() {
                         // handle completed
-                        Log.d("MyResult", "onCompleted");
-                        Toast.makeText(mContext, "Register login",
+                        Toast.makeText(mContext, "Success login",
                                 Toast.LENGTH_LONG).show();
                     }
 
@@ -55,7 +54,7 @@ public class ConnectionUser {
                         if (e instanceof HttpException) {
 
                             Converter<ResponseBody, Error> errorConverter =
-                                    service_test.retrofit.responseConverter(APIError.class, new Annotation[0]);
+                                    ServiceGenerator.getRetrofit().responseConverter(APIError.class, new Annotation[0]);
                             ResponseBody body = ((HttpException) e).response().errorBody();
 
                             try {
@@ -82,9 +81,7 @@ public class ConnectionUser {
 
     public void register(String email, String username, String password1, String password2) {
 
-        final ServiceGenerator service_test = new ServiceGenerator();
-
-        final ApiEndpointInterface service = service_test.createService(ApiEndpointInterface.class);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         User user = new User(email, username, password1, password2);
 
         Observable<User> observable = service.createUser(user);
@@ -108,7 +105,7 @@ public class ConnectionUser {
                         if (e instanceof HttpException) {
 
                             Converter<ResponseBody, Error> errorConverter =
-                                    service_test.retrofit.responseConverter(APIError.class, new Annotation[0]);
+                                    ServiceGenerator.getRetrofit().responseConverter(APIError.class, new Annotation[0]);
                             ResponseBody body = ((HttpException) e).response().errorBody();
 
                             try {

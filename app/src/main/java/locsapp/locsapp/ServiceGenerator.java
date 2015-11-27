@@ -9,6 +9,7 @@ import retrofit.Converter;
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
 import retrofit.RxJavaCallAdapterFactory;
+
 import com.squareup.okhttp.ResponseBody;
 
 
@@ -19,7 +20,7 @@ public class ServiceGenerator {
 
 
     public static final String API_BASE_URL = "http://10.0.2.2:8000";
-    public static Retrofit retrofit;
+    private static Retrofit mRetrofit;
 
     private static OkHttpClient httpClient = new OkHttpClient();
     private static Retrofit.Builder builder =
@@ -28,13 +29,13 @@ public class ServiceGenerator {
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create());
 
-    public ServiceGenerator() {
-
+    public static <S> S createService(Class<S> serviceClass) {
+        mRetrofit = builder.client(httpClient).build();
+        return mRetrofit.create(serviceClass);
     }
 
-    public static <S> S createService(Class<S> serviceClass) {
-        retrofit = builder.client(httpClient).build();
-        return retrofit.create(serviceClass);
+    public static Retrofit getRetrofit() {
+        return mRetrofit;
     }
 
 }
