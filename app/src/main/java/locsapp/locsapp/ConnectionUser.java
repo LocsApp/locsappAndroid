@@ -27,6 +27,71 @@ public class ConnectionUser {
         mContext = context;
     }
 
+    public void login(String username, String password) {
+        final ServiceGenerator service_test = new ServiceGenerator();
+
+        //ApiEndpointInterface service = retrofit.create(ApiEndpointInterface.class);
+        final ApiEndpointInterface service = service_test.createService(ApiEndpointInterface.class);
+        Login login = new Login(username, password);
+
+        Observable<Token> observable = service.loginUser(login);
+        observable
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<Token>() {
+                    @Override
+                    public void onCompleted() {
+                        // handle completed
+                        Log.d("MyResult", "onCompleted");
+                        Toast.makeText(mContext, "Register success",
+                                Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        // handle error
+
+
+                        if (e instanceof HttpException) {
+
+                            Converter<ResponseBody, Error> errorConverter =
+                                    service_test.retrofit.responseConverter(APIError.class, new Annotation[0]);
+
+
+                            ResponseBody body = ((HttpException) e).response().errorBody();
+
+
+                            try {
+
+                                //Log.d("Myresult", body.string());
+                                if (body != null) {
+                                    Error error = errorConverter.convert(body);
+                                    Log.d("Myresult final", error.getMessage());
+                                    Toast.makeText(mContext, "Register error",
+                                            Toast.LENGTH_LONG).show();
+                                } else {
+                                    Log.d("MYresult", "error 500");
+                                }
+
+
+                            } catch (IOException f) {
+                                Log.d("Myresult", "Catch");
+                            }
+
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onNext(Token token) {
+                        // handle response
+                        Log.d("MyResult", "onNext " + token.getKey());
+
+                    }
+                });
+    }
+
 
     public void register(String email, String username, String password1, String password2) {
 

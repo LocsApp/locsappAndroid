@@ -26,4 +26,5 @@ public class User {
         this.mPassword1 = password1;
         this.mPassword2 = password2;
     }
+
 }

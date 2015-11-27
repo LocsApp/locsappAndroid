@@ -10,12 +10,11 @@ import retrofit.http.POST;
  */
 public interface ApiEndpointInterface {
 
-   /* @POST("/api/v1/rest-auth/registration/")
-    Call<User> createUser(@Body User user);*/
-
-
     @POST("/api/v1/rest-auth/registration/")
     Observable<User> createUser(@Body User user);
+
+    @POST("/api/v1/rest-auth/login/")
+    Observable<Token> loginUser(@Body Login login);
 
 
 
