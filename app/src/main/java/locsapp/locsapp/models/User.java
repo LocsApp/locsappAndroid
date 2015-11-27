@@ -1,4 +1,4 @@
-package locsapp.locsapp;
+package locsapp.locsapp.models;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -9,16 +9,16 @@ public class User {
 
 
     @SerializedName("email")
-    String mEmail;
+    public String mEmail;
 
     @SerializedName("username")
-    String mUsername;
+    public String mUsername;
 
     @SerializedName("password1")
-    String mPassword1;
+    public String mPassword1;
 
     @SerializedName("password2")
-    String mPassword2;
+    public String mPassword2;
 
     public User(String email, String username, String password1, String password2) {
         this.mEmail = email;

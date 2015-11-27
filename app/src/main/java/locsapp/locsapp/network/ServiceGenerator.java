@@ -1,4 +1,4 @@
-package locsapp.locsapp;
+package locsapp.locsapp.network;
 
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.ResponseBody;

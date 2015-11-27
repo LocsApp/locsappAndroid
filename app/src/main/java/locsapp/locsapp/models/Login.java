@@ -1,4 +1,4 @@
-package locsapp.locsapp;
+package locsapp.locsapp.models;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -15,7 +15,7 @@ public class Login {
     @SerializedName("password")
     String mPassword;
 
-    Login(String username, String password) {
+    public Login(String username, String password) {
         mUsername = username;
         mPassword = password;
     }

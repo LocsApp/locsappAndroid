@@ -1,4 +1,4 @@
-package locsapp.locsapp;
+package locsapp.locsapp.fragment;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import locsapp.locsapp.R;
+import locsapp.locsapp.activity.HomeActivity;
 
 /**
  * Created by Damien on 2/3/2015.

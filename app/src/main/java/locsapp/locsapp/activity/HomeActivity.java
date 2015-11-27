@@ -1,4 +1,4 @@
-package locsapp.locsapp;
+package locsapp.locsapp.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,11 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import locsapp.locsapp.fragment.AccountOverviewFragment;
+import locsapp.locsapp.fragment.HomeFragment;
+import locsapp.locsapp.fragment.NavigationDrawerFragment;
+import locsapp.locsapp.R;
 
 public class HomeActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {

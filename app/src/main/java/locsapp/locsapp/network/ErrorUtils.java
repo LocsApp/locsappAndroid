@@ -1,4 +1,4 @@
-package locsapp.locsapp;
+package locsapp.locsapp.network;
 
 import android.util.Log;
 

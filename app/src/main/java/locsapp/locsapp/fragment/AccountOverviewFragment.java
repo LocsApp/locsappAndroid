@@ -1,4 +1,4 @@
-package locsapp.locsapp;
+package locsapp.locsapp.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,15 +8,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.app.Activity;
 import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
+
+import locsapp.locsapp.R;
+import locsapp.locsapp.activity.AccountInformations;
+import locsapp.locsapp.activity.HomeActivity;
 
 /**
  * Created by Damien on 2/3/2015.

@@ -1,9 +1,10 @@
-package locsapp.locsapp;
+package locsapp.locsapp.network;
 
 
-import locsapp.locsapp.Login;
-import locsapp.locsapp.Token;
-import locsapp.locsapp.User;
+
+import locsapp.locsapp.models.Login;
+import locsapp.locsapp.models.Token;
+import locsapp.locsapp.models.User;
 import rx.Observable;
 import retrofit.http.Body;
 import retrofit.http.POST;

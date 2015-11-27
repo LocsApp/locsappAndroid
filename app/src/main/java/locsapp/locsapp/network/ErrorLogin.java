@@ -1,4 +1,4 @@
-package locsapp.locsapp;
+package locsapp.locsapp.network;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

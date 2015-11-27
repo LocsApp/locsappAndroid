@@ -1,4 +1,4 @@
-package locsapp.locsapp;
+package locsapp.locsapp.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -15,6 +15,9 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import locsapp.locsapp.R;
+import locsapp.locsapp.network.ConnectionUser;
 
 
 public class LoginActivity extends Activity {

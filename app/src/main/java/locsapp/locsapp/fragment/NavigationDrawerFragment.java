@@ -1,4 +1,4 @@
-package locsapp.locsapp;
+package locsapp.locsapp.fragment;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -21,6 +21,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import locsapp.locsapp.R;
+import locsapp.locsapp.activity.HomeActivity;
+import locsapp.locsapp.activity.LoginActivity;
 
 public class NavigationDrawerFragment extends Fragment {
 

@@ -1,16 +1,12 @@
-package locsapp.locsapp;
+package locsapp.locsapp.network;
 
 import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
-import locsapp.locsapp.ApiEndpointInterface;
-import locsapp.locsapp.ErrorLogin;
-import locsapp.locsapp.ErrorUtils;
-import locsapp.locsapp.Login;
-import locsapp.locsapp.ServiceGenerator;
-import locsapp.locsapp.Token;
-import locsapp.locsapp.User;
+import locsapp.locsapp.models.Login;
+import locsapp.locsapp.models.Token;
+import locsapp.locsapp.models.User;
 import retrofit.HttpException;
 import rx.Observable;
 import rx.Subscriber;
@@ -24,7 +20,7 @@ public class ConnectionUser {
 
     Context mContext;
 
-    ConnectionUser(Context context) {
+    public ConnectionUser(Context context) {
         mContext = context;
     }
 
