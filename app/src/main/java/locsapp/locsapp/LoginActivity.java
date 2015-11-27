@@ -124,8 +124,6 @@ public class LoginActivity extends Activity {
             focusView.requestFocus();
         } else {
             showProgress(true);
-           /* Connection co = new Connection(this);
-            co.connectUser(id_login, password);*/
             ConnectionUser coUser = new ConnectionUser(getApplicationContext());
             coUser.login(id_login, password);
 

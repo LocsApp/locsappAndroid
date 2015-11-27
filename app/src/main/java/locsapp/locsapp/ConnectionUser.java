@@ -43,7 +43,7 @@ public class ConnectionUser {
                     public void onCompleted() {
                         // handle completed
                         Log.d("MyResult", "onCompleted");
-                        Toast.makeText(mContext, "Register success",
+                        Toast.makeText(mContext, "Register login",
                                 Toast.LENGTH_LONG).show();
                     }
 
@@ -56,31 +56,18 @@ public class ConnectionUser {
 
                             Converter<ResponseBody, Error> errorConverter =
                                     service_test.retrofit.responseConverter(APIError.class, new Annotation[0]);
-
-
                             ResponseBody body = ((HttpException) e).response().errorBody();
 
-
                             try {
-
                                 //Log.d("Myresult", body.string());
-                                if (body != null) {
-                                    Error error = errorConverter.convert(body);
-                                    Log.d("Myresult final", error.getMessage());
-                                    Toast.makeText(mContext, "Register error",
-                                            Toast.LENGTH_LONG).show();
-                                } else {
-                                    Log.d("MYresult", "error 500");
-                                }
-
-
+                                Error error = errorConverter.convert(body);
+                                Log.d("Myresult final", error.getMessage());
+                                Toast.makeText(mContext, "Login error",
+                                        Toast.LENGTH_LONG).show();
                             } catch (IOException f) {
                                 Log.d("Myresult", "Catch");
                             }
-
                         }
-
-
                     }
 
                     @Override
@@ -97,7 +84,6 @@ public class ConnectionUser {
 
         final ServiceGenerator service_test = new ServiceGenerator();
 
-        //ApiEndpointInterface service = retrofit.create(ApiEndpointInterface.class);
         final ApiEndpointInterface service = service_test.createService(ApiEndpointInterface.class);
         User user = new User(email, username, password1, password2);
 
@@ -123,31 +109,19 @@ public class ConnectionUser {
 
                             Converter<ResponseBody, Error> errorConverter =
                                     service_test.retrofit.responseConverter(APIError.class, new Annotation[0]);
-
-
                             ResponseBody body = ((HttpException) e).response().errorBody();
-
 
                             try {
 
                                 //Log.d("Myresult", body.string());
-                                if (body != null) {
                                     Error error = errorConverter.convert(body);
                                     Log.d("Myresult final", error.getMessage());
                                     Toast.makeText(mContext, "Register error",
                                             Toast.LENGTH_LONG).show();
-                                } else {
-                                    Log.d("MYresult", "error 500");
-                                }
-
-
                             } catch (IOException f) {
                                 Log.d("Myresult", "Catch");
                             }
-
                         }
-
-
                     }
 
                     @Override
