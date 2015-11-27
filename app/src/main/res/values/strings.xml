@@ -1,5 +1,5 @@
 <resources>
-    <string name="server">http://phpmyadmin.dlama.eu/api/v1</string>
+    <string name="server">http://10.0.2.2:8000</string>
     <string name="app_name">LocsApp</string>
     <string name="action_logout">Logout</string>
     <string name="action_exit">Exit</string>

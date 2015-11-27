@@ -1,0 +1,9 @@
+Pour l instant tout se fait dans le LoginActivity je test le register qui est fonctionnel en lui passant des info valides.
+
+Il y a un modele User reprsente dand la class User
+Service Generator class init retrofit
+
+Et il y a une interface avec l'ensemble des routes qui utilise RxJava
+
+Les erreurs il faut peut-etre regarder de ce cote a voir vu que nous utilisons RxJava
+https://futurestud.io/blog/retrofit-2-simple-error-handling

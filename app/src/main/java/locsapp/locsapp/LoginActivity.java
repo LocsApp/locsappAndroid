@@ -17,16 +17,41 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.gcm.Task;
+import com.squareup.okhttp.ResponseBody;
 
 import org.json.JSONObject;
 
-public class LoginActivity extends Activity implements Connection.RequestCallback {
+import java.io.IOException;
+import java.lang.annotation.Annotation;
+import java.util.List;
+
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.Converter;
+import retrofit.GsonConverterFactory;
+import retrofit.HttpException;
+import retrofit.Response;
+import retrofit.Retrofit;
+
+import retrofit.RxJavaCallAdapterFactory;
+import rx.Observable;
+import rx.Subscriber;
+import rx.Subscription;
+import rx.schedulers.Schedulers;
+import rx.android.schedulers.AndroidSchedulers;
+
+
+public class LoginActivity extends Activity {
 
     private EditText mIdView;
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
     private Button mSignin;
+    //private Subscription subscription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +94,10 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
                 startActivity(i);
             }
         });
+
+
     }
+
 
     public void attemptLogin() {
 
@@ -94,11 +122,11 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
         }
         if (cancel) {
             focusView.requestFocus();
-        }
-        else {
+        } else {
             showProgress(true);
-            Connection co = new Connection(this);
-            co.connectUser(id_login, password);
+            ConnectionUser coUser = new ConnectionUser(getApplicationContext());
+            coUser.login(id_login, password);
+
         }
     }
 
@@ -106,21 +134,6 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
         return password.length() > 8;
     }
 
-    @Override
-    public void successCallback(Object result) {
-        Intent intent = new Intent(this, HomeActivity.class);
-        intent.putExtra("token", "qlsjsqc");
-        startActivity(intent);
-        this.finish();
-    }
-
-    @Override
-    public void errorCallback(JSONObject error) {
-        showProgress(false);
-        mPasswordView.setError("Username or Password Incorrect");
-        mIdView.setError("Username or Password Incorrect");
-        mPasswordView.requestFocus();
-    }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     public void showProgress(final boolean show) {
@@ -140,6 +153,12 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
             mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
             mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+      /*  this.subscription.unsubscribe();*/
+        super.onDestroy();
     }
 }
 
