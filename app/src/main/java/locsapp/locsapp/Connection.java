@@ -62,53 +62,6 @@ public class Connection {
         queue.add(ir);
     }
 
-    public void registerUser (final String eMail,
-                              final String login,
-                              final String password1,
-                              final String password2,
-                              final Boolean isActive) {
-
-        JSONObject params = new JSONObject();
-        try {
-            params.put("email", eMail);
-            params.put("username", login);
-            params.put("password1", password1);
-            params.put("password2", password2);
-            params.put("is_active", isActive);
-        }
-        catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(
-                Request.Method.POST, serverAddr + context.getString(R.string.registration), params,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Log.d("REPONSE", response.toString());
-                        requestCallback.successCallback(response);
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error){
-                        String str = null;
-                        try {
-                            str = new String(error.networkResponse.data, "UTF8");
-                            Log.d("ERREUR", str);
-                            JSONObject errorJson = new JSONObject(str);
-                            requestCallback.errorCallback(errorJson);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-        jsonRequest.setRetryPolicy(new DefaultRetryPolicy(
-                0,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        queue.add(jsonRequest);
-    }
 
     public void connectUser (final String login, final String password) {
         JSONObject params = new JSONObject();

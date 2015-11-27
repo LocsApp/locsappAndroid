@@ -45,7 +45,7 @@ public class ConnectionUser {
                     public void onCompleted() {
                         // handle completed
                         Log.d("MyResult", "onCompleted");
-                        Toast.makeText(mContext, "this is my Toast message!!! =)",
+                        Toast.makeText(mContext, "Register success",
                                 Toast.LENGTH_LONG).show();
                     }
 
@@ -69,6 +69,8 @@ public class ConnectionUser {
                                 if (body != null) {
                                     Error error = errorConverter.convert(body);
                                     Log.d("Myresult final", error.getMessage());
+                                    Toast.makeText(mContext, "Register error",
+                                            Toast.LENGTH_LONG).show();
                                 } else {
                                     Log.d("MYresult", "error 500");
                                 }
