@@ -111,8 +111,9 @@ public class RegisterActivity extends FragmentActivity
             focusView.requestFocus();
         }
         else {
-            Connection co = new Connection(this);
-            co.registerUser(email, username, password, password2, true);
+
+            ConnectionUser coUser = new ConnectionUser(getApplicationContext());
+            coUser.register(email, username, password, password2);
         }
     }
 

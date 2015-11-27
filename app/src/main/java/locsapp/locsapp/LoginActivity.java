@@ -126,6 +126,7 @@ public class LoginActivity extends Activity implements Connection.RequestCallbac
             showProgress(true);
             Connection co = new Connection(this);
             co.connectUser(id_login, password);
+
         }
     }
 

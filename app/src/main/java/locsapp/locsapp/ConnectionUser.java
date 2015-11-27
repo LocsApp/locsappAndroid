@@ -1,6 +1,8 @@
 package locsapp.locsapp;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.squareup.okhttp.ResponseBody;
 
@@ -19,13 +21,20 @@ import rx.schedulers.Schedulers;
  */
 public class ConnectionUser {
 
+    Context mContext;
+
+    ConnectionUser(Context context) {
+        mContext = context;
+    }
+
 
     public void register(String email, String username, String password1, String password2) {
+
         final ServiceGenerator service_test = new ServiceGenerator();
 
         //ApiEndpointInterface service = retrofit.create(ApiEndpointInterface.class);
         final ApiEndpointInterface service = service_test.createService(ApiEndpointInterface.class);
-        User user = new User("dev.chateau@gmail.com", "sylflo", "toto42", "toto42");
+        User user = new User(email, username, password1, password2);
 
         Observable<User> observable = service.createUser(user);
         observable
@@ -36,6 +45,8 @@ public class ConnectionUser {
                     public void onCompleted() {
                         // handle completed
                         Log.d("MyResult", "onCompleted");
+                        Toast.makeText(mContext, "this is my Toast message!!! =)",
+                                Toast.LENGTH_LONG).show();
                     }
 
                     @Override
