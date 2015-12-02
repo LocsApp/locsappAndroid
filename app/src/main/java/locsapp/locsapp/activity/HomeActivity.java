@@ -7,9 +7,11 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import locsapp.locsapp.fragment.AccountInformations;
 import locsapp.locsapp.fragment.AccountOverviewFragment;
 import locsapp.locsapp.fragment.HomeFragment;
 import locsapp.locsapp.fragment.NavigationDrawerFragment;
@@ -51,24 +53,11 @@ public class HomeActivity extends ActionBarActivity
                 break;
             case 1:
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, AccountOverviewFragment.newInstance(position + 1))
+                        .replace(R.id.container, AccountOverviewFragment.newInstance(position + 1, this))
                         .commit();
                 break;
         }
 
-    }
-
-    public void replaceFragment(Class fragmentClass){
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        try {
-            fragmentManager.beginTransaction()
-                    .replace(R.id.container, (Fragment) fragmentClass.newInstance())
-                    .commit();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
     }
 
     public void onSectionAttached(int number) {

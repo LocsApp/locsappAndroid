@@ -1,4 +1,4 @@
-package locsapp.locsapp.activity;
+package locsapp.locsapp.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import locsapp.locsapp.activity.HomeActivity;
 import locsapp.locsapp.fragment.AccountOverviewFragment;
 import locsapp.locsapp.R;
 
@@ -31,8 +32,8 @@ public class AccountInformations extends android.support.v4.app.Fragment {
     private int layout;
     private ListView list;
 
-    public static AccountOverviewFragment newInstance(int sectionNumber) {
-        AccountOverviewFragment fragment = new AccountOverviewFragment();
+    public static AccountInformations newInstance(int sectionNumber) {
+        AccountInformations fragment = new AccountInformations();
         Bundle args = new Bundle();
         fragment.setLayout(R.layout.fragment_account_overview);
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
@@ -54,7 +55,7 @@ public class AccountInformations extends android.support.v4.app.Fragment {
         super.onViewCreated(view, savedInstanceState);
         mActivity = (HomeActivity) getActivity();
         list = (ListView) view.findViewById(R.id.list);
-        String[] values = new String[] { "My Informations", "My Articles", "My Orders",
+        String[] values = new String[] { "My TEST", "My Articles", "My Orders",
                 "My Messages" };
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1, values);

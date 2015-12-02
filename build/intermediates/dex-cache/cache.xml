@@ -2,97 +2,6 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Damien\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.1-cb9d632dd9d70d480539a051e0face7ae618974f.jar" />
-    </item>
-    <item
-        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.2.0\jars\libs\internal_impl-22.2.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="0632f06970823b7e3436f649bfa65b47035c91d0">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-227efdba9d7454cc46e23b25c9451bb266bef792.jar" />
-    </item>
-    <item
-        jar="C:\Users\Damien\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\okhttp\2.6.0\212387a39088ecd3daff8e3bfc3bdc4123e33c67\okhttp-2.6.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="212387a39088ecd3daff8e3bfc3bdc4123e33c67">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\okhttp-2.6.0-8eb4a3cea8990de6c17effed20c802a89981f869.jar" />
-    </item>
-    <item
-        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\7.8.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="0124ce31248c0e8acfa2b28283c6d1a4d76e73d2">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-26961a6079b452ea32e0c695d1b2039a5662accf.jar" />
-    </item>
-    <item
-        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-0cb878b0178bc4fbfc4f9db2bff7dc8b67a7982f.jar" />
-    </item>
-    <item
-        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\7.8.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="166e458ee3b5fb5fcff0f936df3f3a788e6c54f3">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-844733593e4402d9ee92d5a6914cec2763e9d619.jar" />
-    </item>
-    <item
-        jar="C:\Users\Damien\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\retrofit\2.0.0-beta2\880d9e0997b2d1bfc98e0d121ced33ee5d04aac4\retrofit-2.0.0-beta2.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="880d9e0997b2d1bfc98e0d121ced33ee5d04aac4">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\retrofit-2.0.0-beta2-ca3a5665281daa7d233308b40802b85974ef853b.jar" />
-    </item>
-    <item
-        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\7.8.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="d11330ea68c0d964d30d5caed1f27e6b1488b189">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-f73bd2c63e3a5db9a0fa1ed3896fe76d44dae14e.jar" />
-    </item>
-    <item
-        jar="C:\Users\Damien\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3.1\ecb6e1f8e4b0e84c4b886c2f14a1500caf309757\gson-2.3.1.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\gson-2.3.1-d984ae79a24f3d72bd07825d63cec6dd5fcb4572.jar" />
-    </item>
-    <item
-        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\7.8.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="adebe28e0c0c05d34a3bfd76f3275bf4d8ff87b6">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-e067ebeb80c4fc1b3e3f28586eba5c166d6f9c2a.jar" />
-    </item>
-    <item
-        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\7.8.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="98137c4d12c50923f5809852b1ef4d1c4e162081">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-551ae763c7e00d1d55cdbc710c043efd4efd115e.jar" />
-    </item>
-    <item
-        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\io.reactivex\rxandroid\1.0.1\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="aa81bfe8c5cc88c2472ca936ae71f0c3dd1766df">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-361bbd2a8ebd61619d425f080d0832f3d59dd4a8.jar" />
-    </item>
-    <item
-        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\libs\internal_impl-23.1.1.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.1-47c5be8e7e8fb607cd4bebd33e09fc1318a7e4f2.jar" />
-    </item>
-    <item
         jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appstate\7.8.0\jars\classes.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -100,109 +9,11 @@
         <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-142b1c605120742296f99fd4f9c0ec4429db054a.jar" />
     </item>
     <item
-        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.1\jars\classes.jar"
+        jar="C:\Users\Damien\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3.1\ecb6e1f8e4b0e84c4b886c2f14a1500caf309757\gson-2.3.1.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-652fd0ae33bf99806e47e67825d90d5b629079fe.jar" />
-    </item>
-    <item
-        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\7.8.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="42a1ee578b62fd1bd28b3307a679dc9ba0791587">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-1e0fb0df1016e0f22598799c364d06584488cca8.jar" />
-    </item>
-    <item
-        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\7.8.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="c2ac04c5b232f6f0658ee4f1c13be09cd76406e2">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-a51b6b475178604b66fbf36710b83c78a9092521.jar" />
-    </item>
-    <item
-        jar="C:\Users\Damien\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\converter-gson\2.0.0-beta2\392c3d09e0f5e7087544093cc0cb23bb9c7af5fa\converter-gson-2.0.0-beta2.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="392c3d09e0f5e7087544093cc0cb23bb9c7af5fa">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\converter-gson-2.0.0-beta2-7ad40ca5dcc32393dd3c9dc7711058413502d0b6.jar" />
-    </item>
-    <item
-        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\7.8.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="1ff30fa49c07a08c3035d7218a3efebf5680d522">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-966619859659065ae16550e0be933fcc523cab5a.jar" />
-    </item>
-    <item
-        jar="C:\Users\Damien\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\logging-interceptor\2.6.0\77dc6e1eedd47953b41ef936f20b9b693fe73f6f\logging-interceptor-2.6.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="77dc6e1eedd47953b41ef936f20b9b693fe73f6f">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\logging-interceptor-2.6.0-66375933c172981aeb40484fa147049db2652ebc.jar" />
-    </item>
-    <item
-        jar="C:\Users\Damien\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.6.0\98476622f10715998eacf9240d6b479f12c66143\okio-1.6.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="98476622f10715998eacf9240d6b479f12c66143">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\okio-1.6.0-6516a3230b3bc37d22616b91f21e96b19daaf7b9.jar" />
-    </item>
-    <item
-        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-76edc6b43dec726023571f045692513be847353c.jar" />
-    </item>
-    <item
-        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\7.8.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="c5cafb324568d954780abb858c25db7ce675ab3c">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-29952deb1549fa8e858653d6736dd20bec5ae148.jar" />
-    </item>
-    <item
-        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.2.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="dcf8c83c3dead00a6c4fe313e95f7aaca20dc641">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-2c0ebbebadf26d1a26c9e54e4e1093f9ed8981c7.jar" />
-    </item>
-    <item
-        jar="C:\Users\Damien\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\adapter-rxjava\2.0.0-beta2\3a233746381a03dbb0f5f3ed10b11c3e72dba499\adapter-rxjava-2.0.0-beta2.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="3a233746381a03dbb0f5f3ed10b11c3e72dba499">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\adapter-rxjava-2.0.0-beta2-9151b08e0af83e3da5f72de425467f8cf3243ef5.jar" />
-    </item>
-    <item
-        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\7.8.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="130b32ed466fa0f63efd4c7d6250ccd2ed506790">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-5a08cd249b861cb69a98311002121451aebb0647.jar" />
-    </item>
-    <item
-        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-vision\7.8.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="b99f0b78bbcb76b915bc6529a83b65d4d46990dd">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-db8c6884cb1d2dc893d32ecb947aa97a1f022d9a.jar" />
-    </item>
-    <item
-        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\7.8.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="e23ea11124bb700eeddd4ab7aa848c615f493850">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-e46a613a28eb1ee54c1a3616591c7e262705a9b1.jar" />
-    </item>
-    <item
-        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\7.8.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="cb6fab7a71fa9ec1f483d44c5fca65ab469d8aca">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-790dea08abea2b71ea57fa6b3f67741cab683d36.jar" />
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\gson-2.3.1-d984ae79a24f3d72bd07825d63cec6dd5fcb4572.jar" />
     </item>
     <item
         jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\7.8.0\jars\classes.jar"
@@ -219,18 +30,53 @@
         <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-58348ca66d6cbad4343a7293cd50b8e2b64e4d11.jar" />
     </item>
     <item
-        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\7.8.0\jars\classes.jar"
+        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\7.8.0\jars\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="2e24e5f1b11170163028277de63f709e42525db4">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-cc4cc2cff3a9e6b86a7465a7ba6260970871b132.jar" />
+        sha1="c2ac04c5b232f6f0658ee4f1c13be09cd76406e2">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-a51b6b475178604b66fbf36710b83c78a9092521.jar" />
     </item>
     <item
-        jar="C:\Users\Damien\.gradle\caches\modules-2\files-2.1\io.reactivex\rxjava\1.0.14\898f9ab61e2a23afd615f0b0389478bec86f49f9\rxjava-1.0.14.jar"
+        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\jars\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="898f9ab61e2a23afd615f0b0389478bec86f49f9">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\rxjava-1.0.14-578ade005fc5e3da9901eaf7132ebc0ba95d8534.jar" />
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-0cb878b0178bc4fbfc4f9db2bff7dc8b67a7982f.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.6.0\98476622f10715998eacf9240d6b479f12c66143\okio-1.6.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="98476622f10715998eacf9240d6b479f12c66143">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\okio-1.6.0-6516a3230b3bc37d22616b91f21e96b19daaf7b9.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\okhttp\2.6.0\212387a39088ecd3daff8e3bfc3bdc4123e33c67\okhttp-2.6.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="212387a39088ecd3daff8e3bfc3bdc4123e33c67">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\okhttp-2.6.0-8eb4a3cea8990de6c17effed20c802a89981f869.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\converter-gson\2.0.0-beta2\392c3d09e0f5e7087544093cc0cb23bb9c7af5fa\converter-gson-2.0.0-beta2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="392c3d09e0f5e7087544093cc0cb23bb9c7af5fa">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\converter-gson-2.0.0-beta2-7ad40ca5dcc32393dd3c9dc7711058413502d0b6.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d11330ea68c0d964d30d5caed1f27e6b1488b189">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-f73bd2c63e3a5db9a0fa1ed3896fe76d44dae14e.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="130b32ed466fa0f63efd4c7d6250ccd2ed506790">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-5a08cd249b861cb69a98311002121451aebb0647.jar" />
     </item>
     <item
         jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\7.8.0\jars\classes.jar"
@@ -240,18 +86,67 @@
         <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-4f227bee218ddd8b804e18f963a1213adfa3f29d.jar" />
     </item>
     <item
-        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\7.8.0\jars\classes.jar"
+        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\7.8.0\jars\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="c756d14e99d39471e99013a1e8fd2f3813ed42bf">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-ad601915bedd593ea8b28f2fd7236a6d63f0a664.jar" />
+        sha1="166e458ee3b5fb5fcff0f936df3f3a788e6c54f3">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-844733593e4402d9ee92d5a6914cec2763e9d619.jar" />
     </item>
     <item
-        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\7.8.0\jars\classes.jar"
+        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.2.0\jars\libs\internal_impl-22.2.0.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="4a135d56554069e5d0ff80e3220e887e57146ee5">
-        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-3c4effdd153267507d2bce696e7a1d250d59adc9.jar" />
+        sha1="0632f06970823b7e3436f649bfa65b47035c91d0">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-227efdba9d7454cc46e23b25c9451bb266bef792.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1ff30fa49c07a08c3035d7218a3efebf5680d522">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-966619859659065ae16550e0be933fcc523cab5a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\.gradle\caches\modules-2\files-2.1\io.reactivex\rxjava\1.0.14\898f9ab61e2a23afd615f0b0389478bec86f49f9\rxjava-1.0.14.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="898f9ab61e2a23afd615f0b0389478bec86f49f9">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\rxjava-1.0.14-578ade005fc5e3da9901eaf7132ebc0ba95d8534.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="98137c4d12c50923f5809852b1ef4d1c4e162081">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-551ae763c7e00d1d55cdbc710c043efd4efd115e.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2e24e5f1b11170163028277de63f709e42525db4">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-cc4cc2cff3a9e6b86a7465a7ba6260970871b132.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="42a1ee578b62fd1bd28b3307a679dc9ba0791587">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-1e0fb0df1016e0f22598799c364d06584488cca8.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0124ce31248c0e8acfa2b28283c6d1a4d76e73d2">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-26961a6079b452ea32e0c695d1b2039a5662accf.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c5cafb324568d954780abb858c25db7ce675ab3c">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-29952deb1549fa8e858653d6736dd20bec5ae148.jar" />
     </item>
     <item
         jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.android.support\design\23.1.1\jars\classes.jar"
@@ -261,11 +156,116 @@
         <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-60c7cd742120ec656dbab82f33dc04131136c6d6.jar" />
     </item>
     <item
+        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="dcf8c83c3dead00a6c4fe313e95f7aaca20dc641">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-2c0ebbebadf26d1a26c9e54e4e1093f9ed8981c7.jar" />
+    </item>
+    <item
         jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\7.8.0\jars\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="77a9dcb5f8b1dba36aacaa9c150eb0942dbea158">
         <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-0c7b07e7e5b6c304f9f0ab051b349d046538d328.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="adebe28e0c0c05d34a3bfd76f3275bf4d8ff87b6">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-e067ebeb80c4fc1b3e3f28586eba5c166d6f9c2a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e23ea11124bb700eeddd4ab7aa848c615f493850">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-e46a613a28eb1ee54c1a3616591c7e262705a9b1.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\retrofit\2.0.0-beta2\880d9e0997b2d1bfc98e0d121ced33ee5d04aac4\retrofit-2.0.0-beta2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="880d9e0997b2d1bfc98e0d121ced33ee5d04aac4">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\retrofit-2.0.0-beta2-ca3a5665281daa7d233308b40802b85974ef853b.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4a135d56554069e5d0ff80e3220e887e57146ee5">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-3c4effdd153267507d2bce696e7a1d250d59adc9.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-vision\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b99f0b78bbcb76b915bc6529a83b65d4d46990dd">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-db8c6884cb1d2dc893d32ecb947aa97a1f022d9a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\io.reactivex\rxandroid\1.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="aa81bfe8c5cc88c2472ca936ae71f0c3dd1766df">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-361bbd2a8ebd61619d425f080d0832f3d59dd4a8.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-652fd0ae33bf99806e47e67825d90d5b629079fe.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\adapter-rxjava\2.0.0-beta2\3a233746381a03dbb0f5f3ed10b11c3e72dba499\adapter-rxjava-2.0.0-beta2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3a233746381a03dbb0f5f3ed10b11c3e72dba499">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\adapter-rxjava-2.0.0-beta2-9151b08e0af83e3da5f72de425467f8cf3243ef5.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-76edc6b43dec726023571f045692513be847353c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="cb6fab7a71fa9ec1f483d44c5fca65ab469d8aca">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-790dea08abea2b71ea57fa6b3f67741cab683d36.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\libs\internal_impl-23.1.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.1-47c5be8e7e8fb607cd4bebd33e09fc1318a7e4f2.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.1-cb9d632dd9d70d480539a051e0face7ae618974f.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\logging-interceptor\2.6.0\77dc6e1eedd47953b41ef936f20b9b693fe73f6f\logging-interceptor-2.6.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="77dc6e1eedd47953b41ef936f20b9b693fe73f6f">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\logging-interceptor-2.6.0-66375933c172981aeb40484fa147049db2652ebc.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c756d14e99d39471e99013a1e8fd2f3813ed42bf">
+        <dex dex="C:\Users\Damien\Documents\LocsApp\app\build\intermediates\pre-dexed\debug\classes-ad601915bedd593ea8b28f2fd7236a6d63f0a664.jar" />
     </item>
 
 </items>

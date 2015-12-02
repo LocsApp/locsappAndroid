@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import locsapp.locsapp.R;
 import locsapp.locsapp.network.ConnectionUser;
+import locsapp.locsapp.network.ErrorLogin;
 
 
 public class LoginActivity extends Activity {
@@ -70,10 +71,7 @@ public class LoginActivity extends Activity {
                 startActivity(i);
             }
         });
-
-
     }
-
 
     public void attemptLogin() {
 
@@ -100,7 +98,7 @@ public class LoginActivity extends Activity {
             focusView.requestFocus();
         } else {
             showProgress(true);
-            ConnectionUser coUser = new ConnectionUser(getApplicationContext());
+            ConnectionUser coUser = new ConnectionUser(this);
             coUser.login(id_login, password);
 
         }
@@ -129,6 +127,17 @@ public class LoginActivity extends Activity {
             mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
             mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
         }
+    }
+
+    public void successCallback(String token) {
+        showProgress(false);
+        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+        intent.putExtra("token", token);
+        startActivity(intent);
+    }
+
+    public void errorCallback(ErrorLogin error) {
+
     }
 
     @Override

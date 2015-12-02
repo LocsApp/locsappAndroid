@@ -19,7 +19,7 @@ import com.squareup.okhttp.ResponseBody;
 public class ServiceGenerator {
 
 
-    public static final String API_BASE_URL = "http://10.0.2.2:8000";
+    public static final String API_BASE_URL = "http://phpmyadmin.dlama.eu";
     private static Retrofit mRetrofit = null;
 
     private static OkHttpClient httpClient = new OkHttpClient();

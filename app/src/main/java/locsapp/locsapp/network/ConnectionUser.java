@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
+import locsapp.locsapp.activity.LoginActivity;
 import locsapp.locsapp.models.Login;
 import locsapp.locsapp.models.Token;
 import locsapp.locsapp.models.User;
@@ -30,6 +31,7 @@ public class ConnectionUser {
         //ApiEndpointInterface service = retrofit.create(ApiEndpointInterface.class);
         final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         Login login = new Login(username, password);
+        final LoginActivity activity = (LoginActivity) mContext;
 
         Observable<Token> observable = service.loginUser(login);
         observable
@@ -50,6 +52,7 @@ public class ConnectionUser {
 
                         if (e instanceof HttpException) {
                             ErrorLogin error = ErrorUtils.parseError(((HttpException) e).response().errorBody(), ServiceGenerator.getRetrofit());
+                            activity.errorCallback(error);
                         }
                     }
 
@@ -57,7 +60,7 @@ public class ConnectionUser {
                     public void onNext(Token token) {
                         // handle response
                         Log.d("MyResult", "onNext " + token.getKey());
-
+                        activity.successCallback(token.getKey());
                     }
                 });
     }

@@ -1,5 +1,4 @@
 <resources>
-    <string name="server">http://10.0.2.2:8000</string>
     <string name="app_name">LocsApp</string>
     <string name="action_logout">Logout</string>
     <string name="action_exit">Exit</string>
@@ -16,7 +15,4 @@
     <string name="title_section2">My Account</string>
 
     <string name="title_home_activity">Home</string>
-
-    <string name="registration">/rest-auth/registration/</string>
-    <string name="login">/rest-auth/login/</string>
 </resources>
