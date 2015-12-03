@@ -18,6 +18,7 @@ import android.widget.Toast;
 import locsapp.locsapp.R;
 import locsapp.locsapp.activity.HomeActivity;
 import locsapp.locsapp.network.ConnectionUser;
+import locsapp.locsapp.network.InfosUser;
 
 /**
  * Created by Damien on 2/3/2015.
@@ -31,7 +32,6 @@ public class AccountOverviewFragment extends android.support.v4.app.Fragment {
     private static int section;
     private int layout;
     private ListView list;
-    private static Context activity;
 
     public static AccountOverviewFragment newInstance(int sectionNumber, Context context) {
         AccountOverviewFragment fragment = new AccountOverviewFragment();
@@ -40,7 +40,6 @@ public class AccountOverviewFragment extends android.support.v4.app.Fragment {
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
         section = sectionNumber;
-        activity = context;
         return fragment;
     }
 
@@ -72,6 +71,9 @@ public class AccountOverviewFragment extends android.support.v4.app.Fragment {
                     case 0:
                         accountInfos();
                         break;
+                    case 1:
+                        InfosUser infosUser = new InfosUser(mActivity);
+                        infosUser.getUser(mActivity.mToken);
                 }
             }
         });

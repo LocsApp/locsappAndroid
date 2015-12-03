@@ -17,6 +17,7 @@ import rx.schedulers.Schedulers;
 /**
  * Created by sylflo on 11/27/15.
  */
+
 public class ConnectionUser {
 
     Context mContext;

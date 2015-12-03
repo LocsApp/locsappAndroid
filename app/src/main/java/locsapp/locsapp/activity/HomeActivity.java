@@ -23,11 +23,14 @@ public class HomeActivity extends ActionBarActivity
     private NavigationDrawerFragment mNavigationDrawerFragment;
 
     private CharSequence mTitle;
+    public String mToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
+
+        mToken = intent.getStringExtra("token");
 
         setContentView(R.layout.activity_home);
 
