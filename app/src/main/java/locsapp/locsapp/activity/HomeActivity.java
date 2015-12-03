@@ -16,6 +16,7 @@ import locsapp.locsapp.fragment.AccountOverviewFragment;
 import locsapp.locsapp.fragment.HomeFragment;
 import locsapp.locsapp.fragment.NavigationDrawerFragment;
 import locsapp.locsapp.R;
+import locsapp.locsapp.models.User;
 
 public class HomeActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -24,6 +25,7 @@ public class HomeActivity extends ActionBarActivity
 
     private CharSequence mTitle;
     public String mToken;
+    public User mUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

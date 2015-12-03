@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
+import locsapp.locsapp.activity.HomeActivity;
 import locsapp.locsapp.activity.LoginActivity;
 import locsapp.locsapp.models.Login;
 import locsapp.locsapp.models.Token;
@@ -56,7 +57,7 @@ public class InfosUser {
                     public void onNext(User user) {
                         // handle response
                         Log.d("MyResult", "onNext " + user.mBillingAddress + " " + user.mUsername);
-
+                        ((HomeActivity) mContext).mUser = user;
                     }
                 });
     }

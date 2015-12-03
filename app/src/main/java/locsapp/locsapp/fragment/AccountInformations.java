@@ -14,10 +14,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SimpleAdapter;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import locsapp.locsapp.activity.HomeActivity;
 import locsapp.locsapp.fragment.AccountOverviewFragment;
 import locsapp.locsapp.R;
+import locsapp.locsapp.models.User;
 
 
 /**
@@ -54,12 +61,41 @@ public class AccountInformations extends android.support.v4.app.Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mActivity = (HomeActivity) getActivity();
+
         list = (ListView) view.findViewById(R.id.list);
-        String[] values = new String[] { "My TEST", "My Articles", "My Orders",
-                "My Messages" };
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_list_item_1, values);
+
+        List<Map<String, String>> data = new ArrayList<Map<String, String>>();
+
+        User user = mActivity.mUser;
+
+        data.add(newItem("Username", user.mUsername));
+        data.add(newItem("Email", user.mEmail));
+        data.add(newItem("Recovery Email", user.mEmail2));
+        data.add(newItem("Firstname", user.mFirstName));
+        data.add(newItem("Lastname", user.mLastName));
+        data.add(newItem("Birthdate", user.mBirthdate));
+        data.add(newItem("Phone", user.mPhone));
+        data.add(newItem("Register Date", user.mRegisterDate));
+        data.add(newItem("Last Connection", user.mLastActivity));
+        data.add(newItem("Living Address", user.mLivingAddress));
+        data.add(newItem("Billing Address", user.mBillingAddress));
+
+        SimpleAdapter adapter = new SimpleAdapter(getActivity(), data,
+                android.R.layout.simple_list_item_2,
+                new String[] {"title", "value"},
+                new int[] {android.R.id.text1, android.R.id.text2});
+
         list.setAdapter(adapter);
+    }
+
+    private Map<String, String> newItem(String title, String value) {
+        if (value == null) {
+            value = "Not Provided";
+        }
+        Map<String, String> datum = new HashMap<String, String>(2);
+        datum.put("title", title);
+        datum.put("value", value);
+        return datum;
     }
 
     public void setImage(Bitmap image){

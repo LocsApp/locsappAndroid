@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import locsapp.locsapp.R;
 import locsapp.locsapp.activity.HomeActivity;
+import locsapp.locsapp.models.User;
 import locsapp.locsapp.network.ConnectionUser;
 import locsapp.locsapp.network.InfosUser;
 
@@ -63,6 +64,10 @@ public class AccountOverviewFragment extends android.support.v4.app.Fragment {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1, values);
         list.setAdapter(adapter);
+
+        InfosUser infosUser = new InfosUser(mActivity);
+        infosUser.getUser(mActivity.mToken);
+
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
@@ -71,13 +76,9 @@ public class AccountOverviewFragment extends android.support.v4.app.Fragment {
                     case 0:
                         accountInfos();
                         break;
-                    case 1:
-                        InfosUser infosUser = new InfosUser(mActivity);
-                        infosUser.getUser(mActivity.mToken);
                 }
             }
         });
-        AccountInformations infos = new AccountInformations();
     }
     
     @Override
@@ -97,4 +98,7 @@ public class AccountOverviewFragment extends android.support.v4.app.Fragment {
         this.layout = layout;
     }
 
+    public void setUserInfos(User user) {
+        mActivity.mUser = user;
+    }
 }
