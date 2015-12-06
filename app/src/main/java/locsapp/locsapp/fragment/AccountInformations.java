@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.app.Activity;
 import android.graphics.Bitmap;
@@ -38,11 +39,12 @@ public class AccountInformations extends android.support.v4.app.Fragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
     private int layout;
     private ListView list;
+    private ImageView profileImage;
 
     public static AccountInformations newInstance(int sectionNumber) {
         AccountInformations fragment = new AccountInformations();
         Bundle args = new Bundle();
-        fragment.setLayout(R.layout.fragment_account_overview);
+        fragment.setLayout(R.layout.fragment_account_infos);
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
         return fragment;
@@ -61,7 +63,8 @@ public class AccountInformations extends android.support.v4.app.Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mActivity = (HomeActivity) getActivity();
-
+        profileImage = (ImageView) view.findViewById(R.id.imageProfile);
+        profileImage.setImageResource(R.drawable.default_profil);
         list = (ListView) view.findViewById(R.id.list);
 
         List<Map<String, String>> data = new ArrayList<Map<String, String>>();

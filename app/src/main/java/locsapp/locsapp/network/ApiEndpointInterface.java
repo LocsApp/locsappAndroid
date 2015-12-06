@@ -19,12 +19,14 @@ public interface ApiEndpointInterface {
     @POST("/api/v1/rest-auth/registration/")
     Observable<User> createUser(@Body User user);
 
-    @GET("/api/v1/rest-auth/user/")
-    Observable<User> getUser(@Header("Authorization") String token);
-
     @POST("/api/v1/rest-auth/login/")
     Observable<Token> loginUser(@Body Login login);
 
+    @POST("/api/v1/rest-auth/password/reset/")
+    Observable<String> resetPassword(@Body String email);
+
+    @GET("/api/v1/rest-auth/user/")
+    Observable<User> getUser(@Header("Authorization") String token);
 
 
 }

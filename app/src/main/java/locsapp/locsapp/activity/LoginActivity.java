@@ -71,6 +71,14 @@ public class LoginActivity extends Activity {
                 startActivity(i);
             }
         });
+        TextView resetPasswd = (TextView) findViewById(R.id.link_to_reset);
+        resetPasswd.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), ResetPasswd.class);
+                startActivity(i);
+            }
+        });
     }
 
     public void attemptLogin() {

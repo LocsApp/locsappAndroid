@@ -5,6 +5,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import locsapp.locsapp.activity.LoginActivity;
+import locsapp.locsapp.activity.ResetPasswd;
 import locsapp.locsapp.models.Login;
 import locsapp.locsapp.models.Token;
 import locsapp.locsapp.models.User;
@@ -27,7 +28,7 @@ public class ConnectionUser {
     }
 
     public void login(String username, String password) {
-       // final ServiceGenerator serviceGenerator = new ServiceGenerator();
+        // final ServiceGenerator serviceGenerator = new ServiceGenerator();
 
         //ApiEndpointInterface service = retrofit.create(ApiEndpointInterface.class);
         final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
@@ -62,6 +63,44 @@ public class ConnectionUser {
                         // handle response
                         Log.d("MyResult", "onNext " + token.getKey());
                         activity.successCallback(token.getKey());
+                    }
+                });
+    }
+
+    public void resetPassword(String email) {
+        // final ServiceGenerator serviceGenerator = new ServiceGenerator();
+
+        //ApiEndpointInterface service = retrofit.create(ApiEndpointInterface.class);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
+        final ResetPasswd activity = (ResetPasswd) mContext;
+
+        Observable<String> observable = service.resetPassword(email);
+        observable
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<String>() {
+                    @Override
+                    public void onCompleted() {
+                        // handle completed
+                        Toast.makeText(mContext, "Success reset",
+                                Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        // handle error
+
+                        if (e instanceof HttpException) {
+                            String error = ((HttpException) e).response().errorBody().toString();
+                            activity.errorCallback(error);
+                        }
+                    }
+
+                    @Override
+                    public void onNext(String result) {
+                        // handle response
+                        Log.d("MyResult", "onNext " + result);
+                        activity.successCallback(result);
                     }
                 });
     }

@@ -3,6 +3,7 @@ package locsapp.locsapp.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.AdapterView;
@@ -76,6 +77,9 @@ public class AccountOverviewFragment extends android.support.v4.app.Fragment {
                     case 0:
                         accountInfos();
                         break;
+                    case 1:
+                        DialogFragment datePicker = new DatePickerFragment();
+                        datePicker.show(fragmentManager, "Birthdate");
                 }
             }
         });

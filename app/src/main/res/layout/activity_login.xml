@@ -87,10 +87,20 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dip"
-                android:layout_marginBottom="40dip"
+                android:layout_marginBottom="10dip"
                 android:text="New? Register here"
                 android:gravity="center"
-                android:textSize="20dip"
+                android:textSize="20sp"
+                android:textColor="#0b84aa"/>
+            <TextView
+                android:id="@+id/link_to_reset"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dip"
+                android:layout_marginBottom="40dip"
+                android:text="Forgot your password ?"
+                android:gravity="center"
+                android:textSize="20sp"
                 android:textColor="#0b84aa"/>
 
         </LinearLayout>
