@@ -1,11 +1,18 @@
 package locsapp.locsapp.network;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.io.IOException;
+
+import locsapp.locsapp.R;
+import locsapp.locsapp.activity.HomeActivity;
 import locsapp.locsapp.activity.LoginActivity;
 import locsapp.locsapp.activity.ResetPasswd;
+import locsapp.locsapp.fragment.AccountInformations;
 import locsapp.locsapp.models.Login;
 import locsapp.locsapp.models.Token;
 import locsapp.locsapp.models.User;
@@ -105,6 +112,44 @@ public class ConnectionUser {
                 });
     }
 
+    public void logoutUser(String token) {
+        // final ServiceGenerator serviceGenerator = new ServiceGenerator();
+
+        //ApiEndpointInterface service = retrofit.create(ApiEndpointInterface.class);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
+        final HomeActivity activity = (HomeActivity) mContext;
+
+        Observable<Void> observable = service.logoutUser("token " + token);
+        observable
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<Void>() {
+                    @Override
+                    public void onCompleted() {
+                        // handle completed
+                        Toast.makeText(mContext, "Success Logout",
+                                Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e("LOGOUT", "OnError " + e);
+                        if (e instanceof HttpException) {
+                            ErrorLogin error = ErrorUtils.parseError(((HttpException) e).response().errorBody(), ServiceGenerator.getRetrofit());
+                            Log.e("LOGOUT", String.valueOf(((HttpException) e).response().code()));
+                        }
+                    }
+
+                    @Override
+                    public void onNext(Void result) {
+                        // handle response
+                        Log.d("LOGOUT", "dqsdqd");
+                        Intent intent = new Intent(activity.getApplicationContext(), LoginActivity.class);
+                        activity.startActivity(intent);
+                        activity.finish();
+                    }
+                });
+    }
 
     public void register(String email, String username, String password1, String password2) {
 

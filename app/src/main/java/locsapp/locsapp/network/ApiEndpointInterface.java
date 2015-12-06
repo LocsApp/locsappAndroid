@@ -15,16 +15,20 @@ import retrofit.http.POST;
  * Created by sylflo on 11/24/15.
  */
 public interface ApiEndpointInterface {
-
+    //--- ConnectionUser
     @POST("/api/v1/rest-auth/registration/")
     Observable<User> createUser(@Body User user);
 
     @POST("/api/v1/rest-auth/login/")
     Observable<Token> loginUser(@Body Login login);
 
+    @POST("/api/v1/rest-auth/logout/")
+    Observable<Void> logoutUser(@Header("Authorization") String token);
+
     @POST("/api/v1/rest-auth/password/reset/")
     Observable<String> resetPassword(@Body String email);
 
+    //--- InfoUser
     @GET("/api/v1/rest-auth/user/")
     Observable<User> getUser(@Header("Authorization") String token);
 

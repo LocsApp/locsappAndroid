@@ -12,6 +12,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,6 +26,7 @@ import android.widget.ListView;
 import locsapp.locsapp.R;
 import locsapp.locsapp.activity.HomeActivity;
 import locsapp.locsapp.activity.LoginActivity;
+import locsapp.locsapp.network.ConnectionUser;
 
 public class NavigationDrawerFragment extends Fragment {
 
@@ -212,9 +214,8 @@ public class NavigationDrawerFragment extends Fragment {
         HomeActivity activity = (HomeActivity) getActivity();
 
         if (item.getItemId() == R.id.action_logout) {
-            Intent intent = new Intent(activity, LoginActivity.class);
-            startActivity(intent);
-            activity.finish();
+            ConnectionUser coUser = new ConnectionUser(getActivity());
+            coUser.logoutUser(((HomeActivity) getActivity()).mToken);
             return true;
         }
         else if (item.getItemId() == R.id.action_exit) {

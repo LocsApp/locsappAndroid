@@ -108,7 +108,6 @@ public class LoginActivity extends Activity {
             showProgress(true);
             ConnectionUser coUser = new ConnectionUser(this);
             coUser.login(id_login, password);
-
         }
     }
 
@@ -142,10 +141,11 @@ public class LoginActivity extends Activity {
         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
         intent.putExtra("token", token);
         startActivity(intent);
+        finish();
     }
 
     public void errorCallback(ErrorLogin error) {
-
+        showProgress(false);
     }
 
     @Override
