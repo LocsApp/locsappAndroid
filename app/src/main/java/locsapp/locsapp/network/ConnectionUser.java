@@ -13,7 +13,9 @@ import locsapp.locsapp.activity.HomeActivity;
 import locsapp.locsapp.activity.LoginActivity;
 import locsapp.locsapp.activity.ResetPasswd;
 import locsapp.locsapp.fragment.AccountInformations;
+import locsapp.locsapp.fragment.AccountInformationsChangePasswd;
 import locsapp.locsapp.models.Login;
+import locsapp.locsapp.models.Passwd;
 import locsapp.locsapp.models.Token;
 import locsapp.locsapp.models.User;
 import retrofit.HttpException;
@@ -108,6 +110,43 @@ public class ConnectionUser {
                         // handle response
                         Log.d("MyResult", "onNext " + result);
                         activity.successCallback(result);
+                    }
+                });
+    }
+
+    public void changePassword(String token, String old, String new1, String new2, final AccountInformationsChangePasswd fragment) {
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
+        final HomeActivity activity = (HomeActivity) mContext;
+        Passwd passwd = new Passwd(old, new1, new2);
+
+        Observable<Void> observable = service.changePassword("token " + token, passwd);
+        observable
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<Void>() {
+                    @Override
+                    public void onCompleted() {
+                        // handle completed
+                        Toast.makeText(mContext, "Successfully Changed",
+                                Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        // handle error
+                        Log.d("ERROR Change", "E -> " + e);
+
+                        if (e instanceof HttpException) {
+                            String error = ((HttpException) e).response().errorBody().toString();
+                            fragment.errorCallback(error);
+                        }
+                    }
+
+                    @Override
+                    public void onNext(Void result) {
+                        // handle response
+                        Log.d("SuccessChange", "onNext " + result);
+                        fragment.successCallback(null);
                     }
                 });
     }

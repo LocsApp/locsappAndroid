@@ -212,14 +212,13 @@ public class NavigationDrawerFragment extends Fragment {
         }
 
         HomeActivity activity = (HomeActivity) getActivity();
-
         if (item.getItemId() == R.id.action_logout) {
             ConnectionUser coUser = new ConnectionUser(getActivity());
             coUser.logoutUser(((HomeActivity) getActivity()).mToken);
             return true;
         }
         else if (item.getItemId() == R.id.action_exit) {
-        activity.finish();
+            activity.finish();
         }
 
         return super.onOptionsItemSelected(item);

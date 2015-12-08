@@ -3,10 +3,13 @@ package locsapp.locsapp.network;
 
 
 import locsapp.locsapp.models.Login;
+import locsapp.locsapp.models.Passwd;
 import locsapp.locsapp.models.Token;
 import locsapp.locsapp.models.User;
+import locsapp.locsapp.models.UserPut;
 import retrofit.http.GET;
 import retrofit.http.Header;
+import retrofit.http.PUT;
 import rx.Observable;
 import retrofit.http.Body;
 import retrofit.http.POST;
@@ -25,12 +28,18 @@ public interface ApiEndpointInterface {
     @POST("/api/v1/rest-auth/logout/")
     Observable<Void> logoutUser(@Header("Authorization") String token);
 
+    @POST("/api/v1/rest-auth/password/change/")
+    Observable<Void> changePassword(@Header("Authorization") String token, @Body Passwd passwd);
+
     @POST("/api/v1/rest-auth/password/reset/")
     Observable<String> resetPassword(@Body String email);
 
     //--- InfoUser
     @GET("/api/v1/rest-auth/user/")
     Observable<User> getUser(@Header("Authorization") String token);
+
+    @PUT("/api/v1/rest-auth/user/")
+    Observable<User> updateUser(@Header("Authorization") String token, @Body UserPut user);
 
 
 }

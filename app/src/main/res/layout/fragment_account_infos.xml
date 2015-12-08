@@ -22,12 +22,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingRight="20dip">
-            <Button android:id="@+id/btnReset"
+            <Button android:id="@+id/btnChange"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="Change Password"/>
 
-            <Button android:id="@+id/btnReturn"
+            <Button android:id="@+id/btnEdit"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip"

@@ -67,9 +67,6 @@ public class AccountOverviewFragment extends android.support.v4.app.Fragment {
                 android.R.layout.simple_list_item_1, values);
         list.setAdapter(adapter);
 
-        InfosUser infosUser = new InfosUser(mActivity);
-        infosUser.getUser(mActivity.mToken);
-
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
@@ -100,7 +97,4 @@ public class AccountOverviewFragment extends android.support.v4.app.Fragment {
         this.layout = layout;
     }
 
-    public void setUserInfos(User user) {
-        mActivity.mUser = user;
-    }
 }

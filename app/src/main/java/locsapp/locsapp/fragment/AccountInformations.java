@@ -3,8 +3,10 @@ package locsapp.locsapp.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.app.Activity;
@@ -26,6 +28,8 @@ import locsapp.locsapp.activity.HomeActivity;
 import locsapp.locsapp.fragment.AccountOverviewFragment;
 import locsapp.locsapp.R;
 import locsapp.locsapp.models.User;
+import locsapp.locsapp.network.ConnectionUser;
+import locsapp.locsapp.network.InfosUser;
 
 
 /**
@@ -34,12 +38,13 @@ import locsapp.locsapp.models.User;
 
 public class AccountInformations extends android.support.v4.app.Fragment {
     private HomeActivity mActivity;
-
+    private FragmentManager fragmentManager;
 
     private static final String ARG_SECTION_NUMBER = "section_number";
     private int layout;
     private ListView list;
     private ImageView profileImage;
+    private static int section;
 
     public static AccountInformations newInstance(int sectionNumber) {
         AccountInformations fragment = new AccountInformations();
@@ -47,6 +52,7 @@ public class AccountInformations extends android.support.v4.app.Fragment {
         fragment.setLayout(R.layout.fragment_account_infos);
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
+        section = sectionNumber;
         return fragment;
     }
 
@@ -56,6 +62,7 @@ public class AccountInformations extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(this.layout, container, false);
+        setHasOptionsMenu(true);
         return rootView;
     }
 
@@ -63,13 +70,39 @@ public class AccountInformations extends android.support.v4.app.Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mActivity = (HomeActivity) getActivity();
+        fragmentManager = mActivity.getSupportFragmentManager();
         profileImage = (ImageView) view.findViewById(R.id.imageProfile);
         profileImage.setImageResource(R.drawable.default_profil);
         list = (ListView) view.findViewById(R.id.list);
 
-        List<Map<String, String>> data = new ArrayList<Map<String, String>>();
-
         User user = mActivity.mUser;
+        if (user == null) {
+            InfosUser infosUser = new InfosUser(mActivity);
+            infosUser.getUser(mActivity.mToken, this);
+        }
+        else {
+            setData(user);
+        }
+
+        Button changeButton = (Button) mActivity.findViewById(R.id.btnChange);
+        changeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                accountChangePasswd();
+            }
+        });
+        Button updateButton = (Button) mActivity.findViewById(R.id.btnEdit);
+        updateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                accountUpdate();
+            }
+        });
+
+    }
+
+    private void setData(User user) {
+        List<Map<String, String>> data = new ArrayList<Map<String, String>>();
 
         data.add(newItem("Username", user.mUsername));
         data.add(newItem("Email", user.mEmail));
@@ -101,13 +134,31 @@ public class AccountInformations extends android.support.v4.app.Fragment {
         return datum;
     }
 
-    public void setImage(Bitmap image){
-        try {
-            //setImageBitmap(image);
+    public void accountUpdate() {
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, AccountInformationsUpdate.newInstance(section))
+                .commit();
+    }
+
+    public void accountChangePasswd() {
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, AccountInformationsChangePasswd.newInstance(section))
+                .commit();
+    }
+
+    public void successCallback(String tag, User user) {
+        setData(user);
+        mActivity.mUser = user;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_refresh) {
+            InfosUser infosUser = new InfosUser(mActivity);
+            infosUser.getUser(mActivity.mToken, this);
+            return true;
         }
-        catch (Exception e){
-            Log.e(getTag(), e.getMessage());
-        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

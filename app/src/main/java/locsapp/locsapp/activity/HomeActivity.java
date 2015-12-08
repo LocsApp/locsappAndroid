@@ -35,6 +35,7 @@ public class HomeActivity extends ActionBarActivity
 
         mToken = intent.getStringExtra("token");
 
+        mUser = null;
         setContentView(R.layout.activity_home);
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
