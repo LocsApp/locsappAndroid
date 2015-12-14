@@ -1,6 +1,5 @@
 package locsapp.locsapp.fragment;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
 import android.support.v7.app.ActionBar;
@@ -12,7 +11,6 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,7 +23,6 @@ import android.widget.ListView;
 
 import locsapp.locsapp.R;
 import locsapp.locsapp.activity.HomeActivity;
-import locsapp.locsapp.activity.LoginActivity;
 import locsapp.locsapp.network.ConnectionUser;
 
 public class NavigationDrawerFragment extends Fragment {

@@ -30,9 +30,7 @@ public class InfosUser {
     }
 
     public void getUser(String token, final AccountInformations fragment) {
-
         final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
-
         Observable<User> observable = service.getUser("token " + token);
         observable
                 .subscribeOn(Schedulers.newThread())
@@ -40,25 +38,18 @@ public class InfosUser {
                 .subscribe(new Subscriber<User>() {
                     @Override
                     public void onCompleted() {
-                        // handle completed
                         Log.d("MyResult", "onCompleted");
                         Toast.makeText(mContext, "getInfos success",
                                 Toast.LENGTH_LONG).show();
                     }
-
                     @Override
                     public void onError(Throwable e) {
-                        // handle error
-
-
                         if (e instanceof HttpException) {
                             ErrorLogin error = ErrorUtils.parseError(((HttpException) e).response().errorBody(), ServiceGenerator.getRetrofit());
                         }
                     }
-
                     @Override
                     public void onNext(User user) {
-                        // handle response
                         Log.d("MyResult", "onNext " + user.mBillingAddress + " " + user.mUsername);
                         fragment.successCallback("infos", user);
                     }
@@ -66,9 +57,7 @@ public class InfosUser {
     }
 
     public void updateUser(String token, UserPut user, final AccountInformationsUpdate fragment) {
-
         final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
-
         Observable<User> observable = service.updateUser("token " + token, user);
         observable
                 .subscribeOn(Schedulers.newThread())
@@ -76,29 +65,21 @@ public class InfosUser {
                 .subscribe(new Subscriber<User>() {
                     @Override
                     public void onCompleted() {
-                        // handle completed
                         Log.d("MyResult", "onCompleted");
                         Toast.makeText(mContext, "UpdateInfos success",
                                 Toast.LENGTH_LONG).show();
                     }
-
                     @Override
                     public void onError(Throwable e) {
-                        // handle error
-
-
                         if (e instanceof HttpException) {
                             ErrorLogin error = ErrorUtils.parseError(((HttpException) e).response().errorBody(), ServiceGenerator.getRetrofit());
                         }
                     }
-
                     @Override
                     public void onNext(User user) {
-                        // handle response
                         Log.d("MyResult", "onNext " + user.mBillingAddress + " " + user.mUsername);
                         fragment.successCallback(user);
                     }
                 });
     }
-
 }

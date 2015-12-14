@@ -37,9 +37,6 @@ public class ConnectionUser {
     }
 
     public void login(String username, String password) {
-        // final ServiceGenerator serviceGenerator = new ServiceGenerator();
-
-        //ApiEndpointInterface service = retrofit.create(ApiEndpointInterface.class);
         final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         Login login = new Login(username, password);
         final LoginActivity activity = (LoginActivity) mContext;
@@ -51,16 +48,11 @@ public class ConnectionUser {
                 .subscribe(new Subscriber<Token>() {
                     @Override
                     public void onCompleted() {
-                        // handle completed
                         Toast.makeText(mContext, "Success login",
                                 Toast.LENGTH_LONG).show();
                     }
-
                     @Override
                     public void onError(Throwable e) {
-                        // handle error
-
-
                         if (e instanceof HttpException) {
                             ErrorLogin error = ErrorUtils.parseError(((HttpException) e).response().errorBody(), ServiceGenerator.getRetrofit());
                             activity.errorCallback(error);
@@ -69,7 +61,6 @@ public class ConnectionUser {
 
                     @Override
                     public void onNext(Token token) {
-                        // handle response
                         Log.d("MyResult", "onNext " + token.getKey());
                         activity.successCallback(token.getKey());
                     }
@@ -77,9 +68,6 @@ public class ConnectionUser {
     }
 
     public void resetPassword(String email) {
-        // final ServiceGenerator serviceGenerator = new ServiceGenerator();
-
-        //ApiEndpointInterface service = retrofit.create(ApiEndpointInterface.class);
         final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         final ResetPasswd activity = (ResetPasswd) mContext;
 
@@ -90,24 +78,18 @@ public class ConnectionUser {
                 .subscribe(new Subscriber<String>() {
                     @Override
                     public void onCompleted() {
-                        // handle completed
                         Toast.makeText(mContext, "Success reset",
                                 Toast.LENGTH_LONG).show();
                     }
-
                     @Override
                     public void onError(Throwable e) {
-                        // handle error
-
                         if (e instanceof HttpException) {
                             String error = ((HttpException) e).response().errorBody().toString();
                             activity.errorCallback(error);
                         }
                     }
-
                     @Override
                     public void onNext(String result) {
-                        // handle response
                         Log.d("MyResult", "onNext " + result);
                         activity.successCallback(result);
                     }
@@ -126,25 +108,18 @@ public class ConnectionUser {
                 .subscribe(new Subscriber<Void>() {
                     @Override
                     public void onCompleted() {
-                        // handle completed
                         Toast.makeText(mContext, "Successfully Changed",
                                 Toast.LENGTH_LONG).show();
                     }
-
                     @Override
                     public void onError(Throwable e) {
-                        // handle error
-                        Log.d("ERROR Change", "E -> " + e);
-
                         if (e instanceof HttpException) {
                             String error = ((HttpException) e).response().errorBody().toString();
                             fragment.errorCallback(error);
                         }
                     }
-
                     @Override
                     public void onNext(Void result) {
-                        // handle response
                         Log.d("SuccessChange", "onNext " + result);
                         fragment.successCallback(null);
                     }
@@ -152,9 +127,6 @@ public class ConnectionUser {
     }
 
     public void logoutUser(String token) {
-        // final ServiceGenerator serviceGenerator = new ServiceGenerator();
-
-        //ApiEndpointInterface service = retrofit.create(ApiEndpointInterface.class);
         final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         final HomeActivity activity = (HomeActivity) mContext;
 
@@ -165,11 +137,9 @@ public class ConnectionUser {
                 .subscribe(new Subscriber<Void>() {
                     @Override
                     public void onCompleted() {
-                        // handle completed
                         Toast.makeText(mContext, "Success Logout",
                                 Toast.LENGTH_LONG).show();
                     }
-
                     @Override
                     public void onError(Throwable e) {
                         Log.e("LOGOUT", "OnError " + e);
@@ -178,10 +148,8 @@ public class ConnectionUser {
                             Log.e("LOGOUT", String.valueOf(((HttpException) e).response().code()));
                         }
                     }
-
                     @Override
                     public void onNext(Void result) {
-                        // handle response
                         Log.d("LOGOUT", "dqsdqd");
                         Intent intent = new Intent(activity.getApplicationContext(), LoginActivity.class);
                         activity.startActivity(intent);
@@ -191,7 +159,6 @@ public class ConnectionUser {
     }
 
     public void register(String email, String username, String password1, String password2) {
-
         final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         User user = new User(email, username, password1, password2);
 
@@ -202,27 +169,19 @@ public class ConnectionUser {
                 .subscribe(new Subscriber<User>() {
                     @Override
                     public void onCompleted() {
-                        // handle completed
                         Log.d("MyResult", "onCompleted");
                         Toast.makeText(mContext, "Register success",
                                 Toast.LENGTH_LONG).show();
                     }
-
                     @Override
                     public void onError(Throwable e) {
-                        // handle error
-
-
                         if (e instanceof HttpException) {
                             ErrorLogin error = ErrorUtils.parseError(((HttpException) e).response().errorBody(), ServiceGenerator.getRetrofit());
                         }
                     }
-
                     @Override
                     public void onNext(User user) {
-                        // handle response
                         Log.d("MyResult", "onNext " + user.mUsername);
-
                     }
                 });
     }
