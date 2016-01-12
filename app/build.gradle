@@ -12,7 +12,7 @@ android {
         versionName "1.0"
 
         // Enabling multidex support.
-       // multiDexEnabled true
+       multiDexEnabled true
     }
     buildTypes {
         release {
@@ -23,6 +23,9 @@ android {
     packagingOptions {
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/NOTICE'
+    }
+    dexOptions {
+        jumboMode = true
     }
 }
 
@@ -37,7 +40,7 @@ dependencies {
     compile 'com.squareup.retrofit:adapter-rxjava:2.0.0-beta2'
     compile 'io.reactivex:rxandroid:1.0.1'
     compile 'com.squareup.okhttp:logging-interceptor:2.6.0'
-
-
-
+    compile ('com.facebook.android:facebook-android-sdk:3.23.1'){
+        exclude group: 'com.google.android', module: 'support-v4'
+    }
 }

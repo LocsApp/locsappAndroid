@@ -58,6 +58,7 @@ public class AccountInformations extends android.support.v4.app.Fragment {
 
     public AccountInformations() {
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
