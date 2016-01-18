@@ -5,16 +5,34 @@ import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Base64;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+//import com.facebook.AppEventsLogger;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import locsapp.locsapp.R;
 import locsapp.locsapp.network.ConnectionUser;
@@ -28,11 +46,15 @@ public class LoginActivity extends Activity {
     private View mProgressView;
     private View mLoginFormView;
     private Button mSignin;
+    LoginButton authButton;
+    CallbackManager callbackManager;
+    String TAG = "Fb login";
     //private Subscription subscription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(getApplicationContext());
         Intent intent = getIntent();
         setContentView(R.layout.activity_login);
         mIdView = (EditText) findViewById(R.id.id_login);
@@ -41,6 +63,28 @@ public class LoginActivity extends Activity {
             mIdView.setText(login);
         }
         mPasswordView = (EditText) findViewById(R.id.password);
+
+        callbackManager = CallbackManager.Factory.create();
+        authButton = (LoginButton) findViewById(R.id.login_button);
+        authButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                Log.d(TAG, "onSuccess: " + loginResult.getAccessToken().getToken());
+                attemptFBLogin(loginResult.getAccessToken().getToken());
+            }
+
+            @Override
+            public void onCancel() {
+                Log.d(TAG, "onCancel: ");
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+                Log.d(TAG, "onError: ");
+            }
+
+        });
+
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -79,6 +123,52 @@ public class LoginActivity extends Activity {
                 startActivity(i);
             }
         });
+
+        // Generate keyhash
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(
+                    "locsapp.locsapp",
+                    PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.e("KeyHash:", "++++++++++++++++++++++++++++++++++++++" + Base64.encodeToString(md.digest(), Base64.DEFAULT));
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.e("KeyHash:", "++++++++++++++++++++++++++++++++++++++" + e.toString());
+
+        } catch (NoSuchAlgorithmException e) {
+            Log.e("KeyHash:", "++++++++++++++++++++++++++++++++++++++" + e.toString());
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState){
+        super.onPostCreate(savedInstanceState);
+
+        float fbIconScale = 1.45F;
+        Drawable drawable = getResources().getDrawable(
+                com.facebook.R.drawable.com_facebook_button_icon);
+        drawable.setBounds(0, 0, (int)(drawable.getIntrinsicWidth()*fbIconScale),
+                (int)(drawable.getIntrinsicHeight()*fbIconScale));
+        authButton.setCompoundDrawables(drawable, null, null, null);
+        authButton.setCompoundDrawablePadding(getResources().
+                getDimensionPixelSize(R.dimen.fb_margin_override_textpadding));
+        authButton.setPadding(
+                getResources().getDimensionPixelSize(R.dimen.fb_margin_override_lr),
+                getResources().getDimensionPixelSize(R.dimen.fb_margin_override_top), 0,
+                getResources().getDimensionPixelSize(R.dimen.fb_margin_override_bottom));
+    }
+
+    public void attemptFBLogin(String token){
+        ConnectionUser coUser = new ConnectionUser(this);
+        coUser.createUserFB(token, getString(R.string.app_id), "Damien");
     }
 
     public void attemptLogin() {
@@ -152,6 +242,22 @@ public class LoginActivity extends Activity {
     protected void onDestroy() {
       /*  this.subscription.unsubscribe();*/
         super.onDestroy();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // Logs 'install' and 'app activate' App Events.
+        //AppEventsLogger.activateApp(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        // Logs 'app deactivate' App Event.
+        //AppEventsLogger.deactivateApp(this);
     }
 }
 

@@ -3,9 +3,11 @@ package locsapp.locsapp.network;
 
 
 import locsapp.locsapp.models.Login;
+import locsapp.locsapp.models.LoginFB;
 import locsapp.locsapp.models.Passwd;
 import locsapp.locsapp.models.Token;
 import locsapp.locsapp.models.User;
+import locsapp.locsapp.models.UserFB;
 import locsapp.locsapp.models.UserPut;
 import retrofit.http.GET;
 import retrofit.http.Header;
@@ -24,6 +26,12 @@ public interface ApiEndpointInterface {
 
     @POST("/api/v1/rest-auth/login/")
     Observable<Token> loginUser(@Body Login login);
+
+    @POST("/api/v1/rest-auth/facebook/")
+    Observable<String> loginUserFB(@Body LoginFB login);
+
+    @POST("/api/v1/rest-auth/facebook/")
+    Observable<String> createUserFB(@Body UserFB user);
 
     @POST("/api/v1/rest-auth/logout/")
     Observable<Void> logoutUser(@Header("Authorization") String token);

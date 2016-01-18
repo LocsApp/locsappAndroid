@@ -15,9 +15,11 @@ import locsapp.locsapp.activity.ResetPasswd;
 import locsapp.locsapp.fragment.AccountInformations;
 import locsapp.locsapp.fragment.AccountInformationsChangePasswd;
 import locsapp.locsapp.models.Login;
+import locsapp.locsapp.models.LoginFB;
 import locsapp.locsapp.models.Passwd;
 import locsapp.locsapp.models.Token;
 import locsapp.locsapp.models.User;
+import locsapp.locsapp.models.UserFB;
 import retrofit.HttpException;
 import rx.Observable;
 import rx.Subscriber;
@@ -67,6 +69,72 @@ public class ConnectionUser {
                 });
     }
 
+    public void loginFB(String token, String code) {
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
+        LoginFB login = new LoginFB(token, code);
+        final LoginActivity activity = (LoginActivity) mContext;
+
+        Observable<String> observable = service.loginUserFB(login);
+        observable
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<String>() {
+                    @Override
+                    public void onCompleted() {
+                        Toast.makeText(mContext, "Success login", Toast.LENGTH_LONG).show();
+                    }
+                    @Override
+                    public void onError(Throwable e) {
+                        if (e instanceof HttpException) {
+                            ErrorLogin error = ErrorUtils.parseError(((HttpException) e).response().errorBody(), ServiceGenerator.getRetrofit());
+                            activity.errorCallback(error);
+                        }
+                    }
+
+                    @Override
+                    public void onNext(String token) {
+                        Log.d("MyResult", "onNext " + token);
+                        //activity.successCallback(token);
+                    }
+                });
+    }
+
+    public void createUserFB(String token, String code, String username) {
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
+        UserFB login = new UserFB(token, code, username);
+        final LoginActivity activity = (LoginActivity) mContext;
+
+        Observable<String> observable = service.createUserFB(login);
+        observable
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<String>() {
+                    @Override
+                    public void onCompleted() {
+                        Toast.makeText(mContext, "Success login", Toast.LENGTH_LONG).show();
+                    }
+                    @Override
+                    public void onError(Throwable e) {
+                        if (e instanceof HttpException) {
+                            try {
+                                String test = new String(((HttpException) e).response().errorBody().bytes());
+                                Log.d("ERROR", "onError: " + test);
+                            } catch (IOException e1) {
+                                e1.printStackTrace();
+                            }
+                            ErrorLogin error = ErrorUtils.parseError(((HttpException) e).response().errorBody(), ServiceGenerator.getRetrofit());
+                            activity.errorCallback(error);
+                        }
+                    }
+
+                    @Override
+                    public void onNext(String token) {
+                        Log.d("MyResult", "onNext " + token);
+                        //activity.successCallback(token);
+                    }
+                });
+    }
+
     public void resetPassword(String email) {
         final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         final ResetPasswd activity = (ResetPasswd) mContext;
@@ -84,7 +152,7 @@ public class ConnectionUser {
                     @Override
                     public void onError(Throwable e) {
                         if (e instanceof HttpException) {
-                            String error = ((HttpException) e).response().errorBody().toString();
+                            String error = ((HttpException) e).response().message();
                             activity.errorCallback(error);
                         }
                     }

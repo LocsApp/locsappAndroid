@@ -8,34 +8,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" android:background="#ffffff">
 
-        <!--  Header  Starts-->
         <LinearLayout
             android:id="@+id/header"
-            android:layout_width="fill_parent"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="5dip"
-            android:paddingBottom="5dip"
-            android:orientation="horizontal">
-            <!-- Logo Start-->
+            android:orientation="vertical">
             <ImageView
                 android:src="@drawable/locsapp_logo"
                 android:layout_width="100dip"
                 android:layout_height="100dip"
                 android:layout_marginBottom="20dip"
                 android:layout_marginTop="10dip"
-                android:layout_marginLeft="15dip"
-                android:layout_gravity="center"
-                android:layout_marginRight="30dip" />
-            <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Reset Password"
-                    android:layout_gravity="center"
-                    android:textSize="35dip"
-                    android:layout_marginBottom="10dip"
-                android:textColor="#c51a1c" />
+                android:layout_gravity="center"/>
             <!-- Logo Ends -->
         </LinearLayout>
+
 
         <!-- Reset Form -->
         <LinearLayout
@@ -43,7 +31,6 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dip"
             android:layout_below="@+id/header">
             <!--  Email Label -->
             <EditText android:id="@+id/reg_email"
@@ -58,13 +45,18 @@
             <Button android:id="@+id/btnReset"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dip"
-                android:text="Reset Password"/>
+                android:layout_marginTop="20dip"
+                android:text="Reset Password"
+                android:background="@color/primary_material_dark"
+                android:textColor="#FFF" />
             <Button android:id="@+id/btnReturn"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dip"
+                android:layout_marginTop="1dip"
+                android:background="@color/primary_material_dark"
+                android:textColor="#FFF"
                 android:text="Return to Login"/>
+
 
         </LinearLayout>
         <!-- Registration Form Ends -->

@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">LocsApp</string>
+    <string name="app_id">1011661268854723</string>
+
     <string name="action_logout">Logout</string>
     <string name="action_exit">Exit</string>
 
@@ -15,4 +17,6 @@
     <string name="title_section2">My Account</string>
 
     <string name="title_home_activity">Home</string>
+
+    <string name="facebook_app_id">gSVdt7wxhmQJgcu6Q2tvNDAmM+w=</string>
 </resources>
