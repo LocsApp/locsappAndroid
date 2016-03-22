@@ -1,25 +1,21 @@
 package locsapp.locsapp.network;
 
+import android.app.Activity;
+import android.content.Context;
+
 import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.ResponseBody;
-
-import java.lang.annotation.Annotation;
-
-import retrofit.Converter;
+import locsapp.locsapp.R;
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
 import retrofit.RxJavaCallAdapterFactory;
-
+import java.lang.annotation.Annotation;
+import retrofit.Converter;
 import com.squareup.okhttp.ResponseBody;
 
 
-/**
- * Created by sylflo on 11/24/15.
- */
-public class ServiceGenerator {
+public class ServiceGenerator extends Activity {
 
-
-    public static final String API_BASE_URL = "http://phpmyadmin.dlama.eu";
+    public static final String API_BASE_URL = "http://91.121.70.38";
     private static Retrofit mRetrofit = null;
 
     private static OkHttpClient httpClient = new OkHttpClient();

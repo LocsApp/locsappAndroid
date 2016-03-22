@@ -33,10 +33,12 @@ import com.facebook.login.widget.LoginButton;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 
 import locsapp.locsapp.R;
 import locsapp.locsapp.network.ConnectionUser;
 import locsapp.locsapp.network.ErrorLogin;
+import locsapp.locsapp.network.InfosUser;
 
 
 public class LoginActivity extends Activity {
@@ -46,6 +48,8 @@ public class LoginActivity extends Activity {
     private View mProgressView;
     private View mLoginFormView;
     private Button mSignin;
+    private String fbToken;
+    private String mToken;
     LoginButton authButton;
     CallbackManager callbackManager;
     String TAG = "Fb login";
@@ -65,7 +69,12 @@ public class LoginActivity extends Activity {
         mPasswordView = (EditText) findViewById(R.id.password);
 
         callbackManager = CallbackManager.Factory.create();
+
         authButton = (LoginButton) findViewById(R.id.login_button);
+
+        authButton.setReadPermissions(Arrays.asList("public_profile", "email"));
+
+
         authButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
@@ -167,8 +176,9 @@ public class LoginActivity extends Activity {
     }
 
     public void attemptFBLogin(String token){
+        fbToken = token;
         ConnectionUser coUser = new ConnectionUser(this);
-        coUser.createUserFB(token, getString(R.string.app_id), "Damien");
+        coUser.loginFB(token);
     }
 
     public void attemptLogin() {
@@ -226,12 +236,46 @@ public class LoginActivity extends Activity {
         }
     }
 
-    public void successCallback(String token) {
-        showProgress(false);
+    public void startHome(final String token) {
+        Log.d("IN STARTHOME", "startHome");
         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
         intent.putExtra("token", token);
         startActivity(intent);
         finish();
+    }
+
+    public void startSetUsername(final String fbToken,final String token) {
+        Log.d("IN STARTSET", "startSetUsername ");
+        Intent i = new Intent(getApplicationContext(), SetUsernameFBActivity.class);
+        i.putExtra("fbToken", fbToken);
+        i.putExtra("token", token);
+        startActivity(i);
+        finish();
+    }
+
+    public void successCallback(String tag, String data) {
+        switch (tag) {
+            case "FBUser":
+                Log.d("IN FBLogin", "successCallback: ");
+                if (data.equals("")) {
+                    showProgress(false);
+                    startSetUsername(fbToken, mToken);
+                } else {
+                    showProgress(false);
+                    startHome(mToken);
+                }
+                break;
+            case "FBLogin":
+                Log.d("IN FBLogin", "successCallback: ");
+                mToken = data;
+                InfosUser infosUser = new InfosUser(this);
+                infosUser.checkUsername(data, this);
+                break;
+            default:
+                showProgress(false);
+                startHome(data);
+                break;
+        }
     }
 
     public void errorCallback(ErrorLogin error) {

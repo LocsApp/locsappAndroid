@@ -9,11 +9,13 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import locsapp.locsapp.fragment.AccountInformations;
 import locsapp.locsapp.fragment.AccountOverviewFragment;
 import locsapp.locsapp.fragment.HomeFragment;
 import locsapp.locsapp.fragment.NavigationDrawerFragment;
 import locsapp.locsapp.R;
 import locsapp.locsapp.models.User;
+import locsapp.locsapp.network.InfosUser;
 
 public class HomeActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -37,6 +39,8 @@ public class HomeActivity extends ActionBarActivity
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
+        InfosUser infosUser = new InfosUser(this);
+        infosUser.getUser(mToken, new AccountInformations());
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(

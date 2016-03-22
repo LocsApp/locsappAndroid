@@ -1,15 +1,23 @@
 package locsapp.locsapp.activity;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 
 import locsapp.locsapp.R;
 import locsapp.locsapp.network.ConnectionUser;
@@ -24,6 +32,9 @@ public class RegisterActivity extends FragmentActivity {
     EditText mUsername;
     EditText mPassword;
     EditText mPasswordConfirm;
+    String TAG = "Register FB";
+    CallbackManager callbackManager;
+    LoginButton authButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +46,26 @@ public class RegisterActivity extends FragmentActivity {
         mPassword = (EditText) findViewById(R.id.reg_password);
         mPasswordConfirm = (EditText) findViewById(R.id.reg_password2);
 
+        callbackManager = CallbackManager.Factory.create();
+        authButton = (LoginButton) findViewById(R.id.login_button);
+        authButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                Log.d(TAG, "onSuccess: " + loginResult.getAccessToken().getToken());
+                attemptFBRegister(loginResult.getAccessToken().getToken());
+            }
 
+            @Override
+            public void onCancel() {
+                Log.d(TAG, "onCancel: ");
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+                Log.d(TAG, "onError: ");
+            }
+
+        });
 /*        mBirthDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,6 +98,35 @@ public class RegisterActivity extends FragmentActivity {
                 startActivity(i);
             }
         });
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState){
+        super.onPostCreate(savedInstanceState);
+
+        float fbIconScale = 1.45F;
+        Drawable drawable = getResources().getDrawable(
+                com.facebook.R.drawable.com_facebook_button_icon);
+        drawable.setBounds(0, 0, (int) (drawable.getIntrinsicWidth() * fbIconScale),
+                (int) (drawable.getIntrinsicHeight() * fbIconScale));
+        authButton.setCompoundDrawables(drawable, null, null, null);
+        authButton.setCompoundDrawablePadding(getResources().
+                getDimensionPixelSize(R.dimen.fb_margin_override_textpadding));
+        authButton.setPadding(
+                getResources().getDimensionPixelSize(R.dimen.fb_margin_override_lr),
+                getResources().getDimensionPixelSize(R.dimen.fb_margin_override_top), 0,
+                getResources().getDimensionPixelSize(R.dimen.fb_margin_override_bottom));
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
+    public void attemptFBRegister(String token){
+        ConnectionUser coUser = new ConnectionUser(this);
+        coUser.createUserFB(token, "Damien");
     }
 
     public void attemptRegister() {
@@ -112,6 +171,13 @@ public class RegisterActivity extends FragmentActivity {
             ConnectionUser coUser = new ConnectionUser(getApplicationContext());
             coUser.register(email, username, password, password2);
         }
+    }
+
+    public void startHome(String token) {
+        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+        intent.putExtra("token", token);
+        startActivity(intent);
+        finish();
     }
 
     private boolean isPasswordValid(String password) {

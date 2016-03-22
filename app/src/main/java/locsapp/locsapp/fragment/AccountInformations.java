@@ -18,6 +18,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,6 +27,7 @@ import java.util.List;
 import java.util.Map;
 
 import locsapp.locsapp.activity.HomeActivity;
+import locsapp.locsapp.activity.MyCallback;
 import locsapp.locsapp.fragment.AccountOverviewFragment;
 import locsapp.locsapp.R;
 import locsapp.locsapp.models.User;
@@ -36,15 +39,14 @@ import locsapp.locsapp.network.InfosUser;
  * Created by Damien on 2/3/2015.
  */
 
-public class AccountInformations extends android.support.v4.app.Fragment {
+public class AccountInformations extends android.support.v4.app.Fragment implements MyCallback{
     private HomeActivity mActivity;
     private FragmentManager fragmentManager;
 
     private static final String ARG_SECTION_NUMBER = "section_number";
-    private int layout;
-    private ListView list;
-    private ImageView profileImage;
+    private int layout = R.layout.fragment_account_infos;
     private static int section;
+    private View mView;
 
     public static AccountInformations newInstance(int sectionNumber) {
         AccountInformations fragment = new AccountInformations();
@@ -72,14 +74,15 @@ public class AccountInformations extends android.support.v4.app.Fragment {
         super.onViewCreated(view, savedInstanceState);
         mActivity = (HomeActivity) getActivity();
         fragmentManager = mActivity.getSupportFragmentManager();
-        profileImage = (ImageView) view.findViewById(R.id.imageProfile);
-        profileImage.setImageResource(R.drawable.default_profil);
-        list = (ListView) view.findViewById(R.id.list);
-
+        //list = (ListView) view.findViewById(R.id.list);
+        this.mView = view;
         User user = mActivity.mUser;
+
+
+
         if (user == null) {
             InfosUser infosUser = new InfosUser(mActivity);
-            infosUser.getUser(mActivity.mToken, this);
+            infosUser.getUserTest(mActivity.mToken, this);
         }
         else {
             setData(user);
@@ -103,7 +106,15 @@ public class AccountInformations extends android.support.v4.app.Fragment {
     }
 
     private void setData(User user) {
-        List<Map<String, String>> data = new ArrayList<Map<String, String>>();
+        ((TextView) mView.findViewById(R.id.username)).setText(user.mUsername);
+        ((TextView) mView.findViewById(R.id.firstname)).setText(user.mFirstName);
+        ((TextView) mView.findViewById(R.id.lastname)).setText(user.mLastName);
+        ((TextView) mView.findViewById(R.id.email)).setText(user.mEmail);
+        ((TextView) mView.findViewById(R.id.phone)).setText(user.mPhone);
+        ((TextView) mView.findViewById(R.id.birthdate)).setText(user.mBirthdate);
+//        ((TextView) mView.findViewById(R.id.address)).setText(user.mLivingAddress);
+
+/*        List<Map<String, String>> data = new ArrayList<Map<String, String>>();
 
         data.add(newItem("Username", user.mUsername));
         data.add(newItem("Email", user.mEmail));
@@ -122,7 +133,7 @@ public class AccountInformations extends android.support.v4.app.Fragment {
                 new String[] {"title", "value"},
                 new int[] {android.R.id.text1, android.R.id.text2});
 
-        list.setAdapter(adapter);
+        list.setAdapter(adapter);*/
     }
 
     private Map<String, String> newItem(String title, String value) {
@@ -162,15 +173,26 @@ public class AccountInformations extends android.support.v4.app.Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
+/*    @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         ((HomeActivity) activity).onSectionAttached(
                 getArguments().getInt(ARG_SECTION_NUMBER));
-    }
+    }*/
 
     public void setLayout(int layout) {
         this.layout = layout;
     }
 
+    @Override
+    public void successCallback(String tag, Object val) {
+        Log.d("", "successCallback: CA MARCHE");
+        Toast.makeText(getActivity(), "CA MARRRRCHE",
+                Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void errorCallback(String tag, Object val) {
+
+    }
 }

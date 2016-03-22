@@ -26,7 +26,7 @@ public class AccountInformationsUpdate extends android.support.v4.app.Fragment {
     private static int section;
 
     private static final String ARG_SECTION_NUMBER = "section_number";
-    private int layout;
+    private int layout = R.layout.fragment_account_infos_update;
     private FragmentManager fragmentManager;
 
     EditText mFirstname;
@@ -101,12 +101,12 @@ public class AccountInformationsUpdate extends android.support.v4.app.Fragment {
                 .commit();
     }
 
-    @Override
+/*    @Override
     public void onAttach(Context activity) {
         super.onAttach(activity);
         ((HomeActivity) activity).onSectionAttached(
                 getArguments().getInt(ARG_SECTION_NUMBER));
-    }
+    }*/
 
     public void successCallback(User user) {
         mActivity.mUser = user;

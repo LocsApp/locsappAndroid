@@ -75,6 +75,9 @@ public class AccountOverviewFragment extends android.support.v4.app.Fragment {
                     case 0:
                         accountInfos();
                         break;
+                    case 1:
+                        tabinfos();
+                        break;
                 }
             }
         });
@@ -90,6 +93,12 @@ public class AccountOverviewFragment extends android.support.v4.app.Fragment {
     public void accountInfos() {
         fragmentManager.beginTransaction()
                 .replace(R.id.container, AccountInformations.newInstance(section))
+                .commit();
+    }
+
+    public void tabinfos() {
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, new TabhostFragment())
                 .commit();
     }
 

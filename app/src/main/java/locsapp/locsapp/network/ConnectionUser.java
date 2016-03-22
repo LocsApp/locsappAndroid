@@ -11,6 +11,7 @@ import java.io.IOException;
 import locsapp.locsapp.R;
 import locsapp.locsapp.activity.HomeActivity;
 import locsapp.locsapp.activity.LoginActivity;
+import locsapp.locsapp.activity.RegisterActivity;
 import locsapp.locsapp.activity.ResetPasswd;
 import locsapp.locsapp.fragment.AccountInformations;
 import locsapp.locsapp.fragment.AccountInformationsChangePasswd;
@@ -25,10 +26,6 @@ import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
-
-/**
- * Created by sylflo on 11/27/15.
- */
 
 public class ConnectionUser {
 
@@ -64,51 +61,21 @@ public class ConnectionUser {
                     @Override
                     public void onNext(Token token) {
                         Log.d("MyResult", "onNext " + token.getKey());
-                        activity.successCallback(token.getKey());
+                        activity.startHome(token.getKey());
                     }
                 });
     }
 
-    public void loginFB(String token, String code) {
+    public void loginFB(String token) {
         final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
-        LoginFB login = new LoginFB(token, code);
+        LoginFB login = new LoginFB(token);
         final LoginActivity activity = (LoginActivity) mContext;
 
-        Observable<String> observable = service.loginUserFB(login);
+        Observable<Token> observable = service.loginUserFB(login);
         observable
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<String>() {
-                    @Override
-                    public void onCompleted() {
-                        Toast.makeText(mContext, "Success login", Toast.LENGTH_LONG).show();
-                    }
-                    @Override
-                    public void onError(Throwable e) {
-                        if (e instanceof HttpException) {
-                            ErrorLogin error = ErrorUtils.parseError(((HttpException) e).response().errorBody(), ServiceGenerator.getRetrofit());
-                            activity.errorCallback(error);
-                        }
-                    }
-
-                    @Override
-                    public void onNext(String token) {
-                        Log.d("MyResult", "onNext " + token);
-                        //activity.successCallback(token);
-                    }
-                });
-    }
-
-    public void createUserFB(String token, String code, String username) {
-        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
-        UserFB login = new UserFB(token, code, username);
-        final LoginActivity activity = (LoginActivity) mContext;
-
-        Observable<String> observable = service.createUserFB(login);
-        observable
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<String>() {
+                .subscribe(new Subscriber<Token>() {
                     @Override
                     public void onCompleted() {
                         Toast.makeText(mContext, "Success login", Toast.LENGTH_LONG).show();
@@ -125,12 +92,50 @@ public class ConnectionUser {
                             ErrorLogin error = ErrorUtils.parseError(((HttpException) e).response().errorBody(), ServiceGenerator.getRetrofit());
                             activity.errorCallback(error);
                         }
+                        else {
+                            Log.e("ERROR", "ERREUR pas http" + e.getMessage());
+                        }
                     }
 
                     @Override
-                    public void onNext(String token) {
+                    public void onNext(Token token) {
+                        Log.d("MyResult", "onNext " + token.getKey());
+                        activity.successCallback("FBLogin", token.getKey());
+                    }
+                });
+    }
+
+    public void createUserFB(String token, String username) {
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
+        final RegisterActivity activity = (RegisterActivity) mContext;
+        UserFB login = new UserFB(token, username);
+
+        Observable<Token> observable = service.createUserFB(login);
+        observable
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<Token>() {
+                    @Override
+                    public void onCompleted() {
+                        Toast.makeText(mContext, "Success login", Toast.LENGTH_LONG).show();
+                    }
+                    @Override
+                    public void onError(Throwable e) {
+                        if (e instanceof HttpException) {
+                            try {
+                                String test = new String(((HttpException) e).response().errorBody().bytes());
+                                Log.d("ERROR", "onError: " + test);
+                            } catch (IOException e1) {
+                                e1.printStackTrace();
+                            }
+                            ErrorLogin error = ErrorUtils.parseError(((HttpException) e).response().errorBody(), ServiceGenerator.getRetrofit());
+                            //activity.errorCallback(error);
+                        }
+                    }
+                    @Override
+                    public void onNext(Token token) {
                         Log.d("MyResult", "onNext " + token);
-                        //activity.successCallback(token);
+                        activity.startHome(token.getKey());
                     }
                 });
     }
