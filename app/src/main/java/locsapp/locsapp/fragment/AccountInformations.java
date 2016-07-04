@@ -3,35 +3,26 @@ package locsapp.locsapp.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.app.Activity;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SimpleAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import locsapp.locsapp.activity.HomeActivity;
-import locsapp.locsapp.activity.MyCallback;
-import locsapp.locsapp.fragment.AccountOverviewFragment;
+import locsapp.locsapp.adapter.ShowAdrAdapter;
+import locsapp.locsapp.interfaces.DeleteAddress;
+import locsapp.locsapp.interfaces.MyCallback;
 import locsapp.locsapp.R;
+import locsapp.locsapp.models.BillingAddress;
+import locsapp.locsapp.models.LivingAddress;
 import locsapp.locsapp.models.User;
-import locsapp.locsapp.network.ConnectionUser;
 import locsapp.locsapp.network.InfosUser;
 
 
@@ -39,14 +30,20 @@ import locsapp.locsapp.network.InfosUser;
  * Created by Damien on 2/3/2015.
  */
 
-public class AccountInformations extends android.support.v4.app.Fragment implements MyCallback{
-    private HomeActivity mActivity;
-    private FragmentManager fragmentManager;
+public class AccountInformations extends android.support.v4.app.Fragment
+        implements ViewPager.OnPageChangeListener, MyCallback, DeleteAddress {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
-    private int layout = R.layout.fragment_account_infos;
     private static int section;
+    private HomeActivity mActivity;
+    private FragmentManager fragmentManager;
+    private int layout = R.layout.fragment_account_infos;
     private View mView;
+    private ListView billingAdr;
+    private ListView livingAdr;
+
+    public AccountInformations() {
+    }
 
     public static AccountInformations newInstance(int sectionNumber) {
         AccountInformations fragment = new AccountInformations();
@@ -58,7 +55,24 @@ public class AccountInformations extends android.support.v4.app.Fragment impleme
         return fragment;
     }
 
-    public AccountInformations() {
+    public static void setListViewHeightBasedOnChildren(ListView listView) {
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter == null) {
+            // pre-condition
+            return;
+        }
+
+        int totalHeight = 0;
+        for (int i = 0; i < listAdapter.getCount(); i++) {
+            View listItem = listAdapter.getView(i, null, listView);
+            listItem.measure(0, 0);
+            totalHeight += listItem.getMeasuredHeight();
+        }
+
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+        listView.setLayoutParams(params);
+        listView.requestLayout();
     }
 
     @Override
@@ -74,15 +88,13 @@ public class AccountInformations extends android.support.v4.app.Fragment impleme
         super.onViewCreated(view, savedInstanceState);
         mActivity = (HomeActivity) getActivity();
         fragmentManager = mActivity.getSupportFragmentManager();
-        //list = (ListView) view.findViewById(R.id.list);
         this.mView = view;
         User user = mActivity.mUser;
-
-
+        mActivity.accountInformations = this;
 
         if (user == null) {
-            InfosUser infosUser = new InfosUser(mActivity);
-            infosUser.getUserTest(mActivity.mToken, this);
+            InfosUser infosUser = new InfosUser(mActivity, this);
+            infosUser.getUser(mActivity.mToken);
         }
         else {
             setData(user);
@@ -95,61 +107,53 @@ public class AccountInformations extends android.support.v4.app.Fragment impleme
                 accountChangePasswd();
             }
         });
-        Button updateButton = (Button) mActivity.findViewById(R.id.btnEdit);
-        updateButton.setOnClickListener(new View.OnClickListener() {
+        billingAdr = (ListView) mActivity.findViewById(R.id.billingAddress);
+        livingAdr = (ListView) mActivity.findViewById(R.id.livingAddress);
+
+
+        final Button bilButton = (Button) mActivity.findViewById(R.id.billButton);
+        bilButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                accountUpdate();
+                if (billingAdr.getVisibility() == View.GONE) {
+                    billingAdr.setVisibility(View.VISIBLE);
+                    bilButton.setText("Hide Billing Address");
+                } else {
+                    billingAdr.setVisibility(View.GONE);
+                    bilButton.setText("Show Billing Address");
+                }
             }
         });
-
+        final Button livButton = (Button) mActivity.findViewById(R.id.livButton);
+        livButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (livingAdr.getVisibility() == View.GONE) {
+                    livingAdr.setVisibility(View.VISIBLE);
+                    livButton.setText("Hide Living Address");
+                } else {
+                    livingAdr.setVisibility(View.GONE);
+                    livButton.setText("Show Living Address");
+                }
+            }
+        });
     }
 
-    private void setData(User user) {
+    public void setData(User user) {
         ((TextView) mView.findViewById(R.id.username)).setText(user.mUsername);
         ((TextView) mView.findViewById(R.id.firstname)).setText(user.mFirstName);
         ((TextView) mView.findViewById(R.id.lastname)).setText(user.mLastName);
         ((TextView) mView.findViewById(R.id.email)).setText(user.mEmail);
         ((TextView) mView.findViewById(R.id.phone)).setText(user.mPhone);
         ((TextView) mView.findViewById(R.id.birthdate)).setText(user.mBirthdate);
-//        ((TextView) mView.findViewById(R.id.address)).setText(user.mLivingAddress);
-
-/*        List<Map<String, String>> data = new ArrayList<Map<String, String>>();
-
-        data.add(newItem("Username", user.mUsername));
-        data.add(newItem("Email", user.mEmail));
-        data.add(newItem("Recovery Email", user.mEmail2));
-        data.add(newItem("Firstname", user.mFirstName));
-        data.add(newItem("Lastname", user.mLastName));
-        data.add(newItem("Birthdate", user.mBirthdate));
-        data.add(newItem("Phone", user.mPhone));
-        data.add(newItem("Register Date", user.mRegisterDate));
-        data.add(newItem("Last Connection", user.mLastActivity));
-        data.add(newItem("Living Address", user.mLivingAddress));
-        data.add(newItem("Billing Address", user.mBillingAddress));
-
-        SimpleAdapter adapter = new SimpleAdapter(getActivity(), data,
-                android.R.layout.simple_list_item_2,
-                new String[] {"title", "value"},
-                new int[] {android.R.id.text1, android.R.id.text2});
-
-        list.setAdapter(adapter);*/
-    }
-
-    private Map<String, String> newItem(String title, String value) {
-        if (value == null) {
-            value = "Not Provided";
-        }
-        Map<String, String> datum = new HashMap<String, String>(2);
-        datum.put("title", title);
-        datum.put("value", value);
-        return datum;
-    }
-
-    public void accountUpdate() {
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, AccountInformationsUpdate.newInstance(section))
-                .commit();
+        ListView livingAdr = ((ListView) mView.findViewById(R.id.livingAddress));
+        ShowAdrAdapter livingAdapter = new ShowAdrAdapter(getActivity(), user.mLivingAddress, this, null);
+        livingAdr.setAdapter(livingAdapter);
+        setListViewHeightBasedOnChildren(livingAdr);
+        ListView billingAdr = ((ListView) mView.findViewById(R.id.billingAddress));
+        ShowAdrAdapter billingAdapter = new ShowAdrAdapter(getActivity(), user.mBillingAddress, this, null);
+        billingAdr.setAdapter(billingAdapter);
+        setListViewHeightBasedOnChildren(billingAdr);
     }
 
     public void accountChangePasswd() {
@@ -166,8 +170,8 @@ public class AccountInformations extends android.support.v4.app.Fragment impleme
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_refresh) {
-            InfosUser infosUser = new InfosUser(mActivity);
-            infosUser.getUser(mActivity.mToken, this);
+            InfosUser infosUser = new InfosUser(mActivity, this);
+            infosUser.getUser(mActivity.mToken);
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -186,13 +190,39 @@ public class AccountInformations extends android.support.v4.app.Fragment impleme
 
     @Override
     public void successCallback(String tag, Object val) {
-        Log.d("", "successCallback: CA MARCHE");
-        Toast.makeText(getActivity(), "CA MARRRRCHE",
-                Toast.LENGTH_LONG).show();
+        switch (tag) {
+            case "getUser":
+                mActivity.mUser = (User) val;
+                setData((User) val);
+                Log.d("fsdfsdfsdfsf", "successCallback: CA MARCHE");
+        }
     }
 
     @Override
     public void errorCallback(String tag, Object val) {
 
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        Toast.makeText(getActivity(), "CA CHANGE " + position,
+                Toast.LENGTH_LONG).show();
+        Log.e("CHANGE", " " + position);
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+    }
+
+    @Override
+    public void deleteLivingAddress(LivingAddress adr) {
+    }
+    @Override
+    public void deleteBillingAddress(BillingAddress adr) {
     }
 }

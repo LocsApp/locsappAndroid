@@ -8,13 +8,14 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import locsapp.locsapp.R;
+import locsapp.locsapp.interfaces.MyCallback;
 import locsapp.locsapp.network.ConnectionUser;
 
 /**
  * Created by Damien on 10/17/2015.
  */
 
-public class ResetPasswd extends FragmentActivity {
+public class ResetPasswd extends FragmentActivity implements MyCallback {
 
     EditText mEmail;
 
@@ -47,13 +48,15 @@ public class ResetPasswd extends FragmentActivity {
         coUser.resetPassword(mEmail.getText().toString());
     }
 
-    public void errorCallback(String error) {
-
-    }
-
-    public void successCallback(String result) {
+    @Override
+    public void successCallback(String tag, Object val) {
         Intent i = new Intent(getApplicationContext(), LoginActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
+    }
+
+    @Override
+    public void errorCallback(String tag, Object val) {
+
     }
 }

@@ -2,10 +2,15 @@ package locsapp.locsapp.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+
 /**
  * Created by sylflo on 11/24/15.
  */
 public class User {
+    @SerializedName("id")
+    public Integer mId;
+
     @SerializedName("username")
     public String mUsername;
 
@@ -28,7 +33,7 @@ public class User {
     public String mPhone;
 
     @SerializedName("living_address")
-    public String mLivingAddress;
+    public ArrayList<ArrayList<String>> mLivingAddress;
 
     @SerializedName("registered_date")
     public String mRegisterDate;
@@ -37,7 +42,7 @@ public class User {
     public String mLastActivity;
 
     @SerializedName("billing_address")
-    public String mBillingAddress;
+    public ArrayList<ArrayList<String>> mBillingAddress;
 
     @SerializedName("password1")
     public String mPassword1;
@@ -48,9 +53,9 @@ public class User {
     @SerializedName("logo_url")
     public String mLogoUrl;
 
-    @SerializedName("is_active")
+    /*@SerializedName("is_active")
     public Boolean mActive;
-
+*/
     @SerializedName("role")
     public String mRole;
 

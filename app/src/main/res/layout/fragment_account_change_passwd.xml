@@ -11,47 +11,51 @@
         <!-- Reset Form -->
         <LinearLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dip"
-            android:layout_marginTop="20dip">
+            android:layout_marginTop="20dip"
+            android:orientation="vertical"
+            android:padding="10dip">
             <!--  Email Label -->
             <EditText android:id="@+id/pass_old"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dip"
                 android:layout_marginTop="5dip"
-                android:singleLine="true"
                 android:hint="Old Password"
                 android:inputType="textPassword"
-                android:layout_marginBottom="20dip"/>
+                android:singleLine="true"/>
             <EditText android:id="@+id/pass_new1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dip"
                 android:layout_marginTop="5dip"
-                android:singleLine="true"
                 android:hint="New Password"
                 android:inputType="textPassword"
-                android:layout_marginBottom="20dip"/>
+                android:singleLine="true"/>
             <EditText android:id="@+id/pass_new2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dip"
                 android:layout_marginTop="5dip"
-                android:singleLine="true"
                 android:hint="Retype New Password"
                 android:inputType="textPassword"
-                android:layout_marginBottom="20dip"/>
+                android:singleLine="true"/>
 
             <Button android:id="@+id/btnChangePasswd"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dip"
-                android:text="Change Password"/>
+                android:layout_marginTop="10dp"
+                android:background="@color/primary"
+                android:text="Change Password"
+                android:textColor="#FFF" />
             <Button android:id="@+id/btnChangeBack"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dip"
-                android:text="Back"/>
+                android:layout_marginTop="10dp"
+                android:background="@color/primary"
+                android:text="Back"
+                android:textColor="#FFF" />
 
         </LinearLayout>
         <!-- Registration Form Ends -->

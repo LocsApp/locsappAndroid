@@ -1,176 +1,156 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     tools:context="locsapp.locsapp.activity.HomeActivity">
-    <LinearLayout
-        android:orientation="vertical"
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dip">
+    <ImageView
+        android:id="@+id/imageProfile"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/profil" />
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/icon_person"
+        android:layout_toRightOf="@+id/icon_person"
+        android:text="username"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/firstname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:weightSum="1"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:background="#FFF"
-        android:layout_marginBottom="27dp">
-        <ImageView
-            android:src="@drawable/profil"
-            android:id="@+id/imageProfile"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:layout_weight="1.23" />
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:paddingTop="0dip"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="top"
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:paddingBottom="2dp">
+        android:layout_below="@+id/username"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/icon_person"
+        android:text="firstname"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#000000"/>
 
-            <TextView
-                android:id="@+id/username"
-                android:layout_height="wrap_content"
-                android:layout_width="fill_parent"
-                android:textColor="#000000"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/icon_person"
-                android:text="username"/>
+    <TextView
+        android:id="@+id/lastname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/firstname"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/icon_person"
+        android:text="lastname"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#000000"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="#000000"
-                android:id="@+id/firstname"
-                android:layout_marginTop="5dp"
-                android:layout_below="@+id/username"
-                android:layout_toRightOf="@+id/icon_person"
-                android:text="firstname"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/lastname"
-                android:text="lastname"
-                android:textColor="#000000"
-                android:layout_marginTop="5dp"
-                android:layout_below="@+id/firstname"
-                android:layout_toRightOf="@+id/icon_person"/>
-
-            <ImageView
-                android:src="@drawable/person"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:id="@+id/icon_person"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:paddingTop="0dip"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="top"
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:paddingBottom="2dp">
-            <TextView
-                android:id="@+id/email"
-                android:layout_height="wrap_content"
-                android:layout_width="fill_parent"
-                android:textColor="#000000"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/icon_email"
-                android:text="email"
-                android:layout_toEndOf="@+id/image" />
-            <ImageView
-                android:src="@drawable/email"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:id="@+id/icon_email"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:paddingTop="0dip"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="top"
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:paddingBottom="2dp">
-            <TextView
-                android:id="@+id/birthdate"
-                android:layout_height="wrap_content"
-                android:layout_width="fill_parent"
-                android:textColor="#000000"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/icon_cake"
-                android:text="1111/11/11"
-                android:layout_toEndOf="@+id/image" />
-            <ImageView
-                android:src="@drawable/cake"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:id="@+id/icon_cake"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:paddingTop="0dip"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="top"
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:paddingBottom="2dp">
-            <TextView
-                android:id="@+id/phone"
-                android:layout_height="wrap_content"
-                android:layout_width="fill_parent"
-                android:textColor="#000000"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/icon_phone"
-                android:text="0000000000"
-                android:layout_toEndOf="@+id/image" />
-            <ImageView
-                android:src="@drawable/phone"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:id="@+id/icon_phone"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp" />
-        </RelativeLayout>
-        <Button android:id="@+id/btnEdit"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Edit Profile"
-            android:layout_marginTop="15dp"
-            android:background="@color/primary_material_dark"
-            android:textColor="#FFF" />
-        <Button android:id="@+id/btnChange"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Change Password"
-            android:layout_marginTop="1dp"
-            android:background="@color/primary_material_dark"
-            android:textColor="#FFF" />
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/icon_person"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/imageProfile"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/person"/>
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/icon_email"
+        android:layout_toRightOf="@+id/icon_email"
+        android:text="email"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#000000" />
+    <ImageView
+        android:id="@+id/icon_email"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/lastname"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/email"/>
+    <TextView
+        android:id="@+id/birthdate"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/icon_cake"
+        android:layout_toEndOf="@+id/image"
+        android:layout_toRightOf="@+id/icon_cake"
+        android:text="1111/11/11"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#000000"/>
+    <ImageView
+        android:id="@+id/icon_cake"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/icon_email"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/cake"/>
+    <TextView
+        android:id="@+id/phone"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/icon_phone"
+        android:layout_toEndOf="@+id/image"
+        android:layout_toRightOf="@+id/icon_phone"
+        android:text="0000000000"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#000000"/>
+    <ImageView
+        android:id="@+id/icon_phone"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/icon_cake"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/phone"/>
+    <Button
+        android:id="@+id/livButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/icon_cake"
+        android:layout_marginTop="10dp"
+        android:background="@color/accent"
+        android:padding="13dp"
+        android:text="Show Living Address"
+        android:textColor="#fff"/>
+    <ListView
+        android:id="@+id/livingAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/livButton"
+        android:visibility="gone"/>
+    <Button
+        android:id="@+id/billButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/livingAddress"
+        android:layout_marginTop="10dp"
+        android:background="@color/accent"
+        android:padding="13dp"
+        android:text="Show Billing Address"
+        android:textColor="#fff"/>
+    <ListView
+        android:id="@+id/billingAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/billButton"
+        android:visibility="gone"/>
+    <Button android:id="@+id/btnChange"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/billingAddress"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/primary"
+        android:text="Change Password"
+        android:textColor="#FFF"/>
+</RelativeLayout>
 </ScrollView>

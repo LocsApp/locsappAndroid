@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import locsapp.locsapp.R;
 import locsapp.locsapp.activity.HomeActivity;
+import locsapp.locsapp.interfaces.MyCallback;
 import locsapp.locsapp.models.User;
 import locsapp.locsapp.network.ConnectionUser;
 import locsapp.locsapp.network.InfosUser;
@@ -27,16 +28,18 @@ import locsapp.locsapp.network.InfosUser;
  * Created by Damien on 2/3/2015.
  */
 
-public class AccountOverviewFragment extends android.support.v4.app.Fragment {
-    private HomeActivity mActivity;
-    private FragmentManager fragmentManager;
-
+public class AccountOverviewFragment extends android.support.v4.app.Fragment implements MyCallback {
     private static final String ARG_SECTION_NUMBER = "section_number";
     private static int section;
+    private HomeActivity mActivity;
+    private FragmentManager fragmentManager;
     private int layout;
     private ListView list;
 
-    public static AccountOverviewFragment newInstance(int sectionNumber, Context context) {
+    public AccountOverviewFragment() {
+    }
+
+    public static AccountOverviewFragment newInstance(int sectionNumber) {
         AccountOverviewFragment fragment = new AccountOverviewFragment();
         Bundle args = new Bundle();
         fragment.setLayout(R.layout.fragment_account_overview);
@@ -46,8 +49,6 @@ public class AccountOverviewFragment extends android.support.v4.app.Fragment {
         return fragment;
     }
 
-    public AccountOverviewFragment() {
-    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -92,7 +93,7 @@ public class AccountOverviewFragment extends android.support.v4.app.Fragment {
 
     public void accountInfos() {
         fragmentManager.beginTransaction()
-                .replace(R.id.container, AccountInformations.newInstance(section))
+                .replace(R.id.container, new TabhostFragment())
                 .commit();
     }
 
@@ -106,4 +107,13 @@ public class AccountOverviewFragment extends android.support.v4.app.Fragment {
         this.layout = layout;
     }
 
+    @Override
+    public void successCallback(String tag, Object val) {
+
+    }
+
+    @Override
+    public void errorCallback(String tag, Object val) {
+
+    }
 }

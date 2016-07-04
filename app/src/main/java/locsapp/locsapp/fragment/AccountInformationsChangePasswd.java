@@ -12,8 +12,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Map;
+
 import locsapp.locsapp.R;
 import locsapp.locsapp.activity.HomeActivity;
+import locsapp.locsapp.interfaces.MyCallback;
 import locsapp.locsapp.models.User;
 import locsapp.locsapp.network.ConnectionUser;
 
@@ -22,16 +25,18 @@ import locsapp.locsapp.network.ConnectionUser;
  * Created by Damien on 2/3/2015.
  */
 
-public class AccountInformationsChangePasswd extends android.support.v4.app.Fragment {
-    private HomeActivity mActivity;
-    private static int section;
-
+public class AccountInformationsChangePasswd extends android.support.v4.app.Fragment implements MyCallback {
     private static final String ARG_SECTION_NUMBER = "section_number";
-    private int layout;
-    private FragmentManager fragmentManager;
+    private static int section;
     TextView mOldPasswd;
     TextView mNewPasswd1;
     TextView mNewPasswd2;
+    private HomeActivity mActivity;
+    private int layout;
+    private FragmentManager fragmentManager;
+
+    public AccountInformationsChangePasswd() {
+    }
 
     public static AccountInformationsChangePasswd newInstance(int sectionNumber) {
         AccountInformationsChangePasswd fragment = new AccountInformationsChangePasswd();
@@ -43,8 +48,6 @@ public class AccountInformationsChangePasswd extends android.support.v4.app.Frag
         return fragment;
     }
 
-    public AccountInformationsChangePasswd() {
-    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -140,5 +143,15 @@ public class AccountInformationsChangePasswd extends android.support.v4.app.Frag
 
     public void setLayout(int layout) {
         this.layout = layout;
+    }
+
+    @Override
+    public void successCallback(String tag, Object val) {
+
+    }
+
+    @Override
+    public void errorCallback(String tag, Object val) {
+
     }
 }

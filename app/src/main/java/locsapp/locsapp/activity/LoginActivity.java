@@ -4,13 +4,16 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
@@ -20,7 +23,6 @@ import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 //import com.facebook.AppEventsLogger;
@@ -36,13 +38,17 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
 import locsapp.locsapp.R;
+import locsapp.locsapp.interfaces.MyCallback;
 import locsapp.locsapp.network.ConnectionUser;
 import locsapp.locsapp.network.ErrorLogin;
 import locsapp.locsapp.network.InfosUser;
 
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends Activity implements MyCallback {
 
+    LoginButton authButton;
+    CallbackManager callbackManager;
+    String TAG = "Fb login";
     private EditText mIdView;
     private EditText mPasswordView;
     private View mProgressView;
@@ -50,16 +56,13 @@ public class LoginActivity extends Activity {
     private Button mSignin;
     private String fbToken;
     private String mToken;
-    LoginButton authButton;
-    CallbackManager callbackManager;
-    String TAG = "Fb login";
     //private Subscription subscription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FacebookSdk.sdkInitialize(getApplicationContext());
         Intent intent = getIntent();
+        FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_login);
         mIdView = (EditText) findViewById(R.id.id_login);
         String login = intent.getStringExtra("login");
@@ -72,8 +75,7 @@ public class LoginActivity extends Activity {
 
         authButton = (LoginButton) findViewById(R.id.login_button);
 
-        authButton.setReadPermissions(Arrays.asList("public_profile", "email"));
-
+        authButton.setReadPermissions(Arrays.asList("public_profile", "email", "user_birthday"));
 
         authButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -237,45 +239,16 @@ public class LoginActivity extends Activity {
     }
 
     public void startHome(final String token) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(getString(R.string.saved_token), token);
+        editor.apply();
+
         Log.d("IN STARTHOME", "startHome");
         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
         intent.putExtra("token", token);
         startActivity(intent);
         finish();
-    }
-
-    public void startSetUsername(final String fbToken,final String token) {
-        Log.d("IN STARTSET", "startSetUsername ");
-        Intent i = new Intent(getApplicationContext(), SetUsernameFBActivity.class);
-        i.putExtra("fbToken", fbToken);
-        i.putExtra("token", token);
-        startActivity(i);
-        finish();
-    }
-
-    public void successCallback(String tag, String data) {
-        switch (tag) {
-            case "FBUser":
-                Log.d("IN FBLogin", "successCallback: ");
-                if (data.equals("")) {
-                    showProgress(false);
-                    startSetUsername(fbToken, mToken);
-                } else {
-                    showProgress(false);
-                    startHome(mToken);
-                }
-                break;
-            case "FBLogin":
-                Log.d("IN FBLogin", "successCallback: ");
-                mToken = data;
-                InfosUser infosUser = new InfosUser(this);
-                infosUser.checkUsername(data, this);
-                break;
-            default:
-                showProgress(false);
-                startHome(data);
-                break;
-        }
     }
 
     public void errorCallback(ErrorLogin error) {
@@ -302,6 +275,23 @@ public class LoginActivity extends Activity {
 
         // Logs 'app deactivate' App Event.
         //AppEventsLogger.deactivateApp(this);
+    }
+
+    @Override
+    public void successCallback(String tag, Object val) {
+        switch (tag) {
+            case "login":
+                startHome((String) val);
+                break;
+            case "loginFB":
+                startHome((String) val);
+                break;
+        }
+    }
+
+    @Override
+    public void errorCallback(String tag, Object val) {
+
     }
 }
 

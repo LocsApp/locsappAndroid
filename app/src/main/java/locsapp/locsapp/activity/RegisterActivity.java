@@ -19,22 +19,27 @@ import com.facebook.FacebookException;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
+import java.util.Arrays;
+
 import locsapp.locsapp.R;
+import locsapp.locsapp.interfaces.MyCallback;
 import locsapp.locsapp.network.ConnectionUser;
 
 /**
  * Created by Damien on 10/17/2015.
  */
 
-public class RegisterActivity extends FragmentActivity {
+public class RegisterActivity extends FragmentActivity implements MyCallback {
 
     EditText mEmail;
     EditText mUsername;
+    EditText mUsernameFB;
     EditText mPassword;
     EditText mPasswordConfirm;
     String TAG = "Register FB";
     CallbackManager callbackManager;
     LoginButton authButton;
+    String mTokenFB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,14 +50,17 @@ public class RegisterActivity extends FragmentActivity {
         mUsername = (EditText) findViewById(R.id.reg_login);
         mPassword = (EditText) findViewById(R.id.reg_password);
         mPasswordConfirm = (EditText) findViewById(R.id.reg_password2);
+        mUsernameFB = (EditText) findViewById(R.id.username_fb);
 
         callbackManager = CallbackManager.Factory.create();
         authButton = (LoginButton) findViewById(R.id.login_button);
+        authButton.setReadPermissions(Arrays.asList("public_profile", "email", "user_birthday"));
         authButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 Log.d(TAG, "onSuccess: " + loginResult.getAccessToken().getToken());
-                attemptFBRegister(loginResult.getAccessToken().getToken());
+                mTokenFB = loginResult.getAccessToken().getToken();
+                attemptFBRegister(mTokenFB);
             }
 
             @Override
@@ -125,8 +133,9 @@ public class RegisterActivity extends FragmentActivity {
     }
 
     public void attemptFBRegister(String token){
+        String username = mUsernameFB.getText().toString();
         ConnectionUser coUser = new ConnectionUser(this);
-        coUser.createUserFB(token, "Damien");
+        coUser.createUserFB(token, username);
     }
 
     public void attemptRegister() {
@@ -168,7 +177,7 @@ public class RegisterActivity extends FragmentActivity {
         }
         else {
 
-            ConnectionUser coUser = new ConnectionUser(getApplicationContext());
+            ConnectionUser coUser = new ConnectionUser(this);
             coUser.register(email, username, password, password2);
         }
     }
@@ -180,8 +189,36 @@ public class RegisterActivity extends FragmentActivity {
         finish();
     }
 
+    public void startLogin() {
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
     private boolean isPasswordValid(String password) {
         return password.length() > 8;
+    }
+
+    @Override
+    public void successCallback(String tag, Object val) {
+        switch (tag) {
+            case "register":
+                startLogin();
+                break;
+            case "createUserFB":
+                ConnectionUser coUser = new ConnectionUser(this);
+                coUser.loginFB(mTokenFB);
+                //startHome((String) val);
+                break;
+            case "loginFB":
+                startHome((String) val);
+                break;
+        }
+    }
+
+    @Override
+    public void errorCallback(String tag, Object val) {
+
     }
 
 /*    @Override

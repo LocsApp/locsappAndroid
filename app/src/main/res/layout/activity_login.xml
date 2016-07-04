@@ -9,65 +9,63 @@
         android:clickable="false">
         <LinearLayout
             android:id="@+id/header"
-            android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:orientation="vertical">
             <ImageView
-                android:src="@drawable/locsapp_logo"
                 android:layout_width="100dip"
                 android:layout_height="100dip"
+                android:layout_gravity="center"
                 android:layout_marginBottom="20dip"
                 android:layout_marginTop="10dip"
-                android:layout_gravity="center"/>
+                android:src="@drawable/locsapp_logo"/>
             <!-- Logo Ends -->
         </LinearLayout>
         <!-- Login Form -->
         <LinearLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/id_login_form"
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="0dip"
-            android:layout_below="@id/header">
+            android:layout_below="@id/header"
+            android:orientation="vertical"
+            android:padding="0dip">
             <ProgressBar
                 android:id="@+id/login_progress" style="?android:attr/progressBarStyleLarge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:layout_gravity="center_horizontal"
-                android:visibility="gone"
+                android:layout_marginBottom="8dp"
                 android:indeterminate="true"
-                android:indeterminateTintMode="src_in"
-                android:indeterminateTint="#c51a1c"
+                android:visibility="gone"
                 />
 
             <EditText
                 android:id="@+id/id_login"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dip"
                 android:layout_marginBottom="20dip"
-                android:singleLine="true"
+                android:layout_marginTop="5dip"
                 android:hint="Login"
-                android:inputType="textNoSuggestions"/>
+                android:inputType="textNoSuggestions"
+                android:singleLine="true"/>
             <EditText
                 android:id="@+id/password"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dip"
-                android:singleLine="true"
+                android:hint="Password"
                 android:password="true"
-                android:hint="Password"/>
+                android:singleLine="true"/>
             <!-- Login button -->
             <Button
                 android:id="@+id/sign_in_button"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dip"
+                android:background="@color/primary"
                 android:text="Login"
-                android:background="@color/primary_material_dark"
                 android:textColor="#FFF" />
             <com.facebook.login.widget.LoginButton
                 android:id="@+id/login_button"
@@ -80,22 +78,22 @@
                 android:id="@+id/link_to_register"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dip"
                 android:layout_marginBottom="10dip"
-                android:text="New? Register here"
+                android:layout_marginTop="20dip"
                 android:gravity="center"
-                android:textSize="20sp"
-                android:textColor="#000"/>
+                android:text="New? Register here"
+                android:textColor="#000"
+                android:textSize="20sp"/>
             <TextView
                 android:id="@+id/link_to_reset"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dip"
                 android:layout_marginBottom="40dip"
-                android:text="Forgot your password ?"
+                android:layout_marginTop="10dip"
                 android:gravity="center"
-                android:textSize="20sp"
-                android:textColor="#000"/>
+                android:text="Forgot your password ?"
+                android:textColor="#000"
+                android:textSize="20sp"/>
 
         </LinearLayout>
         <!-- Login Form Ends -->

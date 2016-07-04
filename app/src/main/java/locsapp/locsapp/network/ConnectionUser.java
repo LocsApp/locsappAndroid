@@ -2,18 +2,16 @@ package locsapp.locsapp.network;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.widget.Toast;
 
 import java.io.IOException;
 
-import locsapp.locsapp.R;
 import locsapp.locsapp.activity.HomeActivity;
 import locsapp.locsapp.activity.LoginActivity;
-import locsapp.locsapp.activity.RegisterActivity;
+import locsapp.locsapp.interfaces.ApiEndpointInterface;
+import locsapp.locsapp.interfaces.MyCallback;
 import locsapp.locsapp.activity.ResetPasswd;
-import locsapp.locsapp.fragment.AccountInformations;
 import locsapp.locsapp.fragment.AccountInformationsChangePasswd;
 import locsapp.locsapp.models.Login;
 import locsapp.locsapp.models.LoginFB;
@@ -30,15 +28,16 @@ import rx.schedulers.Schedulers;
 public class ConnectionUser {
 
     Context mContext;
+    MyCallback mCallback;
 
     public ConnectionUser(Context context) {
         mContext = context;
+        mCallback = (MyCallback) context;
     }
 
     public void login(String username, String password) {
         final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         Login login = new Login(username, password);
-        final LoginActivity activity = (LoginActivity) mContext;
 
         Observable<Token> observable = service.loginUser(login);
         observable
@@ -54,14 +53,14 @@ public class ConnectionUser {
                     public void onError(Throwable e) {
                         if (e instanceof HttpException) {
                             ErrorLogin error = ErrorUtils.parseError(((HttpException) e).response().errorBody(), ServiceGenerator.getRetrofit());
-                            activity.errorCallback(error);
+                            mCallback.errorCallback("login", error);
                         }
                     }
 
                     @Override
                     public void onNext(Token token) {
                         Log.d("MyResult", "onNext " + token.getKey());
-                        activity.startHome(token.getKey());
+                        mCallback.successCallback("login", token.getKey());
                     }
                 });
     }
@@ -69,7 +68,6 @@ public class ConnectionUser {
     public void loginFB(String token) {
         final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         LoginFB login = new LoginFB(token);
-        final LoginActivity activity = (LoginActivity) mContext;
 
         Observable<Token> observable = service.loginUserFB(login);
         observable
@@ -90,7 +88,7 @@ public class ConnectionUser {
                                 e1.printStackTrace();
                             }
                             ErrorLogin error = ErrorUtils.parseError(((HttpException) e).response().errorBody(), ServiceGenerator.getRetrofit());
-                            activity.errorCallback(error);
+                            mCallback.errorCallback("loginFB", error);
                         }
                         else {
                             Log.e("ERROR", "ERREUR pas http" + e.getMessage());
@@ -100,14 +98,13 @@ public class ConnectionUser {
                     @Override
                     public void onNext(Token token) {
                         Log.d("MyResult", "onNext " + token.getKey());
-                        activity.successCallback("FBLogin", token.getKey());
+                        mCallback.successCallback("loginFB", token.getKey());
                     }
                 });
     }
 
     public void createUserFB(String token, String username) {
         final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
-        final RegisterActivity activity = (RegisterActivity) mContext;
         UserFB login = new UserFB(token, username);
 
         Observable<Token> observable = service.createUserFB(login);
@@ -117,25 +114,25 @@ public class ConnectionUser {
                 .subscribe(new Subscriber<Token>() {
                     @Override
                     public void onCompleted() {
-                        Toast.makeText(mContext, "Success login", Toast.LENGTH_LONG).show();
+                        Toast.makeText(mContext, "Success register", Toast.LENGTH_LONG).show();
                     }
                     @Override
                     public void onError(Throwable e) {
                         if (e instanceof HttpException) {
                             try {
                                 String test = new String(((HttpException) e).response().errorBody().bytes());
-                                Log.d("ERROR", "onError: " + test);
+                                Log.d("REGISTER FB", "onError: " + test);
                             } catch (IOException e1) {
                                 e1.printStackTrace();
                             }
                             ErrorLogin error = ErrorUtils.parseError(((HttpException) e).response().errorBody(), ServiceGenerator.getRetrofit());
-                            //activity.errorCallback(error);
+                            mCallback.errorCallback("createUserFB", error);
                         }
                     }
                     @Override
                     public void onNext(Token token) {
                         Log.d("MyResult", "onNext " + token);
-                        activity.startHome(token.getKey());
+                        mCallback.successCallback("createUserFB", token.getKey());
                     }
                 });
     }
@@ -158,13 +155,13 @@ public class ConnectionUser {
                     public void onError(Throwable e) {
                         if (e instanceof HttpException) {
                             String error = ((HttpException) e).response().message();
-                            activity.errorCallback(error);
+                            mCallback.errorCallback("resetPassword", error);
                         }
                     }
                     @Override
                     public void onNext(String result) {
                         Log.d("MyResult", "onNext " + result);
-                        activity.successCallback(result);
+                        mCallback.successCallback("resetPassword", result);
                     }
                 });
     }
@@ -249,12 +246,23 @@ public class ConnectionUser {
                     @Override
                     public void onError(Throwable e) {
                         if (e instanceof HttpException) {
+                            try {
+                                String test = new String(((HttpException) e).response().errorBody().bytes());
+                                Log.d("ERROR", "onError: " + test);
+                            } catch (IOException e1) {
+                                e1.printStackTrace();
+                            }
                             ErrorLogin error = ErrorUtils.parseError(((HttpException) e).response().errorBody(), ServiceGenerator.getRetrofit());
+                            mCallback.errorCallback("register", error);
+                        }
+                        else {
+                            Log.e("ERROR", "ERREUR pas http" + e.getMessage());
                         }
                     }
                     @Override
                     public void onNext(User user) {
                         Log.d("MyResult", "onNext " + user.mUsername);
+                        mCallback.successCallback("register", user);
                     }
                 });
     }

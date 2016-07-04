@@ -11,20 +11,28 @@ import android.view.MenuItem;
 
 import locsapp.locsapp.fragment.AccountInformations;
 import locsapp.locsapp.fragment.AccountOverviewFragment;
-import locsapp.locsapp.fragment.HomeFragment;
+import locsapp.locsapp.fragment.SearchArticlesFragment;
 import locsapp.locsapp.fragment.NavigationDrawerFragment;
 import locsapp.locsapp.R;
+import locsapp.locsapp.fragment.TabhostFragment;
+import locsapp.locsapp.interfaces.MyCallback;
+import locsapp.locsapp.models.Article;
+import locsapp.locsapp.models.SearchResults;
+import locsapp.locsapp.models.StaticCollections;
 import locsapp.locsapp.models.User;
 import locsapp.locsapp.network.InfosUser;
 
 public class HomeActivity extends ActionBarActivity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks, MyCallback {
 
-    private NavigationDrawerFragment mNavigationDrawerFragment;
-
-    private CharSequence mTitle;
     public String mToken;
     public User mUser;
+    public StaticCollections staticCollections;
+    public SearchResults mArticles;
+    public Article mArticle;
+    public AccountInformations accountInformations;
+    private NavigationDrawerFragment mNavigationDrawerFragment;
+    private CharSequence mTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +47,9 @@ public class HomeActivity extends ActionBarActivity
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
-        InfosUser infosUser = new InfosUser(this);
-        infosUser.getUser(mToken, new AccountInformations());
+
+        InfosUser infosUser = new InfosUser(this, this);
+        infosUser.getUser(mToken);
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
@@ -55,12 +64,12 @@ public class HomeActivity extends ActionBarActivity
         switch (position) {
             case 0:
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, HomeFragment.newInstance(position + 1))
+                        .replace(R.id.container, SearchArticlesFragment.newInstance(position + 1))
                         .commit();
                 break;
             case 1:
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, AccountOverviewFragment.newInstance(position + 1, this))
+                        .replace(R.id.container, TabhostFragment.newInstance(position + 1))
                         .commit();
                 break;
         }
@@ -96,6 +105,12 @@ public class HomeActivity extends ActionBarActivity
 
         return super.onKeyDown(keyCode, event);
     }
+
+
+    @Override
+    public void onBackPressed() {
+
+    }
 */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -123,6 +138,20 @@ public class HomeActivity extends ActionBarActivity
         //}
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void successCallback(String tag, Object val) {
+        switch (tag) {
+            case "getUser":
+                mUser = (User) val;
+                break;
+        }
+    }
+
+    @Override
+    public void errorCallback(String tag, Object val) {
+
     }
 
     /**

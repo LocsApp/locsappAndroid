@@ -6,74 +6,185 @@
     android:fillViewport="true">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:background="#ffffff">
+        android:layout_height="wrap_content"
+        android:background="#ffffff">
 
         <LinearLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dip"
-            android:layout_marginTop="20dip">
+            android:layout_marginTop="20dip"
+            android:orientation="vertical"
+            android:padding="10dip">
             <TextView android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#372c24"
-                android:text="Firstname"/>
+                android:text="Firstname"
+                android:textColor="#372c24"/>
             <EditText android:id="@+id/firstname"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dip"
                 android:layout_marginTop="5dip"
-                android:singleLine="true"
                 android:hint="Firstname"
                 android:inputType="text"
-                android:layout_marginBottom="20dip"/>
+                android:singleLine="true"/>
             <TextView android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#372c24"
-                android:text="Lastname"/>
+                android:text="Lastname"
+                android:textColor="#372c24"/>
             <EditText android:id="@+id/lastname"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dip"
                 android:layout_marginTop="5dip"
-                android:singleLine="true"
                 android:hint="Lastname"
                 android:inputType="text"
-                android:layout_marginBottom="20dip"/>
+                android:singleLine="true"/>
             <TextView android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#372c24"
-                android:text="Birthdate"/>
+                android:text="Birthdate"
+                android:textColor="#372c24"/>
             <EditText android:id="@+id/birthdate"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dip"
                 android:layout_marginTop="5dip"
-                android:singleLine="true"
                 android:hint="Birthdate"
                 android:inputType="text"
-                android:layout_marginBottom="20dip"/>
+                android:singleLine="true"/>
             <TextView android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#372c24"
-                android:text="Phone"/>
+                android:text="Phone"
+                android:textColor="#372c24"/>
             <EditText android:id="@+id/phone"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dip"
                 android:layout_marginTop="5dip"
-                android:singleLine="true"
                 android:hint="Phone"
                 android:inputType="text"
-                android:layout_marginBottom="20dip"/>
+                android:singleLine="true"/>
 
             <Button android:id="@+id/btnUpdate"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dip"
-                android:text="Save"/>
-            <Button android:id="@+id/btnBack"
-                android:layout_width="fill_parent"
+                android:layout_marginTop="10dp"
+                android:background="@color/primary"
+                android:text="Save"
+                android:textColor="#FFF" />
+            <Button
+                android:id="@+id/editlivButton"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dip"
-                android:text="Back"/>
+                android:layout_marginTop="10dp"
+                android:background="@color/accent"
+                android:padding="13dp"
+                android:text="Show Living Address"
+                android:textColor="#fff"/>
+            <ListView
+                android:id="@+id/editlivingAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+            <Button
+                android:id="@+id/editbillButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/accent"
+                android:padding="13dp"
+                android:text="Show Billing Address"
+                android:textColor="#fff"/>
+            <ListView
+                android:id="@+id/editbillingAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+            <Button
+                android:id="@+id/addAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/accent"
+                android:padding="13dp"
+                android:text="Add an Address"
+                android:textColor="#fff"/>
+            <LinearLayout
+                android:id="@+id/formAddAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:visibility="gone" >
+                <EditText
+                    android:id="@+id/addressAlias"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="Address Alias"
+                    android:maxLines="1"/>
+                <EditText
+                    android:id="@+id/addressFirstname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="Firstname"
+                    android:maxLines="1"/>
+                <EditText
+                    android:id="@+id/addressLastname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="Lastname"
+                    android:maxLines="1"/>
+                <EditText
+                    android:id="@+id/addressAdress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="Address"
+                    android:maxLines="1"/>
+                <EditText
+                    android:id="@+id/addressCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="Postal Code"
+                    android:maxLines="1"/>
+                <EditText
+                    android:id="@+id/addressCity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="City"
+                    android:maxLines="1"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:orientation="horizontal">
+                    <CheckBox
+                        android:id="@+id/addressIsLiving"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Living Address"/>
+                    <CheckBox
+                        android:id="@+id/addressIsBilling"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginStart="40dp"
+                        android:text="Billing Address"/>
+                </LinearLayout>
+                <Button android:id="@+id/btnAddAddress"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/primary"
+                    android:text="Add address"
+                    android:textColor="#FFF" />
+            </LinearLayout>
 
         </LinearLayout>
         <!-- Registration Form Ends -->

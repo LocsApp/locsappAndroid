@@ -21,6 +21,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.facebook.login.LoginManager;
+
 import locsapp.locsapp.R;
 import locsapp.locsapp.activity.HomeActivity;
 import locsapp.locsapp.network.ConnectionUser;
@@ -210,6 +212,7 @@ public class NavigationDrawerFragment extends Fragment {
 
         HomeActivity activity = (HomeActivity) getActivity();
         if (item.getItemId() == R.id.action_logout) {
+            LoginManager.getInstance().logOut();
             ConnectionUser coUser = new ConnectionUser(getActivity());
             coUser.logoutUser(((HomeActivity) getActivity()).mToken);
             return true;
