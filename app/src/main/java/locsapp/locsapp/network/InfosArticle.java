@@ -26,6 +26,8 @@ import locsapp.locsapp.models.SCStates;
 import locsapp.locsapp.models.SCSubCategories;
 import locsapp.locsapp.models.Search;
 import locsapp.locsapp.models.SearchResults;
+import locsapp.locsapp.models.User;
+import locsapp.locsapp.models.UserPut;
 import retrofit.HttpException;
 import rx.Observable;
 import rx.Subscriber;
@@ -46,7 +48,7 @@ public class InfosArticle {
     }
 
     public void makeSearch(String token, Search params) {
-        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class, mContext);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         Observable<SearchResults> observable = service.searchArticles("token " + token, params);
         observable
                 .subscribeOn(Schedulers.newThread())
@@ -82,7 +84,7 @@ public class InfosArticle {
                 });
     }
     public void getArticle(String token, String id) {
-        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class, mContext);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         Observable<Article> observable = service.getArticle("token " + token, id);
         observable
                 .subscribeOn(Schedulers.newThread())
@@ -119,7 +121,7 @@ public class InfosArticle {
     }
 
     public void askQuestion(String token, AskQuestion question) {
-        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class, mContext);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         Observable<Void> observable = service.askQuestion("token " + token, question);
         observable
                 .subscribeOn(Schedulers.newThread())
@@ -155,7 +157,7 @@ public class InfosArticle {
     }
 
     public void getFavorites(String token) {
-        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class, mContext);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         Observable<Favorites> observable = service.getFavorites("token " + token);
         observable
                 .subscribeOn(Schedulers.newThread())
@@ -190,7 +192,7 @@ public class InfosArticle {
                 });
     }
     public void addFavorite(String token, IdArticle id) {
-        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class, mContext);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         Observable<Article> observable = service.addFavorite("token " + token, id);
         observable
                 .subscribeOn(Schedulers.newThread())
@@ -225,7 +227,7 @@ public class InfosArticle {
                 });
     }
     public void deleteFavorite(String token, IdArticle id) {
-        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class, mContext);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         Observable<Article> observable = service.deleteFavorite("token " + token, id);
         observable
                 .subscribeOn(Schedulers.newThread())
@@ -261,7 +263,7 @@ public class InfosArticle {
     }
 
     public void getBaseCategories() {
-        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class, mContext);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         Observable<SCBaseCategories> observable = service.getCategories();
         observable
                 .subscribeOn(Schedulers.newThread())
@@ -296,7 +298,7 @@ public class InfosArticle {
                 });
     }
     public void getSubCategories() {
-        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class, mContext);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         Observable<SCSubCategories> observable = service.getSubCategories();
         observable
                 .subscribeOn(Schedulers.newThread())
@@ -331,7 +333,7 @@ public class InfosArticle {
                 });
     }
     public void getColors() {
-        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class, mContext);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         Observable<SCColors> observable = service.getColors();
         observable
                 .subscribeOn(Schedulers.newThread())
@@ -366,7 +368,7 @@ public class InfosArticle {
                 });
     }
     public void getGenders() {
-        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class, mContext);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         Observable<SCGenders> observable = service.getGenders();
         observable
                 .subscribeOn(Schedulers.newThread())
@@ -401,7 +403,7 @@ public class InfosArticle {
                 });
     }
     public void getSizes() {
-        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class, mContext);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         Observable<SCSizes> observable = service.getSizes();
         observable
                 .subscribeOn(Schedulers.newThread())
@@ -436,7 +438,7 @@ public class InfosArticle {
                 });
     }
     public void getStates() {
-        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class, mContext);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         Observable<SCStates> observable = service.getStates();
         observable
                 .subscribeOn(Schedulers.newThread())
@@ -471,7 +473,7 @@ public class InfosArticle {
                 });
     }
     public void getPayMethods() {
-        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class, mContext);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         Observable<SCPayMethods> observable = service.getPayMethods();
         observable
                 .subscribeOn(Schedulers.newThread())

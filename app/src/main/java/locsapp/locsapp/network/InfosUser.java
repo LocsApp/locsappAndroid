@@ -37,7 +37,7 @@ public class InfosUser {
     }
 
     public void checkUsername(String token, final LoginActivity activity) {
-        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class, mContext);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         Observable<User> observable = service.checkUsername("token " + token);
         observable
                 .subscribeOn(Schedulers.newThread())
@@ -64,7 +64,7 @@ public class InfosUser {
     }
 
     public void getUser(String token) {
-        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class, mContext);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         Observable<User> observable = service.getUser("token " + token);
         observable
                 .subscribeOn(Schedulers.newThread())
@@ -101,7 +101,7 @@ public class InfosUser {
     }
 
     public void getLivingAddress(String token, String userId) {
-        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class, mContext);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         Observable<String> observable = service.getLivingAddress("token " + token, userId);
         observable
                 .subscribeOn(Schedulers.newThread())
@@ -127,7 +127,7 @@ public class InfosUser {
     }
 
     public void deleteLivingAddress(String token, String userId, LivingAddress adr) {
-        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class, mContext);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         Observable<String> observable = service.deleteLivingAddress("token " + token, userId, adr);
         observable
                 .subscribeOn(Schedulers.newThread())
@@ -153,7 +153,7 @@ public class InfosUser {
     }
 
     public void getBillingAddress(String token, String userId) {
-        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class, mContext);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         Observable<String> observable = service.getBillingAddress("token " + token, userId);
         observable
                 .subscribeOn(Schedulers.newThread())
@@ -179,7 +179,7 @@ public class InfosUser {
     }
 
     public void deleteBillingAddress(String token, String userId, BillingAddress adr) {
-        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class, mContext);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         Observable<String> observable = service.deleteBillingAddress("token " + token, userId, adr);
         observable
                 .subscribeOn(Schedulers.newThread())
@@ -205,7 +205,7 @@ public class InfosUser {
     }
 
     public void addLivingAddress(String token, String userId, LivingAddress address) {
-        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class, mContext);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         Observable<Void> observable = service.addLivingAddress("token " + token, userId, address);
         observable
                 .subscribeOn(Schedulers.newThread())
@@ -233,7 +233,7 @@ public class InfosUser {
     }
 
     public void addBillingAddress(String token, String userId, BillingAddress address) {
-        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class, mContext);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         Observable<Void> observable = service.addBillingAddress("token " + token, userId, address);
         observable
                 .subscribeOn(Schedulers.newThread())
@@ -259,7 +259,7 @@ public class InfosUser {
     }
 
     public void updateUser(String token, UserPut user, final AccountInformationsUpdate fragment) {
-        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class, mContext);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
         Observable<User> observable = service.updateUser("token " + token, user);
         observable
                 .subscribeOn(Schedulers.newThread())
