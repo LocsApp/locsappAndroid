@@ -24,6 +24,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 //import com.facebook.AppEventsLogger;
 import com.facebook.CallbackManager;
@@ -43,6 +44,7 @@ import locsapp.locsapp.network.ConnectionUser;
 import locsapp.locsapp.network.ErrorLogin;
 import locsapp.locsapp.network.InfosUser;
 
+// TODO: 7/6/2016 Add error login 
 
 public class LoginActivity extends Activity implements MyCallback {
 
@@ -291,7 +293,14 @@ public class LoginActivity extends Activity implements MyCallback {
 
     @Override
     public void errorCallback(String tag, Object val) {
-
+        switch (tag) {
+            case "login":
+                showProgress(false);
+                mPasswordView.setError(null);
+                mIdView.setError(null);
+                Toast.makeText(this, "Wrong username/password",
+                        Toast.LENGTH_LONG).show();
+        }
     }
 }
 

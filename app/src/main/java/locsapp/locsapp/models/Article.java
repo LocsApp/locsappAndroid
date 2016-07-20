@@ -9,9 +9,14 @@ import java.util.List;
  * Created by Damien on 11/27/15.
  */
 public class Article {
+    @SerializedName("questions")
+    public List<Question> questions;
 
     @SerializedName("_id")
     String id;
+
+    @SerializedName("id_article")
+    String id_article;
 
     @SerializedName("url_thumbnail")
     String thumbnail;
@@ -49,8 +54,8 @@ public class Article {
     @SerializedName("url_picture")
     List<String> pictures;
 
-    @SerializedName("creation_date")
-    String dateCreation;
+/*    @SerializedName("creation_date")
+    String dateCreation;*/
 
     @SerializedName("available")
     Boolean available;
@@ -66,6 +71,10 @@ public class Article {
 
     @SerializedName("price")
     Integer price;
+
+    public List<Question> getQuestions() {
+        return questions;
+    }
 
     public Boolean getAvailable() {
         return available;
@@ -111,9 +120,9 @@ public class Article {
         return color;
     }
 
-    public String getDateCreation() {
+/*    public String getDateCreation() {
         return dateCreation;
-    }
+    }*/
 
     public String getDescription() {
         return description;
@@ -140,6 +149,10 @@ public class Article {
     }
 
     public String getTitle() {
-        return title;
+        return title.substring(0,1).toUpperCase() + title.substring(1);
+    }
+
+    public String getId_article() {
+        return id_article;
     }
 }

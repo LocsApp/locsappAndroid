@@ -11,17 +11,21 @@ import android.view.MenuItem;
 
 import locsapp.locsapp.fragment.AccountInformations;
 import locsapp.locsapp.fragment.AccountOverviewFragment;
+import locsapp.locsapp.fragment.FavoriteFragment;
 import locsapp.locsapp.fragment.SearchArticlesFragment;
 import locsapp.locsapp.fragment.NavigationDrawerFragment;
 import locsapp.locsapp.R;
 import locsapp.locsapp.fragment.TabhostFragment;
 import locsapp.locsapp.interfaces.MyCallback;
 import locsapp.locsapp.models.Article;
+import locsapp.locsapp.models.Favorites;
 import locsapp.locsapp.models.SearchResults;
 import locsapp.locsapp.models.StaticCollections;
 import locsapp.locsapp.models.User;
+import locsapp.locsapp.network.InfosArticle;
 import locsapp.locsapp.network.InfosUser;
 
+// TODO: 7/6/2016 Get user from preference
 public class HomeActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks, MyCallback {
 
@@ -30,6 +34,8 @@ public class HomeActivity extends ActionBarActivity
     public StaticCollections staticCollections;
     public SearchResults mArticles;
     public Article mArticle;
+    public String mArticleId;
+    public Favorites mFavorites;
     public AccountInformations accountInformations;
     private NavigationDrawerFragment mNavigationDrawerFragment;
     private CharSequence mTitle;
@@ -51,10 +57,29 @@ public class HomeActivity extends ActionBarActivity
         InfosUser infosUser = new InfosUser(this, this);
         infosUser.getUser(mToken);
 
-        // Set up the drawer.
+        InfosArticle infosArticle = new InfosArticle(this, this);
+        infosArticle.getFavorites(mToken);
+
+        if (staticCollections == null) {
+            staticCollections = new StaticCollections(this);
+            staticCollections.loadDatas();
+            staticCollections.convertToCharSequences();
+        }
+
+
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+    }
+
+    public void refreshFav() {
+        InfosArticle infosArticle = new InfosArticle(this, this);
+        infosArticle.getFavorites(mToken);
+    }
+
+    private void clearBackStack(int position) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
     }
 
     @Override
@@ -68,12 +93,18 @@ public class HomeActivity extends ActionBarActivity
                         .commit();
                 break;
             case 1:
+                clearBackStack(position + 1);
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, TabhostFragment.newInstance(position + 1))
                         .commit();
                 break;
+            case 2:
+                clearBackStack(position + 1);
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, FavoriteFragment.newInstance(position + 1))
+                        .commit();
+                break;
         }
-
     }
 
     public void onSectionAttached(int number) {
@@ -83,6 +114,9 @@ public class HomeActivity extends ActionBarActivity
                 break;
             case 2:
                 mTitle = getString(R.string.title_section2);
+                break;
+            case 3:
+                mTitle = getString(R.string.title_section3);
                 break;
         }
     }
@@ -95,17 +129,6 @@ public class HomeActivity extends ActionBarActivity
     }
 
 /* To handle Back button
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-
-            return true;
-        }
-
-        return super.onKeyDown(keyCode, event);
-    }
-
 
     @Override
     public void onBackPressed() {
@@ -146,6 +169,9 @@ public class HomeActivity extends ActionBarActivity
             case "getUser":
                 mUser = (User) val;
                 break;
+            case "getFavorites":
+                mFavorites = (Favorites) val;
+                break;
         }
     }
 
@@ -153,10 +179,4 @@ public class HomeActivity extends ActionBarActivity
     public void errorCallback(String tag, Object val) {
 
     }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-
-
 }

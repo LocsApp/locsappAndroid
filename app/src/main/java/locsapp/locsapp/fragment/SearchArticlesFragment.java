@@ -40,6 +40,8 @@ import locsapp.locsapp.network.InfosArticle;
  * Created by Damien on 2/3/2015.
  */
 
+// TODO: 7/6/2016 Add other search params 
+
 public class SearchArticlesFragment extends android.support.v4.app.Fragment implements MyCallback {
     private static final String ARG_SECTION_NUMBER = "section_number";
     private static int section;
@@ -358,6 +360,7 @@ public class SearchArticlesFragment extends android.support.v4.app.Fragment impl
         Log.d("showResults: ", "Start fragment");
         fragmentManager.beginTransaction()
                 .replace(R.id.container, SearchResult.newInstance(section))
+                .addToBackStack( "search" )
                 .commit();
     }
 

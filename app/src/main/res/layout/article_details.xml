@@ -3,28 +3,18 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="15dp">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="150dp"
-                android:id="@+id/images">
-                <ImageView
-                    android:layout_width="130dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp" />
-                <ImageView
-                    android:layout_width="130dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"/>
-                <ImageView
-                    android:layout_width="130dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp" />
-            </LinearLayout>
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:id="@+id/images"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="5dp" />
             <TextView android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="ArticleName"
@@ -88,7 +78,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/labelDistance"
-                android:text="Within"
+                android:text=""
                 android:layout_below="@+id/separator4" />
             <TextView
                 android:id="@+id/distance"
@@ -98,7 +88,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_below="@id/separator4"
                 android:textColor="@color/primary"
-                android:text="X kms" />
+                android:text="" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -305,13 +295,13 @@
                     android:id="@+id/separator14"
                     android:background="@color/separator"
                     android:layout_centerVertical="true"
-                    android:layout_toLeftOf="@+id/recommendText"
-                    android:layout_toStartOf="@+id/recommendText"/>
+                    android:layout_toLeftOf="@+id/questions_label"
+                    android:layout_toStartOf="@+id/questions_label"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/recommendText"
-                    android:text="We Recommend"
+                    android:id="@+id/questions_label"
+                    android:text="Questions"
                     android:layout_centerHorizontal="true"
                     android:layout_margin="5dp"/>
                 <View
@@ -320,35 +310,26 @@
                     android:id="@+id/separator15"
                     android:background="@color/separator"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/recommendText"
-                    android:layout_toEndOf="@+id/recommendText"/>
+                    android:layout_toRightOf="@+id/questions_label"
+                    android:layout_toEndOf="@+id/questions_label"/>
             </RelativeLayout>
-            <LinearLayout
+            <ListView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/labelRecommend">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp" />
-            </LinearLayout>
-            <LinearLayout
+                android:id="@+id/questions"
+                android:layout_below="@+id/labelRecommend"
+                android:layout_marginBottom="10dp">
+            </ListView>
+            <Button
+                android:id="@+id/button_ask_question"
+                android:layout_below="@+id/questions"
                 android:layout_width="wrap_content"
-                android:layout_height="110dp"
-                android:id="@+id/imagesRecommend"
-                android:layout_below="@+id/labelRecommend">
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp" />
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"/>
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp" />
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                android:background="@color/accent"
+                android:textColor="#fff"
+                android:text="Ask a Question"
+                android:textSize="10sp"
+                android:layout_centerHorizontal="true"/>
         </RelativeLayout>
     </ScrollView>
     <RelativeLayout
@@ -369,18 +350,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="00/00/0000"
+            android:text="Set Start"
             android:id="@+id/dateStart"
             android:layout_centerVertical="true"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="00/00/0000"
+            android:text="Set End"
             android:id="@+id/dateEnd"
             android:layout_toRightOf="@+id/dateStart"
             android:layout_marginLeft="30dp"
             android:layout_centerVertical="true"/>
         <Button
+            android:id="@+id/button_demand"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

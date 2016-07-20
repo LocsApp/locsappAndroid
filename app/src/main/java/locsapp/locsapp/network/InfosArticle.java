@@ -10,7 +10,12 @@ import locsapp.locsapp.activity.LoginActivity;
 import locsapp.locsapp.fragment.AccountInformationsUpdate;
 import locsapp.locsapp.interfaces.ApiEndpointInterface;
 import locsapp.locsapp.interfaces.MyCallback;
+import locsapp.locsapp.models.AddressDetails;
+import locsapp.locsapp.models.Article;
+import locsapp.locsapp.models.AskQuestion;
 import locsapp.locsapp.models.BillingAddress;
+import locsapp.locsapp.models.Favorites;
+import locsapp.locsapp.models.IdArticle;
 import locsapp.locsapp.models.LivingAddress;
 import locsapp.locsapp.models.SCBaseCategories;
 import locsapp.locsapp.models.SCColors;
@@ -44,7 +49,7 @@ public class InfosArticle {
 
     public void makeSearch(String token, Search params) {
         final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
-        Observable<SearchResults> observable = service.searchArticles(token, params);
+        Observable<SearchResults> observable = service.searchArticles("token " + token, params);
         observable
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -75,6 +80,184 @@ public class InfosArticle {
                     public void onNext(SearchResults articles) {
                         Log.d("onNext: ", articles.metadatas.mTotalItems.toString());
                         mCallback.successCallback("makeSearch", articles);
+                    }
+                });
+    }
+    public void getArticle(String token, String id) {
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
+        Observable<Article> observable = service.getArticle("token " + token, id);
+        observable
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<Article>() {
+                    @Override
+                    public void onCompleted() {
+                        Log.d("MyResult", "onCompleted");
+                        Toast.makeText(mContext, "getArticle success",
+                                Toast.LENGTH_LONG).show();
+                    }
+                    @Override
+                    public void onError(Throwable e) {
+                        if (e instanceof HttpException) {
+                            try {
+                                String test = new String(((HttpException) e).response().errorBody().bytes());
+                                Log.d("ERROR", "onError: " + test);
+                            } catch (IOException e1) {
+                                e1.printStackTrace();
+                            }
+                            ErrorLogin error = ErrorUtils.parseError(((HttpException) e).response().errorBody(), ServiceGenerator.getRetrofit());
+                            mCallback.errorCallback("getArticle", error);
+                        }
+                        else {
+                            Log.e("ERROR", "getArticle no http: " + e);
+                        }
+                    }
+                    @Override
+                    public void onNext(Article article) {
+                        mCallback.successCallback("getArticle", article);
+                        Log.d("MyResult", "ONnEXT");
+                    }
+                });
+    }
+
+    public void askQuestion(String token, AskQuestion question) {
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
+        Observable<Void> observable = service.askQuestion("token " + token, question);
+        observable
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<Void>() {
+                    @Override
+                    public void onCompleted() {
+                        Log.d("MyResult", "onCompleted");
+                    }
+                    @Override
+                    public void onError(Throwable e) {
+                        if (e instanceof HttpException) {
+                            Toast.makeText(mContext, "Failed to send question",
+                                    Toast.LENGTH_LONG).show();
+                            try {
+                                String test = new String(((HttpException) e).response().errorBody().bytes());
+                                Log.d("ERROR", "onError: " + test);
+                            } catch (IOException e1) {
+                                e1.printStackTrace();
+                            }
+                            ErrorLogin error = ErrorUtils.parseError(((HttpException) e).response().errorBody(), ServiceGenerator.getRetrofit());
+                            mCallback.errorCallback("askQuestion", error);
+                        }
+                        else {
+                            Log.e("ERROR", "no http: " + e);
+                        }
+                    }
+                    @Override
+                    public void onNext(Void val) {
+                        mCallback.successCallback("askQuestion", val);
+                    }
+                });
+    }
+
+    public void getFavorites(String token) {
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
+        Observable<Favorites> observable = service.getFavorites("token " + token);
+        observable
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<Favorites>() {
+                    @Override
+                    public void onCompleted() {
+                        Log.d("MyResult", "onCompleted");
+                        Toast.makeText(mContext, "getFavorite success",
+                                Toast.LENGTH_LONG).show();
+                    }
+                    @Override
+                    public void onError(Throwable e) {
+                        if (e instanceof HttpException) {
+                            try {
+                                String test = new String(((HttpException) e).response().errorBody().bytes());
+                                Log.d("ERROR", "onError: " + test);
+                            } catch (IOException e1) {
+                                e1.printStackTrace();
+                            }
+                            ErrorLogin error = ErrorUtils.parseError(((HttpException) e).response().errorBody(), ServiceGenerator.getRetrofit());
+                            mCallback.errorCallback("getFavorites", error);
+                        }
+                        else {
+                            Log.e("ERROR", "no http: " + e);
+                        }
+                    }
+                    @Override
+                    public void onNext(Favorites favorites) {
+                        mCallback.successCallback("getFavorites", favorites);
+                    }
+                });
+    }
+    public void addFavorite(String token, IdArticle id) {
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
+        Observable<Article> observable = service.addFavorite("token " + token, id);
+        observable
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<Article>() {
+                    @Override
+                    public void onCompleted() {
+                        Log.d("MyResult", "onCompleted");
+                        Toast.makeText(mContext, "addFavorite success",
+                                Toast.LENGTH_LONG).show();
+                    }
+                    @Override
+                    public void onError(Throwable e) {
+                        if (e instanceof HttpException) {
+                            try {
+                                String test = new String(((HttpException) e).response().errorBody().bytes());
+                                Log.d("ERROR", "onError: " + test);
+                            } catch (IOException e1) {
+                                e1.printStackTrace();
+                            }
+                            ErrorLogin error = ErrorUtils.parseError(((HttpException) e).response().errorBody(), ServiceGenerator.getRetrofit());
+                            mCallback.errorCallback("addFavorite", error);
+                        }
+                        else {
+                            Log.e("ERROR", "no http: " + e);
+                        }
+                    }
+                    @Override
+                    public void onNext(Article article) {
+                        mCallback.successCallback("addFavorite", article);
+                    }
+                });
+    }
+    public void deleteFavorite(String token, IdArticle id) {
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
+        Observable<Article> observable = service.deleteFavorite("token " + token, id);
+        observable
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<Article>() {
+                    @Override
+                    public void onCompleted() {
+                        Log.d("MyResult", "onCompleted");
+                        Toast.makeText(mContext, "deleteFavorite success",
+                                Toast.LENGTH_LONG).show();
+                    }
+                    @Override
+                    public void onError(Throwable e) {
+                        if (e instanceof HttpException) {
+                            try {
+                                String test = new String(((HttpException) e).response().errorBody().bytes());
+                                Log.d("ERROR", "onError: " + test);
+                            } catch (IOException e1) {
+                                e1.printStackTrace();
+                            }
+                            ErrorLogin error = ErrorUtils.parseError(((HttpException) e).response().errorBody(), ServiceGenerator.getRetrofit());
+                            mCallback.errorCallback("deleteFavorite", error);
+                        }
+                        else {
+                            Log.e("ERROR", "no http: " + e);
+                        }
+                    }
+                    @Override
+                    public void onNext(Article article) {
+                        mCallback.successCallback("deleteFavorite", article);
                     }
                 });
     }

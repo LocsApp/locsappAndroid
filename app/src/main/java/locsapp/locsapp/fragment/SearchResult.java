@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Switch;
@@ -27,6 +28,7 @@ import locsapp.locsapp.adapter.ArticlesOverviewAdapter;
 import locsapp.locsapp.interfaces.ArticleOverviewAdapterCallback;
 import locsapp.locsapp.interfaces.MyCallback;
 import locsapp.locsapp.models.Article;
+import locsapp.locsapp.models.IdArticle;
 import locsapp.locsapp.models.Search;
 import locsapp.locsapp.models.SearchResults;
 import locsapp.locsapp.models.StaticCollections;
@@ -45,6 +47,7 @@ public class SearchResult extends android.support.v4.app.Fragment implements MyC
     private StaticCollections staticCollections;
     private SearchResults searchResults;
     private ListView content;
+    private ArticlesOverviewAdapter articlesOverviewAdapter;
 
     public SearchResult() {
 
@@ -80,9 +83,21 @@ public class SearchResult extends android.support.v4.app.Fragment implements MyC
         fragmentManager = mActivity.getSupportFragmentManager();
         staticCollections = mActivity.staticCollections;
         searchResults = mActivity.mArticles;
-        content = (ListView) view.findViewById(R.id.list_results);
-        ArticlesOverviewAdapter articlesOverviewAdapter = new ArticlesOverviewAdapter(getActivity(), searchResults.articles, this);
-        content.setAdapter(articlesOverviewAdapter);
+
+        if (searchResults != null && searchResults.articles != null && searchResults.articles.size() > 0) {
+            content = (ListView) view.findViewById(R.id.list_results);
+            articlesOverviewAdapter = new ArticlesOverviewAdapter(getActivity(), searchResults.articles, this);
+            content.setAdapter(articlesOverviewAdapter);
+            content.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Log.i("POSITION ", "" + position + " " + id);
+                }
+            });
+        }
+        else {
+            view.findViewById(R.id.no_search_results).setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -99,6 +114,10 @@ public class SearchResult extends android.support.v4.app.Fragment implements MyC
     @Override
     public void successCallback(String tag, Object val) {
         switch (tag) {
+            case "addFavorite":
+                mActivity.refreshFav();
+                articlesOverviewAdapter.notifyDataSetChanged();
+                break;
             default:
                 break;
         }
@@ -118,9 +137,17 @@ public class SearchResult extends android.support.v4.app.Fragment implements MyC
 
     @Override
     public void showArticle(Article article) {
+        Log.d("showArticle", "");
         mActivity.mArticle = article;
         fragmentManager.beginTransaction()
                 .replace(R.id.container, AccountArticles.newInstance(section))
+                .addToBackStack("searchresult")
                 .commit();
+    }
+
+    @Override
+    public void addFavorite(String id) {
+        InfosArticle infosArticle = new InfosArticle(mActivity, this);
+        infosArticle.addFavorite(mActivity.mToken, new IdArticle(id));
     }
 }

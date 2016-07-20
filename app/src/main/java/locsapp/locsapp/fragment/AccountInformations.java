@@ -147,13 +147,17 @@ public class AccountInformations extends android.support.v4.app.Fragment
         ((TextView) mView.findViewById(R.id.phone)).setText(user.mPhone);
         ((TextView) mView.findViewById(R.id.birthdate)).setText(user.mBirthdate);
         ListView livingAdr = ((ListView) mView.findViewById(R.id.livingAddress));
-        ShowAdrAdapter livingAdapter = new ShowAdrAdapter(getActivity(), user.mLivingAddress, this, null);
-        livingAdr.setAdapter(livingAdapter);
-        setListViewHeightBasedOnChildren(livingAdr);
-        ListView billingAdr = ((ListView) mView.findViewById(R.id.billingAddress));
-        ShowAdrAdapter billingAdapter = new ShowAdrAdapter(getActivity(), user.mBillingAddress, this, null);
-        billingAdr.setAdapter(billingAdapter);
-        setListViewHeightBasedOnChildren(billingAdr);
+        if (user.mLivingAddress != null) {
+            ShowAdrAdapter livingAdapter = new ShowAdrAdapter(getActivity(), user.mLivingAddress, this, null);
+            livingAdr.setAdapter(livingAdapter);
+            setListViewHeightBasedOnChildren(livingAdr);
+        }
+        if (user.mBillingAddress != null) {
+            ListView billingAdr = ((ListView) mView.findViewById(R.id.billingAddress));
+            ShowAdrAdapter billingAdapter = new ShowAdrAdapter(getActivity(), user.mBillingAddress, this, null);
+            billingAdr.setAdapter(billingAdapter);
+            setListViewHeightBasedOnChildren(billingAdr);
+        }
     }
 
     public void accountChangePasswd() {

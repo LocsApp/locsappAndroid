@@ -52,8 +52,17 @@ public class ConnectionUser {
                     @Override
                     public void onError(Throwable e) {
                         if (e instanceof HttpException) {
+                            try {
+                                String test = new String(((HttpException) e).response().errorBody().bytes());
+                                Log.d("ERROR", "onError: " + test);
+                            } catch (IOException e1) {
+                                e1.printStackTrace();
+                            }
                             ErrorLogin error = ErrorUtils.parseError(((HttpException) e).response().errorBody(), ServiceGenerator.getRetrofit());
                             mCallback.errorCallback("login", error);
+                        }
+                        else {
+                            Log.e("ERROR", "ERREUR pas http" + e.getMessage());
                         }
                     }
 

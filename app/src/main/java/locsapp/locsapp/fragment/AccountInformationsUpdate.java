@@ -41,6 +41,8 @@ import locsapp.locsapp.network.InfosUser;
  * Created by Damien on 2/3/2015.
  */
 
+// TODO: 7/6/2016 Add setdata() and check if User
+// TODO: 7/7/2016 Actualiser Data Refresh 
 public class AccountInformationsUpdate extends android.support.v4.app.Fragment implements MyCallback, DeleteAddress, DatePickerFragment.DateListener {
     private static final String ARG_SECTION_NUMBER = "section_number";
     private static int section;
@@ -115,14 +117,16 @@ public class AccountInformationsUpdate extends android.support.v4.app.Fragment i
         mPhone.setText(user.mPhone);
 
         mBirthdate.setKeyListener(null);
-        ListView livingAdr = ((ListView) view.findViewById(R.id.editlivingAddress));
-        ShowAdrAdapter livingAdapter = new ShowAdrAdapter(getActivity(), user.mLivingAddress, this, "living_address");
-        livingAdr.setAdapter(livingAdapter);
-        setListViewHeightBasedOnChildren(livingAdr);
-        ListView billingAdr = ((ListView) view.findViewById(R.id.editbillingAddress));
-        ShowAdrAdapter billingAdapter = new ShowAdrAdapter(getActivity(), user.mBillingAddress, this, "billing_address");
-        billingAdr.setAdapter(billingAdapter);
-        setListViewHeightBasedOnChildren(billingAdr);
+        if (user.mLivingAddress != null) {
+            ShowAdrAdapter livingAdapter = new ShowAdrAdapter(getActivity(), user.mLivingAddress, this, "living_address");
+            editlivingAdr.setAdapter(livingAdapter);
+            setListViewHeightBasedOnChildren(editlivingAdr);
+        }
+        if (user.mBillingAddress != null) {
+            ShowAdrAdapter billingAdapter = new ShowAdrAdapter(getActivity(), user.mBillingAddress, this, "billing_address");
+            editbillingAdr.setAdapter(billingAdapter);
+            setListViewHeightBasedOnChildren(editbillingAdr);
+        }
 
 
         final Button editbilButton = (Button) mActivity.findViewById(R.id.editbillButton);

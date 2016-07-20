@@ -17,9 +17,9 @@ public class User {
     @SerializedName("email")
     public String mEmail;
 
-    @SerializedName("secondary_emails")
+/*    @SerializedName("secondary_emails")
     public String mEmail2;
-
+*/
     @SerializedName("first_name")
     public String mFirstName;
 

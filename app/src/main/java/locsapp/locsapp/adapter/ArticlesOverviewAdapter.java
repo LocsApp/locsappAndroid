@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import locsapp.locsapp.R;
+import locsapp.locsapp.activity.HomeActivity;
 import locsapp.locsapp.interfaces.ArticleOverviewAdapterCallback;
 import locsapp.locsapp.models.Article;
 
@@ -72,6 +74,7 @@ public class ArticlesOverviewAdapter extends BaseAdapter {
             holder.description= (TextView) vi.findViewById(R.id.description);
             holder.image = (ImageView) vi.findViewById(R.id.image);
             holder.clickZone = (RelativeLayout) vi.findViewById(R.id.clickzone);
+            holder.favorite = (ImageView) vi.findViewById(R.id.favorite);
 
             vi.setTag(holder);
         }
@@ -85,19 +88,46 @@ public class ArticlesOverviewAdapter extends BaseAdapter {
         }
         else {
             tempValues = data.get(position);
+//            Log.i("ADD ARTICLE: ", tempValues.getTitle() + " " + tempValues.getId());
             holder.title.setText(tempValues.getTitle());
             holder.description.setText(tempValues.getDescription());
             holder.price.setText(tempValues.getPrice().toString() + " €");
             Picasso.with(activity)
-                    .load("")
+                    .load(activity.getResources().getString(R.string.api_url) + tempValues.getThumbnail())
+                    .placeholder(R.drawable.blank2)
+                    .error(R.drawable.blank2)
                     .resize(150, 150)
                     .into(holder.image);
             holder.clickZone.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    callback.showArticle(tempValues);
+                    View parentRow = (View) v.getParent();
+                    ListView listView = (ListView) parentRow.getParent();
+                    final int position = listView.getPositionForView(parentRow);
+                    callback.showArticle(data.get(position));
                 }
             });
+            boolean isFav = false;
+            for (int i = 0; i < ((HomeActivity) activity).mFavorites.articles.size(); i++) {
+                if (((HomeActivity) activity).mFavorites.articles.get(i).getId_article().equals(tempValues.getId())) {
+                    isFav = true;
+                }
+            }
+            if (isFav) {
+                holder.favorite.setVisibility(View.GONE);
+            }
+            else {
+                holder.favorite.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_favorite_border_black_24dp));
+                holder.favorite.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        View parentRow = (View) v.getParent();
+                        ListView listView = (ListView) parentRow.getParent();
+                        final int position = listView.getPositionForView(parentRow);
+                        callback.addFavorite(data.get(position).getId());
+                    }
+                });
+            }
         }
         return vi;
     }
@@ -108,5 +138,6 @@ public class ArticlesOverviewAdapter extends BaseAdapter {
         public TextView description;
         public ImageView image;
         public RelativeLayout clickZone;
+        public ImageView favorite;
     }
 }

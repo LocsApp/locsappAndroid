@@ -24,6 +24,8 @@ import locsapp.locsapp.network.InfosUser;
  * Created by Damien on 10/17/2015.
  */
 
+
+// TODO: 7/6/2016 Save user in preference 
 public class IntroActivity extends FragmentActivity implements MyCallback {
 
     String mToken;

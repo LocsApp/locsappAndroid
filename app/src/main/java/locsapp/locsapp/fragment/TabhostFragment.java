@@ -1,6 +1,7 @@
 package locsapp.locsapp.fragment;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -67,6 +68,13 @@ public class TabhostFragment extends Fragment implements MyCallback {
         });
         //tabLayout.setupWithViewPager(viewPager);
         return view;
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        ((HomeActivity) activity).onSectionAttached(
+                getArguments().getInt(ARG_SECTION_NUMBER));
     }
 
     @Override

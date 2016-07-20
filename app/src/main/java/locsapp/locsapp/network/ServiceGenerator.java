@@ -15,22 +15,22 @@ import com.squareup.okhttp.ResponseBody;
 
 public class ServiceGenerator extends Activity {
 
-    public static final String API_BASE_URL = "http://91.121.70.38"; //http://sylflo.fr:8010";//;
-    private static Retrofit mRetrofit = null;
+    public final String API_BASE_URL = "https://vxadvxkawm.localtunnel.me"; //"https://xjgxgfyhyq.localtunnel.me/"; // https://locsapp.sylflo.fr";//
+    private Retrofit mRetrofit = null;
 
-    private static OkHttpClient httpClient = new OkHttpClient();
-    private static Retrofit.Builder builder =
+    private OkHttpClient httpClient = new OkHttpClient();
+    private Retrofit.Builder builder =
             new Retrofit.Builder()
-                    .baseUrl(API_BASE_URL)
+                    .baseUrl(getApplication().getResources().getString(R.string.api_url))
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create());
 
-    public static <S> S createService(Class<S> serviceClass) {
+    public <S> S createService(Class<S> serviceClass) {
         mRetrofit = builder.client(httpClient).build();
         return mRetrofit.create(serviceClass);
     }
 
-    public static Retrofit getRetrofit() {
+    public Retrofit getRetrofit() {
         return mRetrofit;
     }
 

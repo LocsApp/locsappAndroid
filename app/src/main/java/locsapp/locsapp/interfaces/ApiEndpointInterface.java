@@ -5,7 +5,10 @@ import com.google.gson.annotations.SerializedName;
 import org.json.JSONObject;
 
 import locsapp.locsapp.models.Article;
+import locsapp.locsapp.models.AskQuestion;
 import locsapp.locsapp.models.BillingAddress;
+import locsapp.locsapp.models.Favorites;
+import locsapp.locsapp.models.IdArticle;
 import locsapp.locsapp.models.LivingAddress;
 import locsapp.locsapp.models.Login;
 import locsapp.locsapp.models.LoginFB;
@@ -19,7 +22,6 @@ import locsapp.locsapp.models.SCStates;
 import locsapp.locsapp.models.SCSubCategories;
 import locsapp.locsapp.models.Search;
 import locsapp.locsapp.models.SearchResults;
-import locsapp.locsapp.models.StaticCollection;
 import locsapp.locsapp.models.Token;
 import locsapp.locsapp.models.User;
 import locsapp.locsapp.models.UserFB;
@@ -93,6 +95,20 @@ public interface ApiEndpointInterface {
 
     @GET("/api/v1/articles/{id}/")
     Observable<Article> getArticle(@Header("Authorization") String token, @Path("id") String articleId);
+
+    //--- Questions
+    @POST("/api/v1/articles/questions/")
+    Observable<Void> askQuestion(@Header("Authorization") String token, @Body AskQuestion question);
+
+    //--- Favorites
+    @GET("/api/v1/favorites/articles/")
+    Observable<Favorites> getFavorites(@Header("Authorization") String token);
+
+    @POST("/api/v1/favorites/articles/")
+    Observable<Article> addFavorite(@Header("Authorization") String token, @Body IdArticle id);
+
+    @POST("/api/v1/favorites/delete-articles/")
+    Observable<Article> deleteFavorite(@Header("Authorization") String token, @Body IdArticle id);
 
     //---InfosArticle Static Collections
     @GET("/api/v1/static-collections/sub-categories/")
