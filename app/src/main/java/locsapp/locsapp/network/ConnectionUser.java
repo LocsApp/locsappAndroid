@@ -36,7 +36,7 @@ public class ConnectionUser {
     }
 
     public void login(String username, String password) {
-        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class, mContext);
         Login login = new Login(username, password);
 
         Observable<Token> observable = service.loginUser(login);
@@ -75,7 +75,7 @@ public class ConnectionUser {
     }
 
     public void loginFB(String token) {
-        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class, mContext);
         LoginFB login = new LoginFB(token);
 
         Observable<Token> observable = service.loginUserFB(login);
@@ -113,7 +113,7 @@ public class ConnectionUser {
     }
 
     public void createUserFB(String token, String username) {
-        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class, mContext);
         UserFB login = new UserFB(token, username);
 
         Observable<Token> observable = service.createUserFB(login);
@@ -147,7 +147,7 @@ public class ConnectionUser {
     }
 
     public void resetPassword(String email) {
-        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class, mContext);
         final ResetPasswd activity = (ResetPasswd) mContext;
 
         Observable<String> observable = service.resetPassword(email);
@@ -176,7 +176,7 @@ public class ConnectionUser {
     }
 
     public void changePassword(String token, String old, String new1, String new2, final AccountInformationsChangePasswd fragment) {
-        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class, mContext);
         final HomeActivity activity = (HomeActivity) mContext;
         Passwd passwd = new Passwd(old, new1, new2);
 
@@ -206,7 +206,7 @@ public class ConnectionUser {
     }
 
     public void logoutUser(String token) {
-        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class, mContext);
         final HomeActivity activity = (HomeActivity) mContext;
 
         Observable<Void> observable = service.logoutUser("token " + token);
@@ -238,7 +238,7 @@ public class ConnectionUser {
     }
 
     public void register(String email, String username, String password1, String password2) {
-        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class);
+        final ApiEndpointInterface service = ServiceGenerator.createService(ApiEndpointInterface.class, mContext);
         User user = new User(email, username, password1, password2);
 
         Observable<User> observable = service.createUser(user);

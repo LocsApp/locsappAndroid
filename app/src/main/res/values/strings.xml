@@ -4,27 +4,19 @@
     <string name="api_url">https://address.api</string>
 
     <string name="app_id">1011661268854723</string>
-
     <string name="action_logout">Logout</string>
     <string name="action_exit">Exit</string>
-
     <string name="RegistrationName">Register an Account</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="callback_err">Activity must implement NavigationDrawerCallbacks.</string>
-
     <string name="splash_description">LocsApp Logo</string>
-
     <string name="title_section1">Home</string>
     <string name="title_section2">My Account</string>
     <string name="title_section3">Favorites</string>
-
     <string name="copyright">Copyright LocsApp 2016</string>
     <string name="title_home_activity">Home</string>
-
     <string name="saved_token">pref_saved_token</string>
-
     <string name="base_categories">pref_sc_base_categories</string>
     <string name="sub_categories">pref_sc_sub_categories</string>
     <string name="colors">pref_sc_colors</string>
@@ -32,7 +24,6 @@
     <string name="sizes">pref_sc_sizes</string>
     <string name="states">pref_sc_states</string>
     <string name="pay_methods">pref_sc_pay_methods</string>
-
     <string name="chk_base_categories">pref_chk_sc_base_categories</string>
     <string name="chk_sub_categories">pref_chk_sc_sub_categories</string>
     <string name="chk_colors">pref_chk_sc_colors</string>
@@ -40,6 +31,5 @@
     <string name="chk_sizes">pref_chk_sc_sizes</string>
     <string name="chk_states">pref_chk_sc_states</string>
     <string name="chk_pay_methods">pref_chk_sc_pay_methods</string>
-
     <string name="facebook_app_id">gSVdt7wxhmQJgcu6Q2tvNDAmM+w=</string>
 </resources>
