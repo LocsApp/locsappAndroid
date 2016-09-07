@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">LocsApp</string>
 
-    <string name="api_url">https://address.api</string>
+    <string name="api_url">http://devlocsapp.damienhassler.eu</string>
 
     <string name="app_id">1011661268854723</string>
     <string name="action_logout">Logout</string>
@@ -32,4 +32,5 @@
     <string name="chk_states">pref_chk_sc_states</string>
     <string name="chk_pay_methods">pref_chk_sc_pay_methods</string>
     <string name="facebook_app_id">gSVdt7wxhmQJgcu6Q2tvNDAmM+w=</string>
+    <string name="title_articles">Détail Article</string>
 </resources>

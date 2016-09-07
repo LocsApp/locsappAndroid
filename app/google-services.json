@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "876424282368",
+    "firebase_url": "https://locsapp-b5595.firebaseio.com",
+    "project_id": "locsapp-b5595",
+    "storage_bucket": "locsapp-b5595.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:876424282368:android:f2d935284589e8f3",
+        "android_client_info": {
+          "package_name": "locsapp.locsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "876424282368-glf4js75cqivc1ug41ctnt76p85dulkb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArjihT_o1vy0F8DMvFOthfdvAdDBeDyR0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

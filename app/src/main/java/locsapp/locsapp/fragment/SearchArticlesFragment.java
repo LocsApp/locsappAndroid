@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -73,7 +74,7 @@ public class SearchArticlesFragment extends android.support.v4.app.Fragment impl
     private TextView mLabelPay;
     private TextView mPay;
     private Switch mCaution;
-    private Button mSearchButton;
+    private FloatingActionButton mSearchButton;
     private FragmentManager fragmentManager;
 
     private StaticCollections staticCollections;
@@ -144,7 +145,7 @@ public class SearchArticlesFragment extends android.support.v4.app.Fragment impl
         mLabelPay           = (TextView) view.findViewById(R.id.labelPayMethods);
         mPay                = (TextView) view.findViewById(R.id.payMethods);
         mCaution            = (Switch) view.findViewById(R.id.caution);
-        mSearchButton       = (Button) view.findViewById(R.id.search_button);
+        mSearchButton       = (FloatingActionButton) view.findViewById(R.id.search_button);
 
         mCategory.setText(countOptions(staticCollections.bchkBaseCategories));
         mSubCategory.setText(countOptions(staticCollections.bchkSubCategories));

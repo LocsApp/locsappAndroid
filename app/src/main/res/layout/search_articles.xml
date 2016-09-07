@@ -1,448 +1,465 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
-    tools:context="locsapp.locsapp.HomeFragment"
-    android:paddingTop="6dp"
-    android:background="#eee">
-    <RelativeLayout
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="8dp"
-        android:id="@+id/card1" >
+        android:layout_height="match_parent"
+        android:paddingTop="6dp"
+        android:background="#eee">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <TextView android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/primary"
-                android:text="Your research"
-                android:layout_margin="5dp"
-                android:id="@+id/textView4" />
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/keywords"
-                android:hint="Your keywords"
-                android:textSize="15sp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_below="@id/textView4"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Search only in the title"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@id/keywords"
-                android:id="@+id/labelTitleOlny"
-                android:layout_marginLeft="15dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginBottom="10dp"
-                android:paddingBottom="5dp"/>
-            <Switch
-                android:id="@+id/titleOnly"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_below="@id/keywords"
-                android:layout_marginRight="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_alignBottom="@id/labelTitleOlny"/>
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="8dp"
-        android:id="@+id/card2"
-        android:layout_below="@id/card1" >
-        <RelativeLayout
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/primary"
-                android:text="Your disponibility"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginBottom="14dp"
-                android:id="@+id/textView5" />
-            <TextView
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="8dp"
+            android:id="@+id/card1" >
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/labelPosition"
-                android:text="Position"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_below="@id/textView5"/>
-            <TextView
-                android:id="@+id/distanceValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textView5"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginRight="10dp"
-                android:layout_marginEnd="10dp"
-                android:textColor="@color/primary"
-                android:text="10km" />
-            <TextView
-                android:id="@+id/distanceCity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="4dp"
-                android:layout_marginEnd="4dp"
-                android:layout_below="@id/textView5"
-                android:layout_toLeftOf="@id/distanceValue"
-                android:layout_toStartOf="@id/distanceValue"
-                android:text="Bayonne" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:id="@+id/separator1"
-                android:layout_below="@id/labelPosition"
-                android:background="@color/separator"
-                android:layout_margin="10dp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/labelDate"
-                android:text="Date"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_below="@+id/separator1"
-                android:layout_marginBottom="10dp"/>
-            <TextView
-                android:id="@+id/dateEnd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_below="@id/separator1"
-                android:layout_marginRight="10dp"
-                android:layout_marginEnd="10dp"
-                android:textColor="@color/primary"
-                android:text="1/12/2015" />
-            <TextView
-                android:id="@+id/textTo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toLeftOf="@id/dateEnd"
-                android:layout_toStartOf="@id/dateEnd"
-                android:layout_below="@id/separator1"
-                android:layout_marginRight="4dp"
-                android:layout_marginEnd="4dp"
-                android:text="to" />
-            <TextView
-                android:id="@+id/dateStart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toLeftOf="@id/textTo"
-                android:layout_toStartOf="@id/textTo"
-                android:layout_below="@id/separator1"
-                android:layout_marginRight="4dp"
-                android:layout_marginEnd="4dp"
-                android:textColor="@color/primary"
-                android:text="1/05/2015" />
-            <TextView
-                android:id="@+id/textFrom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toLeftOf="@id/dateStart"
-                android:layout_toStartOf="@id/dateStart"
-                android:layout_below="@id/separator1"
-                android:layout_marginRight="4dp"
-                android:layout_marginEnd="4dp"
-                android:text="From" />
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="8dp"
-        android:id="@+id/card3"
-        android:layout_below="@id/card2" >
-        <RelativeLayout
+                android:layout_height="wrap_content">
+                <TextView android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/primary"
+                    android:text="Your research"
+                    android:layout_margin="5dp"
+                    android:id="@+id/textView4" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/keywords"
+                    android:hint="Your keywords"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_below="@id/textView4"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Search only in the title"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@id/keywords"
+                    android:id="@+id/labelTitleOlny"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:paddingBottom="5dp"/>
+                <Switch
+                    android:id="@+id/titleOnly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@id/keywords"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignBottom="@id/labelTitleOlny"/>
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/primary"
-                android:text="Clothe properties"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginBottom="14dp"
-                android:id="@+id/textView7" />
-            <TextView
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="8dp"
+            android:id="@+id/card2"
+            android:layout_below="@id/card1" >
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/labelCategory"
-                android:text="Category"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_below="@id/textView7"/>
-            <TextView
-                android:id="@+id/category"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_below="@id/textView7"
-                android:layout_marginRight="10dp"
-                android:layout_marginEnd="10dp"
-                android:textColor="@color/primary"
-                android:text="all" />
-            <View
+                android:layout_height="wrap_content">
+                <TextView android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/primary"
+                    android:text="Your disponibility"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginBottom="14dp"
+                    android:id="@+id/textView5" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/labelPosition"
+                    android:text="Position"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_below="@id/textView5"/>
+                <TextView
+                    android:id="@+id/distanceValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView5"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/primary"
+                    android:text="10km" />
+                <TextView
+                    android:id="@+id/distanceCity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_below="@id/textView5"
+                    android:layout_toLeftOf="@id/distanceValue"
+                    android:layout_toStartOf="@id/distanceValue"
+                    android:text="Bayonne" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:id="@+id/separator1"
+                    android:layout_below="@id/labelPosition"
+                    android:background="@color/separator"
+                    android:layout_margin="10dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/labelDate"
+                    android:text="Date"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_below="@+id/separator1"
+                    android:layout_marginBottom="10dp"/>
+                <TextView
+                    android:id="@+id/dateEnd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@id/separator1"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/primary"
+                    android:text="1/12/2015" />
+                <TextView
+                    android:id="@+id/textTo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/dateEnd"
+                    android:layout_toStartOf="@id/dateEnd"
+                    android:layout_below="@id/separator1"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:text="to" />
+                <TextView
+                    android:id="@+id/dateStart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/textTo"
+                    android:layout_toStartOf="@id/textTo"
+                    android:layout_below="@id/separator1"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:textColor="@color/primary"
+                    android:text="1/05/2015" />
+                <TextView
+                    android:id="@+id/textFrom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/dateStart"
+                    android:layout_toStartOf="@id/dateStart"
+                    android:layout_below="@id/separator1"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:text="From" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="8dp"
+            android:id="@+id/card3"
+            android:layout_below="@id/card2" >
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:id="@+id/separator3"
-                android:layout_below="@id/labelCategory"
-                android:background="@color/separator"
-                android:layout_margin="10dp"/>
-            <TextView
+                android:layout_height="wrap_content">
+                <TextView android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/primary"
+                    android:text="Clothe properties"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginBottom="14dp"
+                    android:id="@+id/textView7" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/labelCategory"
+                    android:text="Category"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_below="@id/textView7"/>
+                <TextView
+                    android:id="@+id/category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@id/textView7"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/primary"
+                    android:text="all" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:id="@+id/separator3"
+                    android:layout_below="@id/labelCategory"
+                    android:background="@color/separator"
+                    android:layout_margin="10dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/labelSubCategory"
+                    android:text="Sub-category"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_below="@+id/separator3" />
+                <TextView
+                    android:id="@+id/subCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@id/separator3"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/primary"
+                    android:text="all" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:id="@+id/separator4"
+                    android:layout_below="@id/labelSubCategory"
+                    android:background="@color/separator"
+                    android:layout_margin="10dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/labelBrand"
+                    android:text="Brand"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_below="@+id/separator4" />
+                <TextView
+                    android:id="@+id/brand"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@id/separator4"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/primary"
+                    android:text="all" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:id="@+id/separator5"
+                    android:layout_below="@id/labelBrand"
+                    android:background="@color/separator"
+                    android:layout_margin="10dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/labelGender"
+                    android:text="Gender"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_below="@+id/separator5" />
+                <TextView
+                    android:id="@+id/gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@id/separator5"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/primary"
+                    android:text="all" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:id="@+id/separator6"
+                    android:layout_below="@id/labelGender"
+                    android:background="@color/separator"
+                    android:layout_margin="10dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/labelSize"
+                    android:text="Size"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_below="@+id/separator6" />
+                <TextView
+                    android:id="@+id/size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@id/separator6"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/primary"
+                    android:text="all" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:id="@+id/separator7"
+                    android:layout_below="@id/labelSize"
+                    android:background="@color/separator"
+                    android:layout_margin="10dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/labelColor"
+                    android:text="Color"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_below="@+id/separator7" />
+                <TextView
+                    android:id="@+id/color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@id/separator7"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/primary"
+                    android:text="all" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:id="@+id/separator8"
+                    android:layout_below="@id/labelColor"
+                    android:background="@color/separator"
+                    android:layout_margin="10dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/labelState"
+                    android:text="State"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_below="@+id/separator8"
+                    android:layout_marginBottom="10dp"/>
+                <TextView
+                    android:id="@+id/state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@id/separator8"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/primary"
+                    android:text="all" />
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="8dp"
+            android:id="@+id/card4"
+            android:layout_below="@id/card3" >
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/labelSubCategory"
-                android:text="Sub-category"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_below="@+id/separator3" />
-            <TextView
-                android:id="@+id/subCategory"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_below="@id/separator3"
-                android:layout_marginRight="10dp"
-                android:layout_marginEnd="10dp"
-                android:textColor="@color/primary"
-                android:text="all" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:id="@+id/separator4"
-                android:layout_below="@id/labelSubCategory"
-                android:background="@color/separator"
-                android:layout_margin="10dp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/labelBrand"
-                android:text="Brand"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_below="@+id/separator4" />
-            <TextView
-                android:id="@+id/brand"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_below="@id/separator4"
-                android:layout_marginRight="10dp"
-                android:layout_marginEnd="10dp"
-                android:textColor="@color/primary"
-                android:text="all" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:id="@+id/separator5"
-                android:layout_below="@id/labelBrand"
-                android:background="@color/separator"
-                android:layout_margin="10dp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/labelGender"
-                android:text="Gender"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_below="@+id/separator5" />
-            <TextView
-                android:id="@+id/gender"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_below="@id/separator5"
-                android:layout_marginRight="10dp"
-                android:layout_marginEnd="10dp"
-                android:textColor="@color/primary"
-                android:text="all" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:id="@+id/separator6"
-                android:layout_below="@id/labelGender"
-                android:background="@color/separator"
-                android:layout_margin="10dp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/labelSize"
-                android:text="Size"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_below="@+id/separator6" />
-            <TextView
-                android:id="@+id/size"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_below="@id/separator6"
-                android:layout_marginRight="10dp"
-                android:layout_marginEnd="10dp"
-                android:textColor="@color/primary"
-                android:text="all" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:id="@+id/separator7"
-                android:layout_below="@id/labelSize"
-                android:background="@color/separator"
-                android:layout_margin="10dp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/labelColor"
-                android:text="Color"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_below="@+id/separator7" />
-            <TextView
-                android:id="@+id/color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_below="@id/separator7"
-                android:layout_marginRight="10dp"
-                android:layout_marginEnd="10dp"
-                android:textColor="@color/primary"
-                android:text="all" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:id="@+id/separator8"
-                android:layout_below="@id/labelColor"
-                android:background="@color/separator"
-                android:layout_margin="10dp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/labelState"
-                android:text="State"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_below="@+id/separator8"
-                android:layout_marginBottom="10dp"/>
-            <TextView
-                android:id="@+id/state"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_below="@id/separator8"
-                android:layout_marginRight="10dp"
-                android:layout_marginEnd="10dp"
-                android:textColor="@color/primary"
-                android:text="all" />
+                android:layout_height="wrap_content">
+                <TextView android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/primary"
+                    android:text="Transaction modalities"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginBottom="14dp"
+                    android:id="@+id/textView6" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/labelPayMethods"
+                    android:text="Payements methods"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_below="@id/textView6"/>
+                <TextView
+                    android:id="@+id/payMethods"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@id/textView6"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/primary"
+                    android:text="all" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:id="@+id/separator2"
+                    android:layout_below="@id/labelPayMethods"
+                    android:background="@color/separator"
+                    android:layout_margin="10dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/labelCaution"
+                    android:text="Caution"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_below="@+id/separator2"
+                    android:layout_marginBottom="10dp"
+                    android:paddingBottom="5dp"/>
+                <Switch
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/caution"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_alignBottom="@id/labelCaution">
+                </Switch>
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:layout_below="@id/card4"
+            android:text="Search"
+            android:onClick="open"
+            android:background="@color/primary"
+            android:textColor="#FFF" />
 
         </RelativeLayout>
-    </android.support.v7.widget.CardView>
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="8dp"
-        android:id="@+id/card4"
-        android:layout_below="@id/card3" >
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/primary"
-                android:text="Transaction modalities"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginBottom="14dp"
-                android:id="@+id/textView6" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/labelPayMethods"
-                android:text="Payements methods"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_below="@id/textView6"/>
-            <TextView
-                android:id="@+id/payMethods"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_below="@id/textView6"
-                android:layout_marginRight="10dp"
-                android:layout_marginEnd="10dp"
-                android:textColor="@color/primary"
-                android:text="all" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:id="@+id/separator2"
-                android:layout_below="@id/labelPayMethods"
-                android:background="@color/separator"
-                android:layout_margin="10dp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/labelCaution"
-                android:text="Caution"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_below="@+id/separator2"
-                android:layout_marginBottom="10dp"
-                android:paddingBottom="5dp"/>
-            <Switch
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/caution"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginRight="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_alignBottom="@id/labelCaution">
-            </Switch>
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
-    <Button
+    </ScrollView>
+
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/search_button"
-        android:layout_width="fill_parent"
+        android:src="@drawable/ic_delete_black_24dp"
+        app:fabSize="normal"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dip"
-        android:layout_below="@id/card4"
-        android:text="Search"
-        android:onClick="open"
-        android:background="@color/primary"
-        android:textColor="#FFF" />
-    </RelativeLayout>
-</ScrollView>
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:tint="#FFF"
+        app:backgroundTint="@color/primary"
+        android:layout_gravity="right|bottom" />
+</FrameLayout>

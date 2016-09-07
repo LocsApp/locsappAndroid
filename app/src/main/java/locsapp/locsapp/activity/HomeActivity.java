@@ -121,6 +121,11 @@ public class HomeActivity extends ActionBarActivity
         }
     }
 
+    public void setTitle(CharSequence title) {
+        mTitle = title;
+        restoreActionBar();
+    }
+
     public void restoreActionBar() {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);

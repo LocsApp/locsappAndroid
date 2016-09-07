@@ -1,27 +1,19 @@
 package locsapp.locsapp.fragment;
 
 import android.app.Activity;
-import android.app.Dialog;
-import android.content.DialogInterface;
+import android.location.Address;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Switch;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import locsapp.locsapp.Location.GetPositionFromAddressName;
 import locsapp.locsapp.R;
 import locsapp.locsapp.activity.HomeActivity;
 import locsapp.locsapp.adapter.ArticlesOverviewAdapter;
@@ -29,7 +21,6 @@ import locsapp.locsapp.interfaces.ArticleOverviewAdapterCallback;
 import locsapp.locsapp.interfaces.MyCallback;
 import locsapp.locsapp.models.Article;
 import locsapp.locsapp.models.IdArticle;
-import locsapp.locsapp.models.Search;
 import locsapp.locsapp.models.SearchResults;
 import locsapp.locsapp.models.StaticCollections;
 import locsapp.locsapp.network.InfosArticle;
@@ -38,7 +29,9 @@ import locsapp.locsapp.network.InfosArticle;
  * Created by Damien on 2/3/2015.
  */
 
-public class SearchResult extends android.support.v4.app.Fragment implements MyCallback, ArticleOverviewAdapterCallback {
+public class SearchResult extends android.support.v4.app.Fragment
+        implements MyCallback, ArticleOverviewAdapterCallback, GetPositionFromAddressName.LocationCallback {
+
     private static final String ARG_SECTION_NUMBER = "section_number";
     private static int section;
     private HomeActivity mActivity;
@@ -63,6 +56,11 @@ public class SearchResult extends android.support.v4.app.Fragment implements MyC
         return fragment;
     }
 
+    public void getPosition(String address) {
+        GetPositionFromAddressName getPositionFromAddressName = new GetPositionFromAddressName(this);
+        getPositionFromAddressName.execute(address);
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +82,7 @@ public class SearchResult extends android.support.v4.app.Fragment implements MyC
         staticCollections = mActivity.staticCollections;
         searchResults = mActivity.mArticles;
 
+        getPosition("3 rue de thann 68700 Cernay");
         if (searchResults != null && searchResults.articles != null && searchResults.articles.size() > 0) {
             content = (ListView) view.findViewById(R.id.list_results);
             articlesOverviewAdapter = new ArticlesOverviewAdapter(getActivity(), searchResults.articles, this);
@@ -149,5 +148,10 @@ public class SearchResult extends android.support.v4.app.Fragment implements MyC
     public void addFavorite(String id) {
         InfosArticle infosArticle = new InfosArticle(mActivity, this);
         infosArticle.addFavorite(mActivity.mToken, new IdArticle(id));
+    }
+
+    @Override
+    public void location(Address address) {
+        Log.d("location: ", address.toString());
     }
 }

@@ -65,6 +65,16 @@ public class StaticCollections implements MyCallback{
         }
         return "";
     }
+    public String getColorName(String id) {
+        if (scColors != null) {
+            for (int i = 0; i < scColors.mColors.size(); i++) {
+                if (id.equals(scColors.mColors.get(i).getId())) {
+                    return (scColors.mColors.get(i).getName());
+                }
+            }
+        }
+        return "";
+    }
     public String getCategory(String id) {
         if (scBaseCategories != null) {
             for (int i = 0; i < scBaseCategories.mBaseCategories.size(); i++) {

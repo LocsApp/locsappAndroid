@@ -74,8 +74,6 @@ public class AccountArticles extends android.support.v4.app.Fragment implements 
     private ListView mQuestions;
     private ImageView mImage;
 
-    private String m_Text = "";
-
     private Button mAskQuestion;
     private Button mButtonDemand;
 
@@ -109,6 +107,7 @@ public class AccountArticles extends android.support.v4.app.Fragment implements 
         staticCollections = mActivity.staticCollections;
         article = mActivity.mArticle;
 
+        mActivity.setTitle(getString(R.string.title_articles));
         mDateStart = (TextView) view.findViewById(R.id.dateStart);
         mDateEnd = (TextView) view.findViewById(R.id.dateEnd);
         mTitle = (TextView) view.findViewById(R.id.title);
@@ -228,7 +227,7 @@ public class AccountArticles extends android.support.v4.app.Fragment implements 
         mSubCategory.setText(staticCollections.getSubCategory(article.getSubCategory()));
         mGender.setText(staticCollections.getGender(article.getGender()));
         mSize.setText(staticCollections.getSize(article.getSize()));
-        mColor.setText(staticCollections.getColorValue(article.getColor()));
+        mColor.setText(staticCollections.getColorName(article.getColor()));
         try {
             mColor.setTextColor(Color.parseColor(staticCollections.getColorValue(article.getColor())));
         } catch (Exception e) {

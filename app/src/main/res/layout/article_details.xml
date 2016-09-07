@@ -78,7 +78,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/labelDistance"
-                android:text=""
+                android:text="Distance"
                 android:layout_below="@+id/separator4" />
             <TextView
                 android:id="@+id/distance"
@@ -88,7 +88,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_below="@id/separator4"
                 android:textColor="@color/primary"
-                android:text="" />
+                android:text="10Km" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"

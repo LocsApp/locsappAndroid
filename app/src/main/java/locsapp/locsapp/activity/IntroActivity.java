@@ -12,6 +12,12 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.facebook.FacebookSdk;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.FirebaseInstanceIdService;
+import com.google.firebase.messaging.FirebaseMessaging;
+
+import java.util.Iterator;
+import java.util.Set;
 
 import locsapp.locsapp.R;
 import locsapp.locsapp.interfaces.MyCallback;
@@ -49,6 +55,27 @@ public class IntroActivity extends FragmentActivity implements MyCallback {
         else {
             verifyToken();
         }
+
+        // Here we can get parameters from the notifications
+        Intent intent = getIntent();
+        if (intent != null) {
+            Bundle bundle = intent.getExtras();
+            if (bundle != null){
+                Set<String> set = bundle.keySet();
+                for (String f: set) {
+                    System.out.println("NAME="+f);
+                }/*
+                for (Iterator<String> it = set.iterator(); it.hasNext(); ) {
+                    String f = it.next();
+                    System.out.println("NAME="+f+" VALUE=" +intent.getStringExtra(f));
+                }*/
+            }
+        }
+
+        Log.e("Firebase" ,"" + FirebaseInstanceId.getInstance().getToken());
+
+        FirebaseMessaging.getInstance().subscribeToTopic("broadcast");
+        FirebaseMessaging.getInstance().subscribeToTopic("news");
     }
 
     public void verifyToken() {
